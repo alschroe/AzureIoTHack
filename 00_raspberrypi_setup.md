@@ -8,7 +8,7 @@ https://www.microsoft.com/de-de/p/windows-terminal/9n0dx20hk701?rtc=1&activetab=
 To work properly with all the different moving bits and parts we want to connect in this Hackathon, we will have to do quite a bit of setting up. Make sure you have everything on hand that you need:
 - your local machine (any computer or set up a virtual machine if you do not feel like installing any additional stuff on your machine)
 - an Azure subscription (the trial subscription should do)
-- a Raspberry Pi 4 with charging cable, Mini SD
+- a Raspberry Pi 4 with charging cable, micro SD
 - Potentially an SD Adapter depending on whether or not your device has an SD or Micro SD slot
 - Optional but preferred: Desktop, keyboard, mouse
 - a Sense HAT, which will collect all the data
@@ -92,6 +92,12 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
     1. Under *Port* ```22``` should already be entered, if not do so.
     1. Lastly select *Open*
     1. You should be prompted for login. The default login is **pi** and the default password is **raspberry**.
+1. Now you are able to work on the Pi. The first thing we want to do is changing the default password. Type in:
+    ```shell
+    sudo raspi-config
+    ```
+    Select *1 Change User Password | Change password for the 'pi' user* by hitting enter while it is highlighted. Make sure to remember your password.
+1. (optional) In the same Configuration Tool we now want to set up the remote Desktop option. Use the down arrow on your keyboard to move to *5 Interfacing Options* and press enter. After that scroll to *P3 VNC*
 
 
 ## Your Sense HAT
