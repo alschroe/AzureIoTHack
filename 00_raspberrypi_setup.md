@@ -22,7 +22,7 @@ Take some time to get familiar with the portal. You can find more information ab
 
 ## Your local machine
 We are going to set everything up, so you can work on Azure resources from your local machine. There are multiple options to interact with Azure and you can chose yourself how to do it later on.
-1. Install Visual Studio Code from [here](https://code.visualstudio.com/Download) to handle any code you are going to need. You could of course use a different development environment, we just like this one.
+1. (optional) Install Visual Studio Code from [here](https://code.visualstudio.com/Download) to handle any code you are going to need. You could of course use a different development environment, we just like this one.
 1. (optional) Install the Windows Terminal. You can get it [here](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab). It is a command-line front-end and can run Command Prompt, PowerShell, WSL, SSH and an Azure Clound Shell Connector. Again there are other options, but we like this one.
 1. Open the shell and download the Azure CLI from [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli). You can also install it without manual downloading using the PowerShell:
     ```shell
@@ -50,7 +50,7 @@ We are going to set everything up, so you can work on Azure resources from your 
     ```shell
     git clone https://github.com/alschroe/AzureIoTHack.git
     ```
-    You can open it up in Visual Studio Code.
+    You can open it up in Visual Studio Code like this - or with the IDE of your choice.
     ```shell
     cd AzureIoTHack
     code .
@@ -72,7 +72,7 @@ The Raspberry Pi is a single-board computer and needs to be properly setup so we
 1. Insert the micro SD card into your local machine.
 1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
 1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
-1. Now we want to set up our SSH connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder *raspberrypi_ssh* in this repo you will find two files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other file is called *ssh* - without file extension. This file will automatically enable SSH on your Pi.
+1. Now we want to set up our SSH connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder [raspberrypi_ssh](../raspberrypi_setup/raspberrypi_ssh) in this repo you will find two files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other file is called *ssh* - without file extension. This file will automatically enable SSH on your Pi.
     You will need to very shortly remove the micro SD card and insert it again into your local machine. Then access the boot folder on your micro SD card and paste the two files in them. Eject the SD card securely.
 1. Instert the micro SD card into your Raspberry Pi.
 1. Now first connect your desktop monitor, your keyboard and your mouse to the Raspberry Pi.
@@ -97,7 +97,7 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
 1. Insert the micro SD card into your local machine.
 1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
 1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
-1. Now we want to set up our SSH connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder *raspberrypi_ssh* in this repo you will find two files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other file is called *ssh* - without file extension. This file will automatically enable SSH on your Pi.
+1. Now we want to set up our SSH connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder [raspberrypi_ssh](../raspberrypi_setup/raspberrypi_ssh) in this repo you will find two files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other file is called *ssh* - without file extension. This file will automatically enable SSH on your Pi.
     You will need to very shortly remove the micro SD card and insert it again into your local machine. Then access the boot folder on your micro SD card and paste the two files in them. Eject the SD card securely.
 1. Instert the micro SD card into your Raspberry Pi.
 1. Connect your Pi to a power resource. Let it stew for a moment - maybe grab a coffee.
@@ -124,7 +124,7 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
 1. Insert the micro SD card into your local machine.
 1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
 1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
-1. Now we want to set up our SSH connection, network connection and the remote desktop connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder *raspberrypi_rd* in this repo you will find three files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other files are called *SSH* and *VNC* - without file extension. This files will automatically enable SSH and VNC on your Pi.
+1. Now we want to set up our SSH connection, network connection and the remote desktop connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder [raspberrypi_rd](../raspberrypi_setup/raspberrypi_rd) in this repo you will find three files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other files are called *SSH* and *VNC* - without file extension. This files will automatically enable SSH and VNC on your Pi.
     You will need to very shortly remove the micro SD card and insert it again into your local machine. Then access the boot folder on your micro SD card and paste the two files in them. Eject the SD card securely.
 1. Instert the micro SD card into your Raspberry Pi.
 1. Connect your Pi to a power resource. Let it stew for a moment - maybe grab a coffee.
