@@ -1,8 +1,3 @@
-https://github.com/alschroe/AzureIoTHack.git
-https://git-scm.com/download/win
-https://code.visualstudio.com/Download
-https://www.microsoft.com/de-de/p/windows-terminal/9n0dx20hk701?rtc=1&activetab=pivot:overviewtab
-
 # Set up your environment
 
 To work properly with all the different moving bits and parts we want to connect in this Hackathon, we will have to do quite a bit of setting up. Make sure you have everything on hand that you need:
@@ -67,7 +62,7 @@ The Raspberry Pi is a single-board computer and needs to be properly setup so we
 1. Insert the micro SD card into your local machine.
 1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
 1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
-1. Now we want to set up our SSH connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder *raspberrypi_setup* in this repo you will find two files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other file is called *ssh* - without file extension. This file will automatically enable SSH on your Pi.
+1. Now we want to set up our SSH connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder *raspberrypi_ssh* in this repo you will find two files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other file is called *ssh* - without file extension. This file will automatically enable SSH on your Pi.
     You will need to very shortly remove the micro SD card and insert it again into your local machine. Then access the boot folder on your micro SD card and paste the two files in them. Eject the SD card securely.
 1. Instert the micro SD card into your Raspberry Pi.
 1. Now first connect your desktop monitor, your keyboard and your mouse to the Raspberry Pi.
@@ -77,13 +72,13 @@ The Raspberry Pi is a single-board computer and needs to be properly setup so we
 1. 
 
 
-### Option 2: WITHOUT desktop, keyboard and mouse connected to the Pi
+### Option 2: WITHOUT desktop, keyboard and mouse connected to the Pi | via SSH
 SSH is the Secure Shell Protocol and used to securely connect to another device over an unsecure network.
 1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.org/downloads.../). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (other)* --> *Raspberry Pi OS Lite*.
 1. Insert the micro SD card into your local machine.
 1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
 1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
-1. Now we want to set up our SSH connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder *raspberrypi_setup* in this repo you will find two files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other file is called *ssh* - without file extension. This file will automatically enable SSH on your Pi.
+1. Now we want to set up our SSH connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder *raspberrypi_ssh* in this repo you will find two files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other file is called *ssh* - without file extension. This file will automatically enable SSH on your Pi.
     You will need to very shortly remove the micro SD card and insert it again into your local machine. Then access the boot folder on your micro SD card and paste the two files in them. Eject the SD card securely.
 1. Instert the micro SD card into your Raspberry Pi.
 1. Connect your Pi to a power resource. Let it stew for a moment - maybe grab a coffee.
@@ -93,11 +88,65 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
     1. Lastly select *Open*
     1. You should be prompted for login. The default login is **pi** and the default password is **raspberry**.
 1. Now you are able to work on the Pi. The first thing we want to do is changing the default password. Type in:
-    ```shell
+    ```bash
     sudo raspi-config
     ```
     Select *1 Change User Password | Change password for the 'pi' user* by hitting enter while it is highlighted. Make sure to remember your password.
-1. (optional) In the same Configuration Tool we now want to set up the remote Desktop option. Use the down arrow on your keyboard to move to *5 Interfacing Options* and press enter. After that scroll to *P3 VNC*
+    Select *OK* and after that - in the main overview of the Configuration Tool - select *Finish* to exit the tool by using the tab key on your keyboard.
+
+### Option 1: WITHOUT desktop, keyboard and mouse connected to the Pi | via remote desktop
+SSH is the Secure Shell Protocol and used to securely connect to another device over an unsecure network. VNC stands for Virtual Network Computing and will allow you to view the Desktop of your Pi on your local machine, so you do not need to connect the Pi to a desktop monitor etc.
+1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.org/downloads.../). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (recommended)*
+1. Insert the micro SD card into your local machine.
+1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
+1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
+1. Now we want to set up our SSH connection, network connection and the remote desktop connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder *raspberrypi_rd* in this repo you will find three files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other files are called *SSH* and *VNC* - without file extension. This files will automatically enable SSH and VNC on your Pi.
+    You will need to very shortly remove the micro SD card and insert it again into your local machine. Then access the boot folder on your micro SD card and paste the two files in them. Eject the SD card securely.
+1. Instert the micro SD card into your Raspberry Pi.
+1. Connect your Pi to a power resource. Let it stew for a moment - maybe grab a coffee.
+1. Open PuTTY - you installed it in the beginning.
+    1. Under *Host Name (or IP addess)* enter ```rasypberrypi.local```.
+    1. Under *Port* ```22``` should already be entered, if not do so.
+    1. Lastly select *Open*
+    1. You should be prompted for login. The default login is **pi** and the default password is **raspberry**.
+1. Now you are able to work on the Pi via shell. The first thing we want to do is changing the default password. Type in:
+    ```bash
+    sudo raspi-config
+    ```
+    Select *1 Change User Password | Change password for the 'pi' user* by hitting enter while it is highlighted. Make sure to remember your password.
+1. In the same Configuration Tool we now want to set the resolution of your Pi. Navigate to *7 Advanced Options* and hit enter. Than select *A5 Resolution* and there the screen resolution of your choosing. Select *OK* and after that - in the main overview of the Configuration Tool - select *Finish* to exit the tool by using the tab key on your keyboard. 
+1. If you are being asked to reboot the Pi, select *Yes*. If not type the following back in the shell:
+    ```bash
+    sudo reboot
+    ```
+1. Now you need to install one more tool - a VNC Viewer. We did not do this in the beginning, since not everyone will have chosen the remote desktop option.
 
 
 ## Your Sense HAT
+Now we have our Pi and our local machine set up, we need to get some sensor data. To do that, we have the **Sense HAT** and it is awsome. First things first - HAT means Hardware on Top and offers you an Expansion Board that is specifically created to be put right on top of your Pi to give you functionalities as lights, motors, sensors and fans. The Sense HAT offers us lights and sensors as well as a joystick. Here the sensors:
+- Gyroscope
+- Accelerometer
+- Magnetometer
+- Temperature
+- Barometric pressure
+- Humidity
+You see that you can do a lot with the information collected by the Sense HAT. Let's set it up properly.
+1. First take your Pi off power.
+1. Screw the standoffs - the screws and the little black funnels into all four corners of your Pi.
+1. After this you can plug the Sense HAT into the GPIO (General Purpose Input/Output) pins on the Pi so that the Sense HAT and the Pi align perfectly.
+1. Use the remeining screws to fix the Sense HAT to the Pi.
+1. Now put your Pi back on Power and connect to it. Be aware that the Sense HAT will be very bright right in the beginning! The three different options are listed below:
+    1. WITH desktop: Plug your Pi in again and open the terminal on your Pi
+    2. via SSH: Open PuTTY again and log into your Pi.
+    3. via VNC: Open the VNC Viewer and log into your Pi. Open the terminal on your Pi.
+1. Once you are working on your Pi update it:
+    ```bash
+    sudo apt update
+    ```
+1. For the most important part you need to install the Sense HAT dependencies:
+    ```bash
+    sudo apt-get install sense-hat
+    ```
+Now you are all set up. If this felt anti climacitc - well this is just the preparation for the workshop. But you could try the *Sense HAT Emulator*. It allows you to see beforehand what your code will do and offers you a few samples. You can either find it in the Raspberry Pi menue under *Programming* --> *Sense HAT Emulator* and if you are using your Pi via SSH, have a look at this browser based [emulator](https://trinket.io/sense-hat).
+
+We are looking forward to our Hackathon!
