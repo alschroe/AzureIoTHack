@@ -3,10 +3,12 @@
 To work properly with all the different moving bits and parts we want to connect in this Hackathon, we will have to do quite a bit of setting up. Make sure you have everything on hand that you need:
 - your local machine (any computer or set up a virtual machine if you do not feel like installing any additional stuff on your machine)
 - an Azure subscription (the trial subscription should do)
-- a Raspberry Pi 4 with charging cable, micro SD
-- Potentially an SD Adapter depending on whether or not your device has an SD or Micro SD slot
-- Optional but preferred: Desktop, keyboard, mouse
-- a Sense HAT, which will collect all the data
+- a Raspberry Pi 4 with charging cable and micro SD
+- Potentially an SD Adapter depending on whether or not your device has an SD or micro SD slot
+- Optional but preferred: desktop, keyboard, mouse
+- a Sense HAT, which will collect all the data <br>
+    <br>
+    <br>
 
 ## Your Azure subscription
 1. Set up your Azure Cloud Shell. To do so go to the Azure portal. You can find it under [portal.azure.com](https://portal.azure.com). Log into Azure with your account. 
@@ -14,7 +16,9 @@ To work properly with all the different moving bits and parts we want to connect
     > Have your portal in english - the translation is not helpful for technical tasks.
 1. Now that you are in the right place. Select the *Azure Clound Shell* - the icon right next to the search bar in the upper menue. You will be prompted to set up a storage account. Make sure again to use the correct subscription in the dropdown menue and select *Create storage*. A PowerShell will opern in your browser. In the dropdown you can also switch to Bash.
     This created a new resource group within your subscription. A resource group is a logical container for all your resources aka Azure services. Within it a storage account was created.
-Take some time to get familiar with the portal. You can find more information about it [here](https://docs.microsoft.com/en-us/azure/azure-portal/azure-portal-overview).
+Take some time to get familiar with the portal. You can find more information about it [here](https://docs.microsoft.com/en-us/azure/azure-portal/azure-portal-overview). <br>
+    <br>
+    <br>
 
 ## Your local machine
 We are going to set everything up, so you can work on Azure resources from your local machine. There are multiple options to interact with Azure and you can chose yourself how to do it later on.
@@ -46,18 +50,24 @@ We are going to set everything up, so you can work on Azure resources from your 
     ```shell
     git clone https://github.com/alschroe/AzureIoTHack.git
     ```
-    You can open in up in Visual Studio Code.
+    You can open it up in Visual Studio Code.
     ```shell
     cd AzureIoTHack
     code .
     ```
 1. Download the PuTTY installer from [here](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) and install it.
-This should do for now.
+This should do for now. <br>
+    <br>
+    <br>
 
 ## Your Raspberry Pi
-The Raspberry Pi is a single-board computer and needs to be properly setup so we can use it. Therefore we first need to install an OS - specifically the Raspberry Pi OS (not longer called Raspbian). As said in the beginning you are going to need a desktop monitor, a keyboard and a mouse to interact with this little computer. If you do not have these at home - or not the right cables to connect them to your Pi - you can also access it via SSH. We will offer you both options below.
+The Raspberry Pi is a single-board computer and needs to be properly setup so we can use it. Therefore we first need to install an OS - specifically the Raspberry Pi OS (not longer called Raspbian). As said in the beginning you are going to need a desktop monitor, a keyboard and a mouse to interact with this little computer. If you do not have these at home - or not the right cables to connect them to your Pi - you can also access it via SSH. We will offer you both options below. <br>
+    <br>
 
 ### Option 1: WITH desktop, keyboard and mouse connected to the Pi
+<details>
+  <summary>Click here!</summary>
+
 1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.org/downloads.../). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (recommended)*
 1. Insert the micro SD card into your local machine.
 1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
@@ -69,10 +79,19 @@ The Raspberry Pi is a single-board computer and needs to be properly setup so we
 1. Connect your Pi to a power resource.
 1. You might be prompted with a login.
     The default login is **pi** and the default password is **raspberry**.
-1. 
-
+1. We want to change that. So once you are on your Raspberry Pi, open the terminal and enter the following.
+    ```bash
+    sudo raspi-config
+    ```
+    The Configuration Tool will open up and show you a bunch of options.
+    Select *1 Change User Password | Change password for the 'pi' user* by hitting enter while it is highlighted. Make sure to remember your password.
+    Select *OK* and after that - in the main overview of the Configuration Tool - select *Finish* to exit the tool by using the tab key on your keyboard.
+</details> <br>
 
 ### Option 2: WITHOUT desktop, keyboard and mouse connected to the Pi | via SSH
+<details>
+  <summary>Click here!</summary>
+
 SSH is the Secure Shell Protocol and used to securely connect to another device over an unsecure network.
 1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.org/downloads.../). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (other)* --> *Raspberry Pi OS Lite*.
 1. Insert the micro SD card into your local machine.
@@ -91,10 +110,15 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
     ```bash
     sudo raspi-config
     ```
+    The Configuration Tool will open up and show you a bunch of options.
     Select *1 Change User Password | Change password for the 'pi' user* by hitting enter while it is highlighted. Make sure to remember your password.
     Select *OK* and after that - in the main overview of the Configuration Tool - select *Finish* to exit the tool by using the tab key on your keyboard.
+</details> <br>
 
 ### Option 1: WITHOUT desktop, keyboard and mouse connected to the Pi | via remote desktop
+<details>
+  <summary>Click here!</summary>
+
 SSH is the Secure Shell Protocol and used to securely connect to another device over an unsecure network. VNC stands for Virtual Network Computing and will allow you to view the Desktop of your Pi on your local machine, so you do not need to connect the Pi to a desktop monitor etc.
 1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.org/downloads.../). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (recommended)*
 1. Insert the micro SD card into your local machine.
@@ -113,14 +137,18 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
     ```bash
     sudo raspi-config
     ```
+    The Configuration Tool will open up and show you a bunch of options.
     Select *1 Change User Password | Change password for the 'pi' user* by hitting enter while it is highlighted. Make sure to remember your password.
 1. In the same Configuration Tool we now want to set the resolution of your Pi. Navigate to *7 Advanced Options* and hit enter. Than select *A5 Resolution* and there the screen resolution of your choosing. Select *OK* and after that - in the main overview of the Configuration Tool - select *Finish* to exit the tool by using the tab key on your keyboard. 
 1. If you are being asked to reboot the Pi, select *Yes*. If not type the following back in the shell:
     ```bash
     sudo reboot
     ```
-1. Now you need to install one more tool - a VNC Viewer. We did not do this in the beginning, since not everyone will have chosen the remote desktop option.
-
+1. Now you need to install one more tool - a VNC Viewer. Download it from [here](https://www.realvnc.com/en/connect/download/viewer/) and install it. We did not do this in the beginning, since not everyone will have chosen the remote desktop option.
+1. Enter ```raspberrypi``` in the text field. An authentication window should pop up. Enter the *Username* ```pi``` and your previously changed *Passowrd*. Select *OK* and you will have a remote desktop connection to your Pi.
+</details> <br>
+    <br>
+    <br>
 
 ## Your Sense HAT
 Now we have our Pi and our local machine set up, we need to get some sensor data. To do that, we have the **Sense HAT** and it is awsome. First things first - HAT means Hardware on Top and offers you an Expansion Board that is specifically created to be put right on top of your Pi to give you functionalities as lights, motors, sensors and fans. The Sense HAT offers us lights and sensors as well as a joystick. Here the sensors:
@@ -147,6 +175,6 @@ You see that you can do a lot with the information collected by the Sense HAT. L
     ```bash
     sudo apt-get install sense-hat
     ```
-Now you are all set up. If this felt anti climacitc - well this is just the preparation for the workshop. But you could try the *Sense HAT Emulator*. It allows you to see beforehand what your code will do and offers you a few samples. You can either find it in the Raspberry Pi menue under *Programming* --> *Sense HAT Emulator* and if you are using your Pi via SSH, have a look at this browser based [emulator](https://trinket.io/sense-hat).
+Now you are all set up. If this felt anti climacitc - well this is just the preparation for the workshop. But you could try the *Sense HAT Emulator*. It allows you to see beforehand what your code will do and offers you a few samples. You can either find it in the Raspberry Pi menue under *Programming* --> *Sense HAT Emulator* and if you are using your Pi via SSH, have a look at this browser based [emulator](https://trinket.io/sense-hat). <br>
 
-We are looking forward to our Hackathon!
+**We are looking forward to our Hackathon!**
