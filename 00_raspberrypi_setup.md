@@ -73,7 +73,8 @@ The Raspberry Pi is a single-board computer and needs to be properly setup so we
 1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
 1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
 1. Now we want to set up our SSH connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder [raspberrypi_ssh](../raspberrypi_setup/raspberrypi_ssh) in this repo you will find two files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other file is called *ssh* - without file extension. This file will automatically enable SSH on your Pi.
-    You will need to very shortly remove the micro SD card and insert it again into your local machine. Then access the boot folder on your micro SD card and paste the two files in them. Eject the SD card securely.
+1. You will need to very shortly remove the micro SD card and insert it again into your local machine. Then access the boot folder on your micro SD card and paste the two files in them. After that find the file */etc/hostname* in the boot folder. We want to change it, in case you are running multiple Pis in the same network. Currently the file should only contain the default hostname *raspberrypi*. Change it to something unique, take a note of the new hostname and save the changes.
+1. Eject the SD card securely.
 1. Instert the micro SD card into your Raspberry Pi.
 1. Now first connect your desktop monitor, your keyboard and your mouse to the Raspberry Pi.
 1. Connect your Pi to a power resource.
@@ -98,11 +99,13 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
 1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
 1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
 1. Now we want to set up our SSH connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder [raspberrypi_ssh](../raspberrypi_setup/raspberrypi_ssh) in this repo you will find two files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other file is called *ssh* - without file extension. This file will automatically enable SSH on your Pi.
-    You will need to very shortly remove the micro SD card and insert it again into your local machine. Then access the boot folder on your micro SD card and paste the two files in them. Eject the SD card securely.
+1. You will need to very shortly remove the micro SD card and insert it again into your local machine. Then access the boot folder on your micro SD card and paste the two files in them.
+After that find the file */etc/hostname* in the boot folder. We want to change it, in case you are running multiple Pis in the same network. Currently the file should only contain the default hostname *raspberrypi*. Change it to something unique, take a note of the new hostname and save the changes.
+1. Eject the SD card securely.
 1. Instert the micro SD card into your Raspberry Pi.
 1. Connect your Pi to a power resource. Let it stew for a moment - maybe grab a coffee.
 1. Open PuTTY - you installed it in the beginning.
-    1. Under *Host Name (or IP addess)* enter ```rasypberrypi.local```.
+    1. Under *Host Name (or IP addess)* enter ```YOURHOSTNAME.local```.
     1. Under *Port* ```22``` should already be entered, if not do so.
     1. Lastly select *Open*
     1. You should be prompted for login. The default login is **pi** and the default password is **raspberry**.
@@ -115,7 +118,7 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
     Select *OK* and after that - in the main overview of the Configuration Tool - select *Finish* to exit the tool by using the tab key on your keyboard.
 </details> <br>
 
-### Option 1: WITHOUT desktop, keyboard and mouse connected to the Pi | via remote desktop
+### Option 3: WITHOUT desktop, keyboard and mouse connected to the Pi | via remote desktop
 <details>
   <summary>Click here!</summary>
 
@@ -125,11 +128,13 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
 1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
 1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
 1. Now we want to set up our SSH connection, network connection and the remote desktop connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder [raspberrypi_rd](../raspberrypi_setup/raspberrypi_rd) in this repo you will find three files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other files are called *SSH* and *VNC* - without file extension. This files will automatically enable SSH and VNC on your Pi.
-    You will need to very shortly remove the micro SD card and insert it again into your local machine. Then access the boot folder on your micro SD card and paste the two files in them. Eject the SD card securely.
+    > Be aware that having SSH and VNC activated opens two ports on your Pi. In a productive scenario this is not ideal. If you insist on remote desktop options in production make yourselfs familiar with SSH X11 Forwarding.
+1. You will need to very shortly remove the micro SD card and insert it again into your local machine. Then access the boot folder on your micro SD card and paste the three files in them. After that find the file */etc/hostname* in the boot folder. We want to change it, in case you are running multiple Pis in the same network. Currently the file should only contain the default hostname *raspberrypi*. Change it to something unique, take a note of the new hostname and save the changes.
+1. Eject the SD card securely.
 1. Instert the micro SD card into your Raspberry Pi.
 1. Connect your Pi to a power resource. Let it stew for a moment - maybe grab a coffee.
 1. Open PuTTY - you installed it in the beginning.
-    1. Under *Host Name (or IP addess)* enter ```rasypberrypi.local```.
+    1. Under *Host Name (or IP addess)* enter ```YOURHOSTNAME.local```.
     1. Under *Port* ```22``` should already be entered, if not do so.
     1. Lastly select *Open*
     1. You should be prompted for login. The default login is **pi** and the default password is **raspberry**.
@@ -163,7 +168,8 @@ You see that you can do a lot with the information collected by the Sense HAT. L
 1. Screw the standoffs - the screws and the little black funnels into all four corners of your Pi.
 1. After this you can plug the Sense HAT into the GPIO (General Purpose Input/Output) pins on the Pi so that the Sense HAT and the Pi align perfectly.
 1. Use the remeining screws to fix the Sense HAT to the Pi.
-1. Now put your Pi back on Power and connect to it. Be aware that the Sense HAT will be very bright right in the beginning! The three different options are listed below:
+    > Before putting your Pi back on power, be aware that the Sense HAT will activate all the LEDs right away and it will be VERY BRIGHT. This shocked all of us so be prepared ;)
+1. Now put your Pi back on power and connect to it. The three different options are listed below:
     1. WITH desktop: Plug your Pi in again and open the terminal on your Pi
     2. via SSH: Open PuTTY again and log into your Pi.
     3. via VNC: Open the VNC Viewer and log into your Pi. Open the terminal on your Pi.
@@ -174,7 +180,76 @@ You see that you can do a lot with the information collected by the Sense HAT. L
 1. For the most important part you need to install the Sense HAT dependencies:
     ```bash
     sudo apt-get install sense-hat
+    ``` 
+    <br>
+    <br>
+    <br>
+
+## Try it!
+Now you are all set up. If this felt anti climacitc - well this is just the preparation for the workshop. But we want you to run a litte test on your Pi+Sense HAT. You will find the Python file [color.py](../raspberrypi_setup/color.py) in this repo. We prepared this code for you to make sure your setup is complete and for you to have a little fun with it. It offers you the option to activate LEDs on the Sense HAT by using the little joystick. There are colors and images pre implemented, but feel free to make it your own and be creative with it! Take a picture and send it to the organizers of this event. 
+
+If you have chosen Option 1 or 3 while setting up your Pi and want to work directly on the Pi...
+<details>
+  <summary>...click here!</summary>
+
+1. Install Git on your Pi by opening the terminal and typing
+    ```bash
+    sudo apt install git
     ```
-Now you are all set up. If this felt anti climacitc - well this is just the preparation for the workshop. But you could try the *Sense HAT Emulator*. It allows you to see beforehand what your code will do and offers you a few samples. You can either find it in the Raspberry Pi menue under *Programming* --> *Sense HAT Emulator* and if you are using your Pi via SSH, have a look at this browser based [emulator](https://trinket.io/sense-hat). <br>
+    You might need to close and reopen the terminal after that. Than you can clone this repo again.
+    ```bash
+    git clone https://github.com/alschroe/AzureIoTHack.git
+    ```
+1. Navigate to the *color.py* file in it's folder:
+    ```bash
+    ii AzureIoTHack/raspberrypi_setup
+    ```
+1. Run the code like this:
+    ```bash
+    python color.py
+    ```
+1. Now test if the joystick changes the LEDs on your Sense HAT.
+1. If you want to adapt what is being shown, you can always open the file in one of the IDEs you will find in the Pi's menue under *Programming*. Choose between *mu* and *Thonnys Python IDE*. Than you just need to hit the run button.
+1. Don't forget to take a picture.
+
+</details> <br>
+
+If you have chosen Option 2 or 3 while setting up your Pi and want to work via SSH connection...
+<details>
+  <summary>...click here!</summary>
+
+1. You need to get the IP address of your Pi. So connect to it again using PuTTY (*YOURHOSTNAME.local*).
+    ```bash
+    ifconfig
+    ```
+    This should display th IP address of your Pi.
+1. Open up a shell on your local machine and navigate to the *color.py* file. If you are already in the AzureIoTHack directory you only need to move to the *raspberrypi_setup* folder:
+    ```shell
+    cd /raspberrypi_setup
+    ```
+1. Copy the *color.py* file to your Pi by typing:
+    ```shell
+    scp color.py pi@YOURPISIPADDRESS:
+    ```
+    Don't forgeth the *:* in the end.
+1. Switching back to the Pi terminal you still have open on your local machine, type
+    ```bash
+    ls
+    ```
+    to find your file. You should see it listed.
+1. Now you can run it, by simply typing:
+    ```bash
+    python color.py
+    ```
+1. Now test if the joystick changes the LEDs on your Sense HAT.
+1. If you want to make it your own, open the IDE of your choice on your local machine, save the changes you made to the *color.py* file and repeat the steps above. If you are in the right directory and want to use VS Code:
+    ```shell
+    code .
+    ```
+1. 1. Don't forget to take a picture.
+
+</details>
+
+<br>
 
 **We are looking forward to our Hackathon!**

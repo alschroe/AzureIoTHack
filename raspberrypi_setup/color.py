@@ -73,21 +73,22 @@ def raspi_logo():
     return logo
 
 while True:
-  for event in sense.stick.get_events():
-    # 
-    if event.action == "pressed":      
-      #
-      if event.direction == "up":
-        sense.show_letter("I")          # Up arrow shows the letter I
-      elif event.direction == "right":
-        sense.set_pixels([heart])       # Right arrow shows the heart
-      elif event.direction == "down":
-        sense.set_pixels([microsoft])   # Down arrow shows the Microsoft logo
-      elif event.direction == "left": 
-        sense.set_pixels([raspi_logo])  # Left arrow shows the Raspberry Pi logo
-      elif event.direction == "middle":
-        sense.clear()                   # Enter key clears the LEDs
+    #
+    for event in sense.stick.get_events():
+        # 
+        if event.action == "pressed":      
+            #
+            if event.direction == "up":
+                sense.show_letter("I")          # Up arrow shows the letter I
+            elif event.direction == "right":
+                sense.set_pixels([heart])       # Right arrow shows the heart
+            elif event.direction == "down":
+                sense.set_pixels([microsoft])   # Down arrow shows the Microsoft logo
+            elif event.direction == "left": 
+                sense.set_pixels([raspi_logo])  # Left arrow shows the Raspberry Pi logo
+            elif event.direction == "middle":
+                sense.clear()                   # Enter key clears the LEDs
 
-      # Wait some time and than clear the LEDs
-      sleep(1000)
-      sense.clear()
+    # Wait some time and than clear the LEDs
+    sleep(1000)
+    sense.clear()
