@@ -9,8 +9,10 @@ To work properly with all the different moving bits and parts we want to connect
 ## Your Azure subscription
 1. Set up your Azure Cloud Shell. To do so go to the Azure portal. You can find it under [portal.azure.com](https://portal.azure.com). Log into Azure with your account. 
 1. You might be seeing the wrong subscription right now. Select *Directories + subscriptions* - the second icon right from the search bar in the upper menue. Switch to the correct directory if necessary and under *Default subscription filter* only tag the subscription you want to work on.
-    > Have your portal in English - the translation is not helpful for technical tasks.
+![Image of the upper bar in the Azure portal with focus on the Directories + subscriptions icon](/images/00portalsub.png)
+    > Have your portal in english - the translation is not helpful for technical tasks.
 1. Now that you are in the right place. Select the *Azure Clound Shell* - the icon right next to the search bar in the upper menue. You will be prompted to set up a storage account. Make sure again to use the correct subscription in the dropdown menue and select *Create storage*. A PowerShell will opern in your browser. In the dropdown you can also switch to Bash.
+![Image of the upper bar in the Azure portal with focus on the Cloud Shell icon](/images/00portalshell.png)
     This created a new resource group within your subscription. A resource group is a logical container for all your resources aka Azure services. Within it a storage account was created.
 Take some time to get familiar with the portal. You can find more information about it [here](https://docs.microsoft.com/en-us/azure/azure-portal/azure-portal-overview). <br>
     <br>
