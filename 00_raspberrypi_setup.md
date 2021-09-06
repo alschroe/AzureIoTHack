@@ -2,11 +2,12 @@
 
 To work properly with all the different moving bits and parts we want to connect in this Hackathon, we will have to do quite a bit of setting up. Make sure you have everything on hand that you need:
 - your local machine (any computer or set up a virtual machine if you do not feel like installing any additional stuff on your machine)
-- an Azure subscription (the trial subscription should do)
+- an Azure subscription (go to https://azure.microsoft.com/en-us/free/ and create a new free tier account)
 - a Raspberry Pi 4 with charging cable and micro SD
-- Potentially an SD Adapter depending on whether or not your device has an SD or micro SD slot
-- Optional but preferred: desktop, keyboard, mouse
-- a Sense HAT, which will collect all the data <br>
+- a Sense HAT, which will collect all the data 
+- Optional but preferred: 
+    - An SD Adapter depending on whether or not your device has an SD or micro SD slot - with preinstalled Raspberry Pi OS on your micro SD card, this is not needed but still preferred
+    - Desktop/Monitor (with micro hdmi adapter), keyboard, mouse <br>
     <br>
     <br>
 
@@ -26,9 +27,9 @@ Take some time to get familiar with the portal. You can find more information ab
 We are going to set everything up, so you can work on Azure resources from your local machine. There are multiple options to interact with Azure and you can chose yourself how to do it later on.
 1. (optional) Install Visual Studio Code from [here](https://code.visualstudio.com/Download) to handle any code you are going to need. You could of course use a different development environment, we just like this one.
 1. (optional) Install the Windows Terminal. You can get it [here](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab). It is a command-line front-end and can run Command Prompt, PowerShell, WSL, SSH and an Azure Clound Shell Connector. Again there are other options, but we like this one.
-1. Open the shell and download the Azure CLI from [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli). You can also install it without manual downloading using the PowerShell:
+1. Open the shell and download the Azure CLI from [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli). You can also install it without manual downloading using the PowerShell (Run as Administrator):
     ```shell
-    Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi
+    Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi'; rm .\AzureCLI.msi
     ```
 1. You might need to close and reopen your shell at this point. After that you can connect to your Azure subscription from the shell. To do so enter the following command:
     ```shell
@@ -70,14 +71,15 @@ The Raspberry Pi is a single-board computer and needs to be properly setup so we
 <details>
   <summary>Click here!</summary>
 
-1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.org/downloads.../). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (recommended)*
-1. Insert the micro SD card into your local machine. If you have used the SD card before, make sure to format it.
-1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
-1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
+1. If you do not have a preinstalled Raspberry Pi OS on the micro SD card, then follow the next steps. If you have a preinstalled Raspberry Pi OS on the micro SD card, then you can skip the following steps.
+    1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.org/downloads.../). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (recommended)*
+    1. Insert the micro SD card into your local machine. If you have used the SD card before, make sure to format it.
+    1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
+    1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
+    1. You will need to very shortly remove the micro SD card and insert it again into your local machine. 
 1. Now we want to set up our SSH connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder [raspberrypi_ssh](../raspberrypi_setup/raspberrypi_ssh) in this repo you will find two files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other file is called *ssh* - without file extension. This file will automatically enable SSH on your Pi.
-1. You will need to very shortly remove the micro SD card and insert it again into your local machine. Then access the boot folder on your micro SD card and paste the two files in them.
-1. Eject the SD card securely.
-1. Instert the micro SD card into your Raspberry Pi.
+1. Then access the boot folder on your micro SD card and paste the two files in them.
+1. Eject the SD card securely and insert the micro SD card into your Raspberry Pi.
 1. Now first connect your desktop monitor, your keyboard and your mouse to the Raspberry Pi.
 1. Connect your Pi to a power resource.
 1. You might be prompted with a login.
@@ -147,14 +149,14 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
     Select *1 Change User Password* by hitting enter while it is highlighted. Make sure to remember your password.
 1. In the same Configuration Tool we now want to set the resolution of your Pi. Navigate to *7 Advanced Options* and hit enter. Than select *A5 Resolution* and there the screen resolution of your choosing. Select *OK*.
 1. After this we want to change the Hostname. Navigate to *2 Network Options* and than *N1 Hostname*. Make again sure to remember your hostname. 
-1. Last navigate to *5 Interfacing Options* and from there to *P3 VNC*. Enabling this option will help us set up our remote monitor in the next steps. Back in the main overview of the Configuration Tool - select *Finish* to exit the tool by using the tab key on your keyboard. 
+1. Last navigate to *3 Interface Options* and from there to *P3 VNC*. Enabling this option will help us set up our remote monitor in the next steps. Back in the main overview of the Configuration Tool - select *Finish* to exit the tool by using the tab key on your keyboard. 
     > Be aware that having SSH and VNC activated opens two ports on your Pi. In a productive scenario this is not ideal. If you insist on remote desktop options in production make yourselfs familiar with SSH X11 Forwarding.
 1. If you are being asked to reboot the Pi, select *Yes*. If not type the following back in the shell:
     ```bash
     sudo reboot
     ```
 1. Now you need to install one more tool - a VNC Viewer. Download it from [here](https://www.realvnc.com/en/connect/download/viewer/) and install it. We did not do this in the beginning, since not everyone will have chosen the remote desktop option.
-1. Enter ```YOUR NEW HOSTNAME``` in the text field. An authentication window should pop up. Enter the *Username* ```pi``` and your previously changed *Passowrd*. Select *OK* and you will have a remote desktop connection to your Pi.
+1. Enter ```YOUR NEW HOSTNAME``` or the IP address of the Raspberry Pi in the text field. An authentication window should pop up. Enter the *Username* ```pi``` and your previously changed *Passowrd*. Select *OK* and you will have a remote desktop connection to your Pi. Important: You have to be outside of VPN to be able to connect to the Raspberry Pi!
 </details> <br>
     <br>
     <br>
@@ -190,7 +192,7 @@ You see that you can do a lot with the information collected by the Sense HAT. L
     <br>
 
 ## Try it!
-Now you are all set up. If this felt anti climacitc - well this is just the preparation for the workshop. But we want you to run a litte test on your Pi+Sense HAT. You will find the Python file [color.py](../raspberrypi_setup/color.py) in this repo. We prepared this code for you to make sure your setup is complete and for you to have a little fun with it. It offers you the option to activate LEDs on the Sense HAT by using the little joystick. There are colors and images pre implemented, but feel free to make it your own and be creative with it! Take a picture and send it to the organizers of this event. 
+Now you are all set up. If this felt anti climactic - well this is just the preparation for the workshop. But we want you to run a litte test on your Pi+Sense HAT. You will find the Python file [color.py](../raspberrypi_setup/color.py) in this repo. We prepared this code for you to make sure your setup is complete and for you to have a little fun with it. It offers you the option to activate LEDs on the Sense HAT by using the little joystick. There are colors and images pre implemented, but feel free to make it your own and be creative with it! Take a picture and send it to the organizers of this event. 
 
 If you have chosen Option 1 or 3 while setting up your Pi and want to work directly on the Pi...
 <details>
