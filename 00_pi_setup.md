@@ -91,6 +91,14 @@ The Raspberry Pi is a single-board computer and needs to be properly setup so we
     The Configuration Tool will open up and show you a bunch of options.
     Select *1 Change User Password | Change password for the 'pi' user* by hitting enter while it is highlighted. Make sure to remember your password.
     Select *OK* and after that - in the main overview of the Configuration Tool - select *Finish* to exit the tool by using the tab key on your keyboard.
+1. Open a terminal on your Pi. We want to install the Azure CLI here as well to make our lives easier in the long run. Enter this command:
+    ```bash
+    curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+    ```
+1. You potentially need to restart the terminal. After that log in to your Azure subscription:
+    ```bash
+    az login
+    ```
 </details> <br>
 
 ### Option 2: WITHOUT desktop, keyboard and mouse connected to the Pi | via SSH
@@ -119,6 +127,14 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
     The Configuration Tool will open up and show you a bunch of options.
     Select *1 Change User Password | Change password for the 'pi' user* by hitting enter while it is highlighted. Make sure to remember your password.
     Select *OK* and after that - in the main overview of the Configuration Tool - select *Finish* to exit the tool by using the tab key on your keyboard.
+1. We want to install the Azure CLI here as well to make our lives easier in the long run. Enter this command:
+    ```bash
+    curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+    ```
+1. You potentially need to restart the terminal. After that log in to your Azure subscription:
+    ```bash
+    az login
+    ```
 </details> <br>
 
 ### Option 3: WITHOUT desktop, keyboard and mouse connected to the Pi | via remote desktop
@@ -157,6 +173,14 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
     ```
 1. Now you need to install one more tool - a VNC Viewer. Download it from [here](https://www.realvnc.com/en/connect/download/viewer/) and install it. We did not do this in the beginning, since not everyone will have chosen the remote desktop option.
 1. Enter ```YOUR NEW HOSTNAME``` or the IP address of the Raspberry Pi in the text field. An authentication window should pop up. Enter the *Username* ```pi``` and your previously changed *Passowrd*. Select *OK* and you will have a remote desktop connection to your Pi. Important: You have to be outside of VPN to be able to connect to the Raspberry Pi!
+1. Open a terminal on your Pi. We want to install the Azure CLI here as well to make our lives easier in the long run. Enter this command:
+    ```bash
+    curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+    ```
+1. You potentially need to restart the terminal. After that log in to your Azure subscription:
+    ```bash
+    az login
+    ```
 </details> <br>
     <br>
     <br>
