@@ -9,7 +9,7 @@ The Azure portal is very helpful to get a feeling for the possibilities of Azure
 
 1. Add the azure-iot extension to your shell
     ```shell
-    az extension add --name azure-iot
+    az extension add --upgrade --name azure-iot
     ```
 1. Create a prefix for yourself consisting of four letters. This should help us to solve any naming issues if you are working on the same subscription as other participants or service names need to be globally or regionally unique.
     Using PowerShell:

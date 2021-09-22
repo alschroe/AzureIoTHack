@@ -13,13 +13,16 @@ In the folder 'raspberrypi_app' you will find the application we want to run on 
 ## Run the application
 
 1. Now you are going to need the Azure IoT Hub connection string.
-    ```bash
-    echo $connection
+    Using PowerShell:
+    ```PowerShell
+    set iothubDeviceConnectionString = (az iot hub device-identity connection-string show --device-id myPi --hub-name $prefix'iotpihub' --output tsv)
     ```
-    If this does not print your connection string you are potentially using another terminal. You can just store it again.
+
+    Using bash:
     ```bash
-    connection=$(az iot hub device-identity connection-string show --device-id myPi --hub-name $prefix'iotpihub' --output tsv)
+    export iothubDeviceConnectionString=$(az iot hub device-identity connection-string show --device-id myPi --hub-name $prefix'iotpihub' --output tsv)
     ```
-1. Now we give the connection string and run the application:
+1. Now we give the connection string and run the application. To do so we need to navigate to the code. Make sure you are in the 'raspberry_app' folder.
     ```bash
+    python temphumid.py 
     ```
