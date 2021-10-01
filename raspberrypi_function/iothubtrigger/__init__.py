@@ -11,8 +11,8 @@ def allowSelfSignedHttps(allowed):
     if allowed and not os.environ.get('PYTHONHTTPSVERIFY', '') and getattr(ssl, '_create_unverified_context', None):
         ssl._create_default_https_context = ssl._create_unverified_context
 
-url = 'http://c8cdb208-f5af-47ca-96b1-3fd23842b340.westeurope.azurecontainer.io/score'
-api_key = 'Sy1npnjna8MHEFfG58ZWBm1IpDAjoJiS' # Replace this with the API key for the web service
+url = '<YOUR REST ENDPOINT>'
+api_key = '<YOUR REST ENDPOINTS KEY>' # Replace this with the API key for the web service
 headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
 def sendData():
