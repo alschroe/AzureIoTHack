@@ -38,11 +38,6 @@ L = (160,32,240)        # purple
 O = (255,165,0)         # orange
 T = (0,255,213)         # turquoise
 W = (102,51,0)          # brown
-B1 = (204,229,255) 
-B2 = (153,204,255) 
-B3 = (102,178,255) 
-B4 = (51,153,255) 
-B5 = (0,128,255) 
 
 def iothubTemperatureHumidity():
     try:
@@ -61,40 +56,17 @@ def iothubTemperatureHumidity():
                 print( "Sending message: {}".format(message) )
                 client.send_message(message)
                 temp = int(temperature)
-                if temp > 31:
-                    if humidity > 81:
-                        sense.show_message(str(temp),scroll_speed=0.2,text_colour=R,back_colour=B4)
-                    elif humidity < 80 and humidity > 61:
-                        sense.show_message(str(temp),scroll_speed=0.2,text_colour=R,back_colour=B3)
-                    elif humidity < 60 and humidity > 41:
-                        sense.show_message(str(temp),scroll_speed=0.2,text_colour=R,back_colour=B2)
-                    elif humidity < 40 and humidity > 21:
-                        sense.show_message(str(temp),scroll_speed=0.2,text_colour=R,back_colour=B1)
-                    elif humidity < 20:
-                        sense.show_message(str(temp),scroll_speed=0.2,text_colour=R,back_colour=W)
-                elif temp < 30 and temp > 24:
-                    if humidity > 81:
-                        sense.show_message(str(temp),scroll_speed=0.2,text_colour=G,back_colour=B4)
-                    elif humidity < 80 and humidity > 61:
-                        sense.show_message(str(temp),scroll_speed=0.2,text_colour=G,back_colour=B3)
-                    elif humidity < 60 and humidity > 41:
-                        sense.show_message(str(temp),scroll_speed=0.2,text_colour=G,back_colour=B2)
-                    elif humidity < 40 and humidity > 21:
-                        sense.show_message(str(temp),scroll_speed=0.2,text_colour=G,back_colour=B1)
-                    elif humidity < 20:
-                        sense.show_message(str(temp),scroll_speed=0.2,text_colour=G,back_colour=W)
-                elif temp < 23 and temp > 0:
-                    if humidity > 81:
-                        sense.show_message(str(temp),scroll_speed=0.2,text_colour=B,back_colour=B4)
-                    elif humidity < 80 and humidity > 61:
-                        sense.show_message(str(temp),scroll_speed=0.2,text_colour=B,back_colour=B3)
-                    elif humidity < 60 and humidity > 41:
-                        sense.show_message(str(temp),scroll_speed=0.2,text_colour=B,back_colour=B2)
-                    elif humidity < 40 and humidity > 21:
-                        sense.show_message(str(temp),scroll_speed=0.2,text_colour=B,back_colour=B1)
-                    elif humidity < 20:
-                        sense.show_message(str(temp),scroll_speed=0.2,text_colour=B,back_colour=W)
-                time.sleep(1)        
+                if temp > 35:
+                    sense.show_message(str(temp),scroll_speed=0.2,text_colour=R)
+                elif temp < 34 and temp > 27:
+                    sense.show_message(str(temp),scroll_speed=0.2,text_colour=Y)
+                elif temp < 26 and temp > 24:
+                    sense.show_message(str(temp),scroll_speed=0.2,text_colour=G)
+                elif temp < 23 and temp > 18:
+                    sense.show_message(str(temp),scroll_speed=0.2,text_colour=T)
+                elif temp < 17:
+                    sense.show_message(str(temp),scroll_speed=0.2,text_colour=B)
+                time.sleep(10)        
 
     except KeyboardInterrupt:
         print ( "Stopped sending data to the IoT Hub" )
