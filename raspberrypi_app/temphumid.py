@@ -56,15 +56,15 @@ def iothubTemperatureHumidity():
                 print( "Sending message: {}".format(message) )
                 client.send_message(message)
                 temp = int(temperature)
-                if temp > 35:
+                if temp >= 33:
                     sense.show_message(str(temp),scroll_speed=0.2,text_colour=R)
-                elif temp < 34 and temp > 27:
+                elif temp < 33 and temp > 26:
                     sense.show_message(str(temp),scroll_speed=0.2,text_colour=Y)
-                elif temp < 26 and temp > 24:
+                elif temp <= 26 and temp > 23:
                     sense.show_message(str(temp),scroll_speed=0.2,text_colour=G)
-                elif temp < 23 and temp > 18:
+                elif temp <= 23 and temp > 18:
                     sense.show_message(str(temp),scroll_speed=0.2,text_colour=T)
-                elif temp < 17:
+                elif temp <= 18:
                     sense.show_message(str(temp),scroll_speed=0.2,text_colour=B)
                 time.sleep(10)        
 
