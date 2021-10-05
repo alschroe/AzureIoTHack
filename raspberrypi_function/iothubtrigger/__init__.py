@@ -1,4 +1,5 @@
 from typing import List
+from azure.iot.hub import IoTHubRegistryManager
 import logging
 import urllib.request
 import json
@@ -11,8 +12,10 @@ def allowSelfSignedHttps(allowed):
     if allowed and not os.environ.get('PYTHONHTTPSVERIFY', '') and getattr(ssl, '_create_unverified_context', None):
         ssl._create_default_https_context = ssl._create_unverified_context
 
-url = '<YOUR REST ENDPOINT>'
-api_key = '<YOUR REST ENDPOINTS KEY>' # Replace this with the API key for the web service
+connectionstr = '<YOUR IOT HUB CONNECTION STRING>'
+device = 'myPi'
+url = '<ENDPOINT URL OF YOUR ML MODEL>'
+api_key = '<ENDPOINT KEY>' # Replace this with the API key for the web service
 headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
 def sendData():
@@ -39,7 +42,11 @@ def sendData():
         response = urllib.request.urlopen(req)
 
         result = response.read()
+        registry_manager = IoTHubRegistryManager(connectionstr)
+        registry_manager.send_c2d_message(device, result)
         print(result)
+        
+
     except urllib.error.HTTPError as error:
         print("The request failed with status code: " + str(error.code))
 

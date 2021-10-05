@@ -32,7 +32,7 @@ Open a terminal again and make sure your prefix is still stored in it.
     az functionapp create --resource-group $prefix'iotpirg' --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name $prefix'iotfunction' --os-type linux
     ```
 
-## Prepare locally
+## Prepare the function locally
 1. Now we start off locally. To work with Azure Funcitons locally we need to install the *Azure Functions Core Tools*. Follow [these instructions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v3%2Cwindows%2Ccsharp%2Cportal%2Cbash%2Ckeda#v2) to do so.
     Restart your terminal and enter this to make sure everything works:
     ```shell
@@ -79,7 +79,12 @@ Open a terminal again and make sure your prefix is still stored in it.
     az iot hub connection-string show -n $prefix'iotpihub' --default-eventhub --output tsv
     ```
     Paste the output 'Endpoint=sb://...' as value for *ConnectionString* in the *local.settings.json*.
-1. Now navigate to the folder 'iothubtrigger' ane there to '__init__.py'. There we will enter our Machine Learning model endpoint.
+1. Now navigate to the folder 'iothubtrigger' ane there to '__init__.py'. There the IoT hub connection string needs to be entered in line 15 behind *connectionstr*.
+    Get the connection string like this:
+    ```shell
+    az iot hub connection-string show -n $prefix'iotpihub' --output tsv
+    ```
+1. Finally we will enter our Machine Learning model endpoint.
     Specifically we need to set the *url* in line 14 and the *api_key* in line 15.
     ![Showing where AutoML can be found in the azure machine learning studio](/images/04basics.png)
     The az CLI extension for this is currently still experimental so we need to navigate back to the *Azure Machine Learning studio*.
@@ -87,10 +92,19 @@ Open a terminal again and make sure your prefix is still stored in it.
     On the *Consume* tab of your endpoint you will find a **REST endpoint**. Paste it's content to the *url* in line 14 of '__init__.py'.
     Beneath under *Authentication* copy the **Primary key** and paste it to the *api_key* in line 14 of '__init__.py'.
     As you are already here fo to the *Test* tab and test your endpoint.
-Your function is now ready to run.If you are using VS Code hit **F5** to start the function. If not start the function from the *raspberrypi_function* folder by entering:
+Your function is now ready to run. If you are using VS Code hit **F5** to start the function. If not start the function from the *raspberrypi_function* folder by entering:
 ```shell
 func start
 ```
+
+## Run the updated app on your Pi
+Connect to your Pi again. Open a terminal and run the 'temphumidrain.py' script.
+1. Now we can run the application. Make sure you are in the 'raspberry_app' folder and run the following:
+    ```bash
+    python3 temphumidrain.py 
+    ```
+    Temperature and humidity data are stille send to the Azure IoT Hub and displayed on the Sense Hat's LEDs.
+    Now our Pi also listens to the Azure IoT hub, which forwards the result of your ML model to your Pi. There it displays the result as a sun, if the prediction from temperature and humidity data is no rain, and an umbrella if the result is rain.
 
 ## Deploy the Azure funciton
 1. Now we are going to run our function in Azure.
