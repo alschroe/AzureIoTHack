@@ -11,13 +11,13 @@ The automated Machine Learning model should have trained by now.
     ![Showing where AutoML can be found in the azure machine learning studio](/images/04experiments.png) <br>
 1. Under *Display name* you should see the details of your run. Select the only run there is.
     ![Showing where AutoML can be found in the azure machine learning studio](/images/04model.png) <br>
-1. Select the *Models* tab.
+1. Select the *Models* tab. <br>
     ![Showing where AutoML can be found in the azure machine learning studio](/images/04modeltap.png) <br>
 1. There select the **VotingEnsemble** - it should be the best ML Algorithm for the given data.
 1. Select **Deploy** so we can consume this ML model as an endpoint. 
     ![Showing where AutoML can be found in the azure machine learning studio](/images/04deploy.png) <br>
     There give it a name e.g. **mlendpoint** and for *Compute type* select **Azure Container Instance**. After that hit **Deploy**. 
-    ![Showing where AutoML can be found in the azure machine learning studio](/images/04deploy2.png) <br>
+    ![Showing where AutoML can be found in the azure machine learning studio](/images/04deploy1.png) <br>
 This will take a bit so let's move on to the next task.
 
 
