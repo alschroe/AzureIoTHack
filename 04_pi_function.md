@@ -8,16 +8,16 @@ We will stay on your local machine to implement this.
 The automated Machine Learning model should have trained by now. 
 1. Navigate back to the *Azure Machine Leanrning Studio* (via the portal move to your AML service and from there to the studio).
 1. Navigate to *Experiments* and select your experiment *predictRain*.
-    ![Showing where AutoML can be found in the azure machine learning studio](/images/04experiments.png)
+    ![Showing where AutoML can be found in the azure machine learning studio](/images/04experiments.png) <br>
 1. Under *Display name* you should see the details of your run. Select the only run there is.
-    ![Showing where AutoML can be found in the azure machine learning studio](/images/04model.png)
+    ![Showing where AutoML can be found in the azure machine learning studio](/images/04model.png) <br>
 1. Select the *Models* tab.
-    ![Showing where AutoML can be found in the azure machine learning studio](/images/04modeltap.png)
+    ![Showing where AutoML can be found in the azure machine learning studio](/images/04modeltap.png) <br>
 1. There select the **VotingEnsemble** - it should be the best ML Algorithm for the given data.
 1. Select **Deploy** so we can consume this ML model as an endpoint. 
-    ![Showing where AutoML can be found in the azure machine learning studio](/images/04deploy.png)
+    ![Showing where AutoML can be found in the azure machine learning studio](/images/04deploy.png) <br>
     There give it a name e.g. **mlendpoint** and for *Compute type* select **Azure Container Instance**. After that hit **Deploy**. 
-    ![Showing where AutoML can be found in the azure machine learning studio](/images/04deploy2.png)
+    ![Showing where AutoML can be found in the azure machine learning studio](/images/04deploy2.png) <br>
 This will take a bit so let's move on to the next task.
 
 
@@ -85,12 +85,12 @@ Open a terminal again and make sure your prefix is still stored in it.
     az iot hub connection-string show -n $prefix'iotpihub' --output tsv
     ```
 1. Finally we will enter our Machine Learning model endpoint.
-    Specifically we need to set the *url* in line 14 and the *api_key* in line 15.
-    ![Showing where AutoML can be found in the azure machine learning studio](/images/04basics.png)
+    Specifically we need to set the *url* in line 17 and the *api_key* in line 18.
+    ![Showing where AutoML can be found in the azure machine learning studio](/images/04basics.png) <br>
     The az CLI extension for this is currently still experimental so we need to navigate back to the *Azure Machine Learning studio*.
     Under *Endpoints* select the endpoint you previously deployed.
-    On the *Consume* tab of your endpoint you will find a **REST endpoint**. Paste it's content to the *url* in line 14 of '__init__.py'.
-    Beneath under *Authentication* copy the **Primary key** and paste it to the *api_key* in line 14 of '__init__.py'.
+    On the *Consume* tab of your endpoint you will find a **REST endpoint**. Paste it's content to the *url* in line 17 of '__init__.py'.
+    Beneath under *Authentication* copy the **Primary key** and paste it to the *api_key* in line 18 of '__init__.py'.
     As you are already here fo to the *Test* tab and test your endpoint.
 Your function is now ready to run. If you are using VS Code hit **F5** to start the function. If not start the function from the *raspberrypi_function* folder by entering:
 ```shell
@@ -115,5 +115,8 @@ Connect to your Pi again. Open a terminal and run the 'temphumidrain.py' script.
     ```shell
     func azure functionapp logstream $prefix'iotfunction' --browser
     ```
+
+This is how your final object should look like:
+![Showing the menue in the Azure portal with the + create button being on the very left](/images/architecture.png)
 
 
