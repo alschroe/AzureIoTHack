@@ -54,3 +54,5 @@ This time we will use the Azure portal to use the Azure Machine Learning Studio 
 1. The *Classification* task type should be pre-selected. Go on *View additional configuration settings*. Behind the category *Exit criterion* you should make sure to set the *Training job time (hours)* to **0.5**. <br>
     ![Showing where AutoML can be found in the azure machine learning studio](/images/01automl.png) <br>
 1. Hit *Finish* and the training will start. This will take some time, so we will move on to the next step while the model is being trained.
+
+Go to the [next steps](./02_pi_iothub.md).

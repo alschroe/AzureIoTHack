@@ -34,3 +34,5 @@ In the folder 'raspberrypi_app' you will find the application we want to run on 
     ```
     Temperature and humidity data are send to the Azure IoT Hub and displayed on the Sense Hat's LEDs.
 1. The data from your Sense Hat is now sent to Azure. But we still need to connect it to our Machine Learning service.
+
+Go to the [next steps](./04_pi_function.md)

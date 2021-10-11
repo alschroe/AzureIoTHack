@@ -33,4 +33,4 @@ Open up the terminal of your local machine.
     echo $connection
     ```
 
-
+Go to the [next steps](./03_pi_app.md)
