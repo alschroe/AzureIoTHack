@@ -29,7 +29,7 @@ Open a terminal again and make sure your prefix is still stored in it.
     ```
 1. We need to create an Azure function at this point. We are going to keep using Python.
     ```shell
-    az functionapp create --resource-group $prefix'iotpirg' --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name $prefix'iotfunction' --os-type linux
+    az functionapp create --resource-group $prefix'iotpirg' --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name $prefix'iotfunction' --os-type linux --storage-account $prefix'awjstorage'
     ```
 
 ## Prepare the function locally
