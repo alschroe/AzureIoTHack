@@ -8,7 +8,7 @@
       "eventHubName": "aitoiotpihub",
       "connection": "ConnectionString",
       "cardinality": "many",
-      "consumerGroup": "cgroup",
+      "consumerGroup": "$Default",
       "dataType": "binary"
     }
   ]

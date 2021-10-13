@@ -16,7 +16,7 @@ The automated Machine Learning model should have trained by now.
 1. There select the **VotingEnsemble** - it should be the best ML Algorithm for the given data.
 1. Select **Deploy** so we can consume this ML model as an endpoint. 
     ![Showing where AutoML can be found in the azure machine learning studio](/images/04deploy.png) <br>
-    There give it a name e.g. **mlendpoint** and for *Compute type* select **Azure Container Instance**. After that hit **Deploy**. 
+    There give it a name e.g. **mlendpoint** and for *Compute type* select **Azure Container Instance**. Switch **Enable authentication** to on. After that hit **Deploy**. 
     ![Showing where AutoML can be found in the azure machine learning studio](/images/04deploy1.png) <br>
 This will take a bit so let's move on to the next task.
 
