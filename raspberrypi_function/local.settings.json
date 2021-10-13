@@ -1,0 +1,9 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "<CONNECTION STRING OF YOUR STORAGE ACCOUNT>",
+    "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
+    "ConnectionString":  "<CONNECTION STRING OF YOUR IOT/EVENT HUB>",
+    "FUNCTIONS_WORKER_RUNTIME": "python"
+  }
+}
