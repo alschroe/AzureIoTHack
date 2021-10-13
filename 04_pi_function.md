@@ -21,15 +21,15 @@ The automated Machine Learning model should have trained by now.
 This will take a bit so let's move on to the next task.
 
 
-## Create an Azure Function and an Azure Storage Account
-Open a terminal again and make sure your prefix is still stored in it.
+## Create an Azure Function and an Azure Storage Account locally
+Open a terminal on your local computer again and make sure your prefix is still stored in it.
 1. We will start by creating our general-purpose storage account.
     ```shell
     az storage account create --name $prefix'awjstorage' --location westeurope --resource-group $prefix'iotpirg' --sku Standard_LRS
     ```
 1. We need to create an Azure function at this point. We are going to keep using Python.
     ```shell
-    az functionapp create --resource-group $prefix'iotpirg' --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name $prefix'iotfunction' --os-type linux
+    az functionapp create --resource-group $prefix'iotpirg' --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name $prefix'iotfunction' --os-type linux --storage-account $prefix'awjstorage'
     ```
 
 ## Prepare the function locally
@@ -106,7 +106,7 @@ Connect to your Pi again. Open a terminal and run the 'temphumidrain.py' script.
     Temperature and humidity data are stille send to the Azure IoT Hub and displayed on the Sense Hat's LEDs.
     Now our Pi also listens to the Azure IoT hub, which forwards the result of your ML model to your Pi. There it displays the result as a sun, if the prediction from temperature and humidity data is no rain, and an umbrella if the result is rain.
 
-## Deploy the Azure funciton
+## Deploy the Azure function
 1. Now we are going to run our function in Azure.
     ```shell
     func azure functionapp publish $prefix'iotfunction'
