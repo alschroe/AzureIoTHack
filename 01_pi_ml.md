@@ -6,18 +6,22 @@ We want to build a predictive model. The goal for now is to predict from the col
 
 ## Create the Azure Machine Learning workspace
 We will create the workspace using a terminal on our local machine. Please open it.
-1. Create a prefix for yourself consisting of four letters. This should help us to solve any naming issues if you are working on the same subscription as other participants or service names need to be globally or regionally unique.
+1. Create a prefix for yourself consisting of four letters and in LOWERCASE. This should help us to solve any naming issues if you are working on the same subscription as other participants or service names need to be globally or regionally unique.
     Using PowerShell:
     ```PowerShell
-    $prefix = "<YOUR PREFIX HERE>"
+    $prefix = "<your prefix>"
     ```
     Using bash:
     ```bash
-    prefix="<YOUR PREFIX HERE>"
+    prefix="<your prefix>"
     ```
 1. Let's create a resource group so we can store all services we will provide today - which will have the same lifecycle.
     ```shell
     az group create --name $prefix'iotpirg' --location westeurope
+    ```
+1. Download the extension for az ml
+    ```shell
+    az extension add -n ml -y
     ```
 1. Now we need to create the workspace:
     ```shell
@@ -33,7 +37,7 @@ There are again multiple options to do this, but we will go with the Azure porta
 
 ## Create a machine learning pipeline
 This time we will use the Azure portal to use the Azure Machine Learning Studio for the next steps. Go to 'portal.azure.com'. You might need to switch to an incognito tab since it will make the handeling of you using different tenants easier. Make sure you are using the right subscription. 
-1. Navigate to your 'prefixiotpirg' resource group. You will see that a number of services were created. The AML workspace needs a keyvault to store its secrets, a storage for configuration, datasets and models, optnionally Application Insights for monitoring and later on compute resources to run our training and model on.
+1. Navigate to your 'prefixiotpirg' resource group. You will see that a number of services were created. The AML workspace needs a keyvault to store its secrets, a storage for configuration, datasets and models, optionally Application Insights for monitoring and later on compute resources to run our training and model on.
 1. Select the Azure Machine Learning workspace 'prefixiotml'. On the *Overview* page you will see a blue *Launch studio* button. Select it. It will forward you to a separate view for the Azure Machine Learning workspace. <br>
     ![Showing where AutoML can be found in the azure machine learning studio](/images/02studio.png) <br>
 1. On the left side you will find the menue point *Automated ML*. Select it. We will work with the UI today but there are many options to make use of the Azure Machine Learning workspace.
@@ -48,11 +52,11 @@ This time we will use the Azure portal to use the Azure Machine Learning Studio 
     ![Showing where AutoML can be found in the azure machine learning studio](/images/01automl.png) <br>
 1. You need to create an experiment and a compute resource on which your model will be trained. Under *Experiment name* select *Create new* and give your experiment the name **predictRain**. The *Target column* should be **isRain (String)**. 
     Under *Select compute cluster* hit the **Create a new compute** link.
-    Leave the virtual machine specifications as is and confirm.
+    Leave the virtual machine specifications as is, add some name and confirm.
     Move on to the next tab.
-    ![Showing where AutoML can be found in the azure machine learning studio](/images/01automl.png) <br>
+    ![Showing where AutoML can be found in the azure machine learning studio](/images/01configrun.png) <br>
 1. The *Classification* task type should be pre-selected. Go on *View additional configuration settings*. Behind the category *Exit criterion* you should make sure to set the *Training job time (hours)* to **0.5**. <br>
-    ![Showing where AutoML can be found in the azure machine learning studio](/images/01automl.png) <br>
+    ![Showing where AutoML can be found in the azure machine learning studio](/images/01taskconfig.png) <br>
 1. Hit *Finish* and the training will start. This will take some time, so we will move on to the next step while the model is being trained.
 
 Go to the [next steps](./02_pi_iothub.md).
