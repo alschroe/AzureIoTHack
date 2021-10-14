@@ -28,6 +28,10 @@ In the folder 'raspberrypi_app' you will find the application we want to run on 
     ```bash
     pip3 install azure-iot-device
     ```
+    If you cannot use 'pip' or 'pip3' on your Pi install it entering the following:
+    ```bash
+    sudo apt install python3-pip
+    ```
 1. Now we can run the application. Make sure you are in the 'raspberry_app' folder and run the following:
     ```bash
     python3 temphumid.py 
