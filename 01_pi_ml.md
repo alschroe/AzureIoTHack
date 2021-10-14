@@ -21,7 +21,7 @@ We will create the workspace using a terminal on our local machine. Please open 
     ```
 1. Download the extension for az ml
     ```shell
-    az extension add -n ml -y
+    az extension add -n azure-cli-ml -y
     ```
 1. Now we need to create the workspace:
     ```shell
