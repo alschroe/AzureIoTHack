@@ -9,7 +9,7 @@ The Azure portal is very helpful to get a feeling for the possibilities of Azure
 Open up the terminal of your local machine.
 1. Add the azure-iot extension to your shell
     ```shell
-    az extension add --upgrade --name azure-iot
+    az extension add --name azure-iot
     ```
 1. Now we create the IoT hub in the resource group we previously created. Make sure the prefix is still stored in your terminal otherwise store it again.
     ```shell
