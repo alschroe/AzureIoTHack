@@ -28,13 +28,6 @@ We will create the workspace using a terminal on our local machine. Please open 
     az ml workspace create -w $prefix'iotml' -g $prefix'iotpirg'
     ```
 
-There are again multiple options to do this, but we will go with the Azure portal.
-1. This time we will use the Azure portal to create our service. Go to 'portal.azure.com'. You might need to switch to an incognito tab since it will make the handeling of you using different tenants easier. Make sure you are using the right subscription.
-1. Navigate to your 'prefixiotpirg' resource group and select the '+ Create' butten in the menue.
-    ![Showing the menue in the Azure portal with the + create button being on the very left](/images/02newresources.png) <br>
-1. Now search for **Machine Learning** or navigate via the *AI + Machine Learning* category on the left to the service. Give it a name - you can go with your prefix here. The other needed resources will be created automatically. Leave the rest as is and hit *Create*.
-1. Once the resource is created navigate to it. On the *Overview* page you will find a button *Launch studio*. Press it. It will forward you to a separate view for the Azure Machine Learning workspace.
-
 ## Create a machine learning pipeline
 This time we will use the Azure portal to use the Azure Machine Learning Studio for the next steps. Go to 'portal.azure.com'. You might need to switch to an incognito tab since it will make the handeling of you using different tenants easier. Make sure you are using the right subscription. 
 1. Navigate to your 'prefixiotpirg' resource group. You will see that a number of services were created. The AML workspace needs a keyvault to store its secrets, a storage for configuration, datasets and models, optionally Application Insights for monitoring and later on compute resources to run our training and model on.
