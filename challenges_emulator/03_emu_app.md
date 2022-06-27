@@ -4,12 +4,12 @@ We are going to run our code on a simulated Raspberry Pi connected to a breadboa
 
 ## Prepare your Emulator
 
-1. You can find the **Raspberry Pi Azure IoT Online Simulator** under this [link](https://azure-samples.github.io/raspberry-pi-web-simulator/#getstarted). Open it
-1. The current code sends simulated humidity and temperature data to the Azure IoT Hub. To make it work
+1. You can find the **Raspberry Pi Azure IoT Online Simulator** under this [link](https://azure-samples.github.io/raspberry-pi-web-simulator/#getstarted). Open it.
+1. The current code sends simulated humidity and temperature data to the Azure IoT Hub. To make it work, you will have to add the connection string to your IoT Hub.
 
 ## Run the application
 
-1. Now you are going to need the Azure IoT Hub connection string.
+1. First, you are going to need the Azure IoT Hub connection string.
    It might still be stored in the shell on your _local machine_. Copy it!
    ```shell
    echo $connection
@@ -86,11 +86,11 @@ We are going to run our code on a simulated Raspberry Pi connected to a breadboa
 
    Now you can see how the LEDs blink depending on the temperature.
 
-1. The data from your Emulator is now sent to Azure. But you still need to connect it to your Machine Learning service.
+1. The data from your emulator is now sent to Azure. But you still need to connect it to your Machine Learning service in order to draw predictions of potential rain from it.
 
 ## Check the IoT Hub
 
-1. To see what is happening in the Azure IoT Hub navigate to the Azure portal. There find your Azure IoT Hub. On the `Overview` site you will see the messages received.
+1. To see what is happening in the Azure IoT Hub navigate to the Azure portal. There, find your Azure IoT Hub. On the `Overview` site you will see the messages received.
    ![See the Overview site of the Azure IoT Hub](/images/03iothubinfo.png)
 1. Let's open the Azure Cloud Shell:
    ![Image of the upper bar in the Azure portal with focus on the Cloud Shell icon](/images/00portalshell.png)

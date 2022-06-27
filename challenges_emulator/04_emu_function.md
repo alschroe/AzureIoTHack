@@ -1,6 +1,6 @@
 # Communicate from the Azure IoT Hub to the Azure Machine Learing service
 
-We created an Azure Function for you. It is triggered every time the Iot hub receives a message from your Pi and forwards the needed content to the Azure Machine Learning service. In return it also receives the rain prediction to the sensor temperature and humidity data.
+We created an Azure Function for you. It is triggered every time the Iot Hub receives a message from your Pi emulator and forwards the needed content to the Azure Machine Learning Service. In return, it also receives the rain prediction to the sensor temperature and humidity data.
 
 We will stay on your local machine to implement this.
 
@@ -147,4 +147,4 @@ Go back to the simulator in your browser.
    ```
 
 This is how your final object should look like:
-![Showing the menue in the Azure portal with the + create button being on the very left](/images/architecture.png)
+![Showing the menu in the Azure portal with the + create button being on the very left](/images/architecture.png)
