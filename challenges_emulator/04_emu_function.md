@@ -5,69 +5,80 @@ We created an Azure Function for you. It is triggered every time the Iot hub rec
 We will stay on your local machine to implement this.
 
 ## Deploy Machine Learning model
-The automated Machine Learning model should have trained by now. 
-1. Navigate back to the *Azure Machine Leanrning Studio* (via the portal move to your AML service and from there to the studio).
-1. Navigate to *Experiments* and select your experiment *predictRain*.
-    ![Showing where AutoML can be found in the azure machine learning studio](/images/04experiments.png) <br>
-1. Under *Display name* you should see the details of your run. Select the only run there is.
-    ![Showing where AutoML can be found in the azure machine learning studio](/images/04model.png) <br>
-1. Select the *Models* tab. <br>
-    ![Showing where AutoML can be found in the azure machine learning studio](/images/04modeltap.png) <br>
+
+The automated Machine Learning model should have trained by now.
+
+1. Navigate back to the _Azure Machine Leanrning Studio_ (via the portal move to your AML service and from there to the studio).
+1. Navigate to _Jobs_ and select your experiment _predictRain_.
+   ![Showing where AutoML can be found in the azure machine learning studio](/images/04experiments.png) <br>
+1. Under _Display name_ you should see the details of your run. Select the only run there is.
+   ![Showing where AutoML can be found in the azure machine learning studio](/images/04model.png) <br>
+1. Select the _Models_ tab. <br>
+   ![Showing where AutoML can be found in the azure machine learning studio](/images/04modeltap.png) <br>
 1. There select the **VotingEnsemble** - it should be the best ML Algorithm for the given data.
 1. Select **Deploy** so we can consume this ML model as an endpoint. Choose the **Deploy to web service** option:
-    ![Showing where AutoML can be found in the azure machine learning studio](/images/01automlws.png) <br>
-    There give it a name e.g. **mlendpoint** and for *Compute type* select **Azure Container Instance**. Switch **Enable authentication** to on. After that hit **Deploy**. 
-    ![Showing where AutoML can be found in the azure machine learning studio](/images/04deploy1.png) <br>
-This will take a bit so let's move on to the next task.
-
+   ![Showing where AutoML can be found in the azure machine learning studio](/images/01automlws.png) <br>
+   There give it a name e.g. **mlendpoint** and for _Compute type_ select **Azure Container Instance**. Switch **Enable authentication** to on. After that hit **Deploy**.
+   ![Showing where AutoML can be found in the azure machine learning studio](/images/04deploy1.png) <br>
+   This will take a bit so let's move on to the next task.
 
 ## Create an Azure Function and an Azure Storage Account locally
+
 Open a terminal on your local computer again and make sure your prefix is still stored in it.
+
 1. We will start by creating our general-purpose storage account.
-    ```shell
-    az storage account create --name $prefix'awjstorage' --location westeurope --resource-group $prefix'iotpirg' --sku Standard_LRS
-    ```
+   ```shell
+   az storage account create --name $prefix'awjstorage' --location westeurope --resource-group $prefix'iotpirg' --sku Standard_LRS
+   ```
 1. We need to create an Azure function at this point. We are going to keep using Python.
-    ```shell
-    az functionapp create --resource-group $prefix'iotpirg' --consumption-plan-location westeurope --runtime python --runtime-version 3.9 --functions-version 3 --name $prefix'iotfunction' --os-type linux --storage-account $prefix'awjstorage'
-    ```
+   ```shell
+   az functionapp create --resource-group $prefix'iotpirg' --consumption-plan-location westeurope --runtime python --runtime-version 3.9 --functions-version 3 --name $prefix'iotfunction' --os-type linux --storage-account $prefix'awjstorage'
+   ```
 
 ## Prepare the function locally
-1. Now we start off locally. To work with Azure Funcitons locally we need to install the *Azure Functions Core Tools*. Follow [these instructions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v3%2Cwindows%2Ccsharp%2Cportal%2Cbash%2Ckeda#v2) to do so.
+
+1.  Now we start off locally. To work with Azure Funcitons locally we need to install the _Azure Functions Core Tools_. Follow [these instructions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v3%2Cwindows%2Ccsharp%2Cportal%2Cbash%2Ckeda#v2) to do so.
     Restart your terminal and enter this to make sure everything works:
     ```shell
     func --version
     ```
-1. Make sure you are uo to date on the *AzureIoTHack* git repo. While in the repo check:
+1.  Make sure you are uo to date on the _AzureIoTHack_ git repo. While in the repo check:
+
     ```shell
     git pull
     ```
+
     We want to activate a virtual environment named .venv.
+
     ```shell
     cd raspberrypi_function
-    ``` 
-    <br>
+    ```
+
     Using PowerShell:
-    <br>
+
     ```shell
     py -3.9 -m venv .venv
     ```
-    <br>
+
     ```shell
     .venv/scripts/activate
     ```
-    <br>
+
     Using bash:
-        ```bash
-        python -3.9 -m venv .venv
-        ```
-        ```bash
-        source .venv/bin/activate
-        ```
-        ```bash
-        sudo apt-get install python3-venv
-        ```
-1. While we implemented the function for you, it still needs connection to your resources. We are starting by adding the *AzureWebJobsStorage* and the IoT hub *ConnectionString* values in the 'local.settings.json'. To do so open the function in the IDE of your choice. E.g. with VS Code:
+
+    ```bash
+    python -m venv .venv
+    ```
+
+    ```bash
+    source .venv/bin/activate
+    ```
+
+    ```bash
+    sudo apt-get install python3-venv
+    ```
+
+1.  While we implemented the function for you, it still needs connection to your resources. We are starting by adding the _AzureWebJobsStorage_ and the IoT hub _ConnectionString_ values in the 'local.settings.json'. To do so open the function in the IDE of your choice. E.g. with VS Code:
     ```shell
     cd raspberrypi_function
     code .
@@ -77,52 +88,63 @@ Open a terminal on your local computer again and make sure your prefix is still 
     # for AzureWebJobsStorage
     az storage account show-connection-string --name $prefix'awjstorage' --resource-group $prefix'iotpirg' --output tsv
     ```
-    Paste the output 'DefaultEndpointProtocol=https;A...' as value for *AzureWebJobsStorage* in the *local.settings.json*.
+    Paste the output 'DefaultEndpointProtocol=https;A...' as value for _AzureWebJobsStorage_ in the _local.settings.json_.
     ```shell
     # for ConnectionString
     az iot hub connection-string show -n $prefix'iotpihub' --default-eventhub --output tsv
     ```
-    Paste the output 'Endpoint=sb://...' as value for *ConnectionString* in the *local.settings.json*.
-1. Now navigate to the folder 'iothubtrigger' and there to '__init__.py'. There the IoT hub connection string ('HostName=...') needs to be entered in line 15 behind *connectionstr*.
+    Paste the output 'Endpoint=sb://...' as value for _ConnectionString_ in the _local.settings.json_.
+1.  Now navigate to the folder 'iothubtrigger' and there to `**__init__.py**`. There, the IoT hub connection string ('HostName=...') needs to be entered in line 15 behind _connectionstr_.
     Get the connection string like this:
     ```shell
     az iot hub connection-string show -n $prefix'iotpihub' --output tsv
     ```
-1. Finally we will enter our Machine Learning model endpoint.
-    Specifically we need to set the *url* in line 17 and the *api_key* in line 18.
-    The az CLI extension for this is currently still experimental so we need to navigate back to the *Azure Machine Learning studio*.
-    Under *Endpoints* select the endpoint you previously deployed.
+1.  Finally, we will enter our Machine Learning model endpoint.
+    Specifically we need to set the _url_ in line 17 and the _api_key_ in line 18.
+    The az CLI extension for this is currently still experimental so we need to navigate back to the _Azure Machine Learning studio_.
+    Under _Endpoints_ select the endpoint you previously deployed.
     ![Where to find the Endpoint](/images/01automlendoint.png) <br>
-    On the *Consume* tab of your endpoint you will find a **REST endpoint**. Paste it's content to the *url* in line 17 of '__init__.py'.
-    Under *Authentication* copy the **Primary key** and paste it to the *api_key* in line 18 of '__init__.py'.
+    On the _Consume_ tab of your endpoint you will find a **REST endpoint**. Paste it's content to the _url_ in line 17 of `__init__.py`.
+    Under _Authentication_ copy the **Primary key** and paste it to the _api_key_ in line 18 of `__init__.py`.
     ![Showing where AutoML can be found in the azure machine learning studio](/images/04basics.png) <br>
-    As you are already here go to the *Test* tab and test your endpoint.
-Your function is now ready to run. If you are using VS Code hit **F5** to start the function. If not start the function from the *raspberrypi_function* folder by entering:
+    As you are already here go to the _Test_ tab and test your endpoint.
+    Your function is now ready to run. If you are using VS Code hit **F5** to start the function. If not start the function from the _raspberrypi_function_ folder by entering:
+
 ```shell
 func start
 ```
 
 ## Run the updated app on the Simulator
+
 Go back to the simulator in your browser.
-1. In line 76 you see the function that is being called upon a received message. This is where we listen for the Cloud-2-Device Message we create in the Azure Function. It contains the prediction from the Azure ML Model. Under line 79 add the following code:
-    ```javascript
-    if (message.includes("1")){
-        blinkLED();
-        console.log('Receive message: ' + 'Rain predicted');
-    } else {
-        console.log('Receive message: ' + 'no Rain predicted');
-    }
-    ```
-    Temperature and humidity data are still being send to the Azure IoT Hub and written into the console of the emulator.
-    Now your emulator also listens to the Azure IoT hub, which forwards the result of your ML model. There we again write the prediction into the console, if the prediction from temperature and humidity data is rain, the LED will light up.
+
+1. In line 76 you see the function that is being called upon a received message. This is where we listen for the Cloud-2-Device Message we create in the Azure Function. It contains the prediction from the Azure ML Model. On line 91 replace the function _receiveMessageCallback(msg)_ with the following code:
+
+   ```javascript
+   function receiveMessageCallback(msg) {
+     var message = msg.getData().toString("utf-8");
+     if (message.includes("Yes")) {
+       blinkLEDthrice();
+       console.log("Receive message: " + "Rain predicted");
+     } else {
+       blinkLED();
+       console.log("Receive message: " + "no Rain predicted");
+     }
+   }
+   ```
+
+   Temperature and humidity data are still being sent to the Azure IoT Hub and written into the console of the emulator.
+
+   However, now your emulator also listens to the Azure IoT Hub, which forwards the result of your ML model. There, we again write the prediction into the console. If the prediction from temperature and humidity data is rain, the LED will light up three times and if no rain is predicted, the LED will light up once.
+
+   In order to avoid too much blinking, comment out the function calls _blinkLEDthrice()_, _blinkLEDtwice()_, and _blinkLED()_ on lines 54, 58 and 62.
 
 ## Deploy the Azure function
+
 1. Now we are going to run our function in Azure.
-    ```shell
-    func azure functionapp publish $prefix'iotfunction'
-    ```
+   ```shell
+   func azure functionapp publish $prefix'iotfunction'
+   ```
 
 This is how your final object should look like:
 ![Showing the menue in the Azure portal with the + create button being on the very left](/images/architecture.png)
-
-
