@@ -5,7 +5,7 @@
       "type": "eventHubTrigger",
       "name": "events",
       "direction": "in",
-      "eventHubName": "aitoiotpihub",
+      "eventHubName": "xelaiotpirg",
       "connection": "ConnectionString",
       "cardinality": "many",
       "consumerGroup": "$Default",

@@ -1,6 +1,6 @@
 # Communicate from the Azure IoT Hub to the Azure Machine Learing service
 
-We created an Azure Function for you. It is triggered every time the Iot hub recreives a message from your Pi and forwards the needed content to the Azure Machine Learning service. In return it also receives the rain prediction to the sensor temperature and humidity data.
+We created an Azure Function for you. It is triggered every time the Iot hub receives a message from your Pi and forwards the needed content to the Azure Machine Learning service. In return it also receives the rain prediction to the sensor temperature and humidity data.
 
 We will stay on your local machine to implement this.
 
@@ -29,7 +29,7 @@ Open a terminal on your local computer again and make sure your prefix is still 
     ```
 1. We need to create an Azure function at this point. We are going to keep using Python.
     ```shell
-    az functionapp create --resource-group $prefix'iotpirg' --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name $prefix'iotfunction' --os-type linux --storage-account $prefix'awjstorage'
+    az functionapp create --resource-group $prefix'iotpirg' --consumption-plan-location westeurope --runtime python --runtime-version 3.9 --functions-version 3 --name $prefix'iotfunction' --os-type linux --storage-account $prefix'awjstorage'
     ```
 
 ## Prepare the function locally
@@ -45,14 +45,18 @@ Open a terminal on your local computer again and make sure your prefix is still 
     We want to activate a virtual environment named .venv.
     ```shell
     cd raspberrypi_function
-    ```
+    ``` 
+    <br>
     Using PowerShell:
-        ```PowerShell
-        py -m venv .venv
-        ```
-        ```PowerShell
-        .venv/scripts/activate
-        ```
+    <br>
+    ```shell
+    py -m venv .venv
+    ```
+    <br>
+    ```shell
+    .venv/scripts/activate
+    ```
+    <br>
     Using bash:
         ```bash
         python -m venv .venv
@@ -79,7 +83,7 @@ Open a terminal on your local computer again and make sure your prefix is still 
     az iot hub connection-string show -n $prefix'iotpihub' --default-eventhub --output tsv
     ```
     Paste the output 'Endpoint=sb://...' as value for *ConnectionString* in the *local.settings.json*.
-1. Now navigate to the folder 'iothubtrigger' ane there to '__init__.py'. There the IoT hub connection string needs to be entered in line 15 behind *connectionstr*.
+1. Now navigate to the folder 'iothubtrigger' and there to '__init__.py'. There the IoT hub connection string ('HostName=...') needs to be entered in line 15 behind *connectionstr*.
     Get the connection string like this:
     ```shell
     az iot hub connection-string show -n $prefix'iotpihub' --output tsv
@@ -90,7 +94,7 @@ Open a terminal on your local computer again and make sure your prefix is still 
     The az CLI extension for this is currently still experimental so we need to navigate back to the *Azure Machine Learning studio*.
     Under *Endpoints* select the endpoint you previously deployed.
     On the *Consume* tab of your endpoint you will find a **REST endpoint**. Paste it's content to the *url* in line 17 of '__init__.py'.
-    Beneath under *Authentication* copy the **Primary key** and paste it to the *api_key* in line 18 of '__init__.py'.
+    Under *Authentication* copy the **Primary key** and paste it to the *api_key* in line 18 of '__init__.py'.
     As you are already here fo to the *Test* tab and test your endpoint.
 Your function is now ready to run. If you are using VS Code hit **F5** to start the function. If not start the function from the *raspberrypi_function* folder by entering:
 ```shell
@@ -103,7 +107,7 @@ Connect to your Pi again. Open a terminal and run the 'temphumidrain.py' script.
     ```bash
     python3 temphumidrain.py 
     ```
-    Temperature and humidity data are stille send to the Azure IoT Hub and displayed on the Sense Hat's LEDs.
+    Temperature and humidity data are still send to the Azure IoT Hub and displayed on the Sense Hat's LEDs.
     Now our Pi also listens to the Azure IoT hub, which forwards the result of your ML model to your Pi. There it displays the result as a sun, if the prediction from temperature and humidity data is no rain, and an umbrella if the result is rain.
 
 ## Deploy the Azure function
