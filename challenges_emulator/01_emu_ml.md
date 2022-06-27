@@ -7,6 +7,7 @@ We want to build a predictive model. The goal for now is to predict from the col
 ## Create the Azure Machine Learning workspace
 We will create the workspace using a terminal on our local machine. Please open it.
 1. Create a prefix for yourself consisting of four letters and in LOWERCASE. This should help us to solve any naming issues if you are working on the same subscription as other participants or service names need to be globally or regionally unique.
+    <br>
     Using PowerShell:
     ```PowerShell
     $prefix = "<your prefix>"
@@ -39,17 +40,17 @@ This time we will use the Azure portal to use the Azure Machine Learning Studio 
     ![Showing where AutoML can be found in the azure machine learning studio](/images/01newautoml.png) <br>
 1. Start the process of creating a new dataset by selecting *Create dataset* and from the dropdown *From web files*.
     ![Showing where AutoML can be found in the azure machine learning studio](/images/01webfiles.png) <br>
-1. On the *Basic info* tab, insert the *Web URL* **https://azuresynapseml.blob.core.windows.net/weather/data.dataset.parquet** and *Name* the dataset **weather**. It will contain three columns, *isRain* - holding information whether it is raining or not (Yes, NO), *temperature* - holding the temperature in Celsius and *humidity* - holding well the humindity.
+1. On the *Basic info* tab, insert the *Web URL* **https://raw.githubusercontent.com/alschroe/AzureIoTHack/main/data/weatherdata.csv** and *Name* the dataset **weather**. It will contain three columns, *isRain* - holding information whether it is raining or not (0 (yes), 1 (no)), *temperature* - holding the temperature in Celsius and *humidity* - holding well the humindity.
     ![Showing where AutoML can be found in the azure machine learning studio](/images/01basicinfo.png) <br>
 1. Leave everything as is on the next tabs until you can hit *Create*. Now select the Dataset *weather* - you might need to refresh the dataset overview using the *Refresh* button. After selecting hit *Next*.
-    ![Showing where AutoML can be found in the azure machine learning studio](/images/01automl.png) <br>
 1. You need to create an experiment and a compute resource on which your model will be trained. Under *Experiment name* select *Create new* and give your experiment the name **predictRain**. The *Target column* should be **isRain (String)**. 
-    Under *Select compute cluster* hit the **Create a new compute** link.
+    Under *Select Azure ML compute cluster* hit the **+ New** link.
     Leave the virtual machine specifications as is, add some name and confirm.
-    Move on to the next tab.
+    It will take some time to create the cluster. After that select it from the dropdown and hit *Next*.
     ![Showing where AutoML can be found in the azure machine learning studio](/images/01configrun.png) <br>
-1. The *Classification* task type should be pre-selected. Go on *View additional configuration settings*. Behind the category *Exit criterion* you should make sure to set the *Training job time (hours)* to **0.5**. <br>
+1. The *Classification* task type should be pre-selected. Go on *View additional configuration settings*. Behind the category *Exit criterion* you should make sure to set the *Training job time (hours)* to **0.5**. 
+    ![](/images/01automltask.png)<br>
     ![Showing where AutoML can be found in the azure machine learning studio](/images/01taskconfig.png) <br>
-1. Hit *Finish* and the training will start. This will take some time, so we will move on to the next step while the model is being trained.
+1. Leave the next tabs unchanged and hit *Finish* to start the training. This will take some time, so we will move on to the next step while the model is being trained.
 
-Go to the [next steps](./02_pi_iothub.md).
+Go to the [next steps](./02_emu_iothub.md).
