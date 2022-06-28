@@ -63,16 +63,16 @@ There are again multiple options to do this, but we will go with the Azure CLI. 
    What we want to do is to rename the values of the column _isRain_. Currently it is quite cryptic and we just need the binary information whether it is raining or not. Connect the _Cleaned dataset_ output from _Clean Missing Data_ to the _Dataset1: DataFrameDirectory_ input from _Execute Python Script_. In the details you will see the current Python script. Replace it with the following code:
 
    ```python
-   import pandas as pd
    import numpy as np
 
    def azureml_main(dataframe1 = None):
 
+       # RA, SN etc. denote rain
        dataframe1['isRain']=np.where((dataframe1.isRain=='RA'),'Yes',dataframe1.isRain)
        dataframe1['isRain']=np.where((dataframe1.isRain=='SN'),'Yes',dataframe1.isRain)
        dataframe1['isRain']=np.where((dataframe1.isRain=='DZ'),'Yes',dataframe1.isRain)
        dataframe1['isRain']=np.where((dataframe1.isRain=='PL'),'Yes',dataframe1.isRain)
-       dataframe1['isRain']=np.where((dataframe1.isRain!='Yes'),'NO',dataframe1.isRain)
+       dataframe1['isRain']=np.where((dataframe1.isRain!='Yes'),'No',dataframe1.isRain)
 
        return dataframe1,
    ```
@@ -108,14 +108,15 @@ There are again multiple options to do this, but we will go with the Azure CLI. 
    ![How the entire pipeline should look like](/images/02all.png)
 
 1. Now hit **Submit** in the upper left corner and create a new experiment. This will start your pipeline. You have logs, outputs and much more for each step, if you select the assets. Feel free to take a closer look specifically at the output of the _Evaluate Model_ asset.
-1. After the run, the Azure ML service has created a _Real time inference pipeline_ for you. The trained model is now stored as a Dataset, training modules are therefore removed and the trained model is added back into the pipeline. Additionally, Web service input and output modules are added. They show where we will enter and return our data.
+1. After the run, you can create a _Real time inference pipeline_. This way the trained model is stored as a dataset, training modules are therefore removed and the trained model is added back into the pipeline. Additionally, Web service input and output modules are added. They show where we will enter and return our data.
+   ![Screenshot of where to create inference pipeline](/images/02inferencepipeline.png)
+
    ![How the real time inference pipeline should look like](/images/02rtip.png)
-   You can switch between the trainingpipeline and the real time inference pipeline:
 
-   ![How the real time inference pipeline should look like](/images/02rtip2.png)
+   You can click _Show lineage_ to refer back to the training pipeline.
 
-1. Hit **Submit** the _Real time inference pipeline_.
-1. After this submit has run through, select **Deploy** to create an endpoint we can consume and under _Compute type_ select **Azure Container Instance**. If you are working in a customer project Azure Kubernetes Service gives you much more options to manage a complex environment. Hit **Deploy**.
+1. Hit **Submit** on the _Real time inference pipeline_.
+1. After this job has run through, select **Deploy** to create an endpoint we can consume and under _Compute type_ select **Azure Container Instance**. If you are working in a customer project Azure Kubernetes Service gives you much more options to manage a complex environment. Hit **Deploy**.
    ![How the endpoint settings should look like](/images/02endpoint.png)
    Let's move on, since this will take some time.
 
