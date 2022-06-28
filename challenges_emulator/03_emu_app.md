@@ -101,6 +101,6 @@ We are going to run our code on a simulated Raspberry Pi connected to a breadboa
    ```shell
    az iot hub monitor-events --hub-name $prefix'iotpihub'
    ```
-1. Press on **Stop** in the emulator to save on messages.
+1. Press **Stop** on the emulator to save on messages.
 
 Go to the [next steps](./04_emu_function.md)

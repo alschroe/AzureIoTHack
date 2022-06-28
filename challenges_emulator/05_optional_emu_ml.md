@@ -122,4 +122,4 @@ There are again multiple options to do this, but we will go with the Azure CLI. 
 
    Let's move on, since this will take some time.
 
-   Go to the [next steps](./04_emu_function.md)
+   Go to the [next steps](./02_emu_iothub.md)
