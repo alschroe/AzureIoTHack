@@ -12,10 +12,10 @@ def allowSelfSignedHttps(allowed):
     if allowed and not os.environ.get('PYTHONHTTPSVERIFY', '') and getattr(ssl, '_create_unverified_context', None):
         ssl._create_default_https_context = ssl._create_unverified_context
 
-connectionstr = 'HostName=xelaiotpihub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=2Sr0O8dyylva3EGDlt7/8Z31XLYsaT2btELG2EtjM2E='
+connectionstr = 'HostName=...' # Replace this with the Primary Connection String for your IoT device myPi
 device = 'myPi'
-url = 'http://b1582268-1b4a-4bf6-8cd4-c74ac988cda7.westeurope.azurecontainer.io/score'
-api_key = 'SgD6qUpdGTk8pKupGtu7WBZdUfwjsEpC' # Replace this with the API key for the web service
+url = 'http://....westeurope.azurecontainer.io/score' # Replace this with the endpoint for the Azure ML web service
+api_key = '...' # Replace this with the API key for the Azure ML web service
 headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
 def sendData(temp, humid):
