@@ -51,7 +51,7 @@ There are again multiple options to do this, but we will go with the Azure CLI. 
    Make also sure that you select **Remove entire row** under _Cleaning mode_, since we are just deleting data that is not complete.
    ![How the Clean Missing Data details should look like](/images/02clean.png)
 
-   If you would like to understand more why we are cleaning missing data, we can recommend reading up on data for machine learning [here(https://docs.microsoft.com/en-us/learn/modules/introduction-to-data-for-machine-learning/)].
+   If you would like to understand more why we are cleaning missing data, we can recommend reading up on data for machine learning [here](https://docs.microsoft.com/en-us/learn/modules/introduction-to-data-for-machine-learning/).
 
 1. Now the fun part. We can add our own scripts (python or R) to the pipeline. We will go with python.
    Drag and drop **Execute Python Script** from the **Component** section onto the canvas.
