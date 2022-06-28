@@ -43,7 +43,7 @@ This time we will use the Azure portal to use the Azure Machine Learning Studio 
 1. Navigate to your 'prefixiotpirg' resource group. You will see that a number of services were created. The AML workspace needs a keyvault to store its secrets, a storage for configuration, datasets and models, optionally Application Insights for monitoring and later on compute resources to run our training and model on.
 1. Select the Azure Machine Learning workspace 'prefixiotml'. On the _Overview_ page you will see a blue _Launch studio_ button. Select it. It will forward you to a separate view for the Azure Machine Learning workspace. <br>
    ![Showing where AutoML can be found in the azure machine learning studio](/images/02studio.png) <br>
-1. On the left side you will find the menue point _Automated ML_. Select it. We will work with the UI today but there are many options to make use of the Azure Machine Learning workspace.
+1. On the left side you will find the menu point _Automated ML_. Select it. We will work with the UI today but there are many options to make use of the Azure Machine Learning workspace.
    ![Showing where AutoML can be found in the azure machine learning studio](/images/01automl.png) <br>
 1. Select _New Automated ML run_.
    ![Showing where AutoML can be found in the azure machine learning studio](/images/01newautoml.png) <br>
