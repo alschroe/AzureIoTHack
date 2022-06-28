@@ -30,13 +30,13 @@ There are again multiple options to do this, but we will go with the Azure CLI. 
 1. Now let's assemble our pipeline. First we need data. We want to populate the model with as much data as possible, so we are going to work with a preexisting dataset. Beneath the assets list you will find **Sample datasets**. Find the **Weather Dataset** and drag it onto the empty canvas.
    ![Highlighting the Weather Dataset](/images/02dataset.png)
    When you select it on the canvas, a detailed window will pop up. In the _Outputs_ tab of this window you can get a preview of the data this dataset consists of.
-1. As you can see there is a lot of information. We are for now only interested in certain columns. So we need to add another asset. This time you will find it under **Component** and than **Select Columns in Dataset**. Drag and drop it under the Weather Dataset on your canvas. Now the pipeline part of our pipeline needs to be created. Under the _Weather Dataset_ is a little circle that represents an endpoint - the same above and under the _Select Colums in Dataset_. Connect the bottom circle of the dataset with the upper one of the select function.
+1. As you can see there is a lot of information. We are for now only interested in certain columns. So we need to add another asset. This time you will find it under **Component** and then **Select Columns in Dataset**. Drag and drop it under the Weather Dataset on your canvas. Now the pipeline part of our pipeline needs to be created. Under the _Weather Dataset_ is a little circle that represents an endpoint - the same above and under the _Select Colums in Dataset_. Connect the bottom circle of the dataset with the upper one of the select function.
    ![How the connection looks like](/images/02pipeline.png)
-1. Under the Details of **Select Columns in Dataset** press the **Edit column** link. In the showing popup select **By name**, as it is easier and than add **WeatherType** (we will use this to see wether it is rainy or not), **DryBulbCelsius** and **RelativeHumidity**. Press save and continue.
+1. Under the Details of **Select Columns in Dataset** press the **Edit column** link. In the showing popup select **By name**, as it is easier and then add **WeatherType** (we will use this to see wether it is rainy or not), **DryBulbCelsius** and **RelativeHumidity**. Press save and continue.
 1. For the next step add the asset **Edit Metadata** also under **Component**. Connect it to the **Select Columns in Dataset** output and repeat the step before by opening the details and selecting the columns **WeatherType**, **DryBulbCelsius** and **RelativeHumidity**. We want to rename them in this step and therefore under _New column names_ enter the following manually:
 
    ```shell
-   isRain, temperature, humidity
+   isRain,temperature,humidity
    ```
 
    It should look like this:
@@ -104,13 +104,16 @@ There are again multiple options to do this, but we will go with the Azure CLI. 
 
    Add **Evaluate Model** and connect the **Scored dataset** output of _Score Model_ to the **Scored dataset** input of _Evaluate Model_.
    The final pipeline should look like this:
+
    ![How the entire pipeline should look like](/images/02all.png)
 
 1. Now hit **Submit** in the upper left corner and create a new experiment. This will start your pipeline. You have logs, outputs and much more for each step, if you select the assets. Feel free to take a closer look specifically at the output of the _Evaluate Model_ asset.
 1. After the run, the Azure ML service has created a _Real time inference pipeline_ for you. The trained model is now stored as a Dataset, training modules are therefore removed and the trained model is added back into the pipeline. Additionally, Web service input and output modules are added. They show where we will enter and return our data.
    ![How the real time inference pipeline should look like](/images/02rtip.png)
    You can switch between the trainingpipeline and the real time inference pipeline:
+
    ![How the real time inference pipeline should look like](/images/02rtip2.png)
+
 1. Hit **Submit** the _Real time inference pipeline_.
 1. After this submit has run through, select **Deploy** to create an endpoint we can consume and under _Compute type_ select **Azure Container Instance**. If you are working in a customer project Azure Kubernetes Service gives you much more options to manage a complex environment. Hit **Deploy**.
    ![How the endpoint settings should look like](/images/02endpoint.png)
