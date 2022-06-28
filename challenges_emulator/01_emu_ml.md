@@ -2,7 +2,7 @@
 
 We want to build a predictive model. The goal for now is to predict from the collected temperature and humidity data whether or not it is going to rain. In the end we want to display this information on our Raspberry Pi emulator.
 
-![Showing the menu in the Azure portal with the + create button being on the very left](/images/architecture.png)
+![Showing the menu in the Azure portal with the + create button being on the very left](/images/architectureemu.png)
 
 ## Create the Azure Machine Learning workspace
 

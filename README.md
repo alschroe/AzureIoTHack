@@ -22,7 +22,7 @@ If you are planning to go with **option 1** create the following architecture:
 
 If you are planning to go with **option 2** create the following architecture:
 
-![Showing the menu in the Azure portal with the + create button being on the very left](/images/architecture.png)
+![Showing the menu in the Azure portal with the + create button being on the very left](/images/architectureemu.png)
 
 | Challenge                                                      | Content                                                                                                                                                                |
 | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
