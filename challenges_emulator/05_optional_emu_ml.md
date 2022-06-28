@@ -34,11 +34,15 @@ There are again multiple options to do this, but we will go with the Azure CLI. 
    ![How the connection looks like](/images/02pipeline.png)
 1. Under the Details of **Select Columns in Dataset** press the **Edit column** link. In the showing popup select **By name**, as it is easier and than add **WeatherType** (we will use this to see wether it is rainy or not), **DryBulbCelsius** and **RelativeHumidity**. Press save and continue.
 1. For the next step add the asset **Edit Metadata** also under **Component**. Connect it to the **Select Columns in Dataset** output and repeat the step before by opening the details and selecting the columns **WeatherType**, **DryBulbCelsius** and **RelativeHumidity**. We want to rename them in this step and therefore under _New column names_ enter the following manually:
+
    ```shell
    isRain, temperature, humidity
    ```
+
    It should look like this:
+
    ![How the Edit Metadata details should look like](/images/02metadata.png)
+
 1. Let's clean the missing data.
    Select **Clean Missing Data** and connect the asset to **Edit Metadata**. In Details you will now have to enter the names manually, since currently the columns do not exist, as we have not yet run the pipeline. So enter one after the other:
 
