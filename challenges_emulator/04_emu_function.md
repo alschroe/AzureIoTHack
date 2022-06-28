@@ -6,7 +6,7 @@ We will stay on your local machine to implement this.
 
 ## Deploy Machine Learning model
 
-The automated Machine Learning model should have trained by now.
+The automated Machine Learning model should have trained by now. (If you have trained and deployed the Machine Learning model using the ML Designer, you can skip this step.)
 
 1. Navigate back to the _Azure Machine Leanrning Studio_ (via the portal move to your AML service and from there to the studio).
 1. Navigate to _Jobs_ and select your experiment _predictRain_.
@@ -157,9 +157,9 @@ Go back to the simulator in your browser.
    ```
 1. There is one thing missing. Our Connection String and the connection to the Azure Storage account currently reside in the `local.settings.json` file of the function project. This file will not be uploaded to Azure (see `.funcignore` for the files that will not be uploaded). We can set the needed keys in the Azure portal. So first navigate to the portal.
 1. There find your Azure Function and from there the function `iothubtrigger` you just uploaded under `Function`.
-![](/images/04iothubtrigger.png)
+   ![](/images/04iothubtrigger.png)
 1. Here you can also see an overview of how often the function was triggered. For now we need to enter the keys that we did have in the `local.settings.json`. Navigate to `Function Keys`, select `+ New function key` and kopy all the key-value-pairs from your `local.settings.json`. The result should look like this:
-![](/images/04functionkeys.png)
+   ![](/images/04functionkeys.png)
 
 Now you should be able to start and stop the Pi Emulator and always get the prediction about whether or not it is going to rain, all running in the cloud. This is how your final project should look like:
 ![Showing the menu in the Azure portal with the + create button being on the very left](/images/architectureemu.png)

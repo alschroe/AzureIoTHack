@@ -116,8 +116,10 @@ There are again multiple options to do this, but we will go with the Azure CLI. 
    You can click _Show lineage_ to refer back to the training pipeline.
 
 1. Hit **Submit** on the _Real time inference pipeline_.
-1. After this job has run through, select **Deploy** to create an endpoint we can consume and under _Compute type_ select **Azure Container Instance**. If you are working in a customer project Azure Kubernetes Service gives you much more options to manage a complex environment. Hit **Deploy**.
+1. After this job has run through, select **Deploy** to create an endpoint we can consume and under _Compute type_ select **Azure Container Instance**.
+   (Note: If you are working in a customer project Azure Kubernetes Service gives you much more options to manage a complex environment.) Then hit **Deploy**.
    ![How the endpoint settings should look like](/images/02endpoint.png)
+
    Let's move on, since this will take some time.
 
-## Consume Endpoint
+   Go to the [next steps](./04_emu_function.md)
