@@ -54,17 +54,23 @@ Open a terminal on your local computer again and make sure your prefix is still 
     cd raspberrypi_function
     ```
 
-    Using PowerShell:
+    For Azure Functions we need to use Python Version 3.7, 3.8 or 3.9. Have a look whether you have the correct version installed. If not please do so.
+    ```shell
+    python --version
+    ```
+    If you have one or more versions installed you can set the version of the virtual environment you will create next by adding `-3.7`, `-3.8` or `-3.9` to the command.
+
+    Using PowerShell (alternatively `py -3.8 -m venv .venv`):
 
     ```shell
-    py -3.9 -m venv .venv
+    py -m venv .venv
     ```
 
     ```shell
     .venv/scripts/activate
     ```
 
-    Using bash:
+    Using bash (alternatively `python -3.8 -m venv .venv`):
 
     ```bash
     python -m venv .venv
