@@ -24,9 +24,14 @@ We will create the workspace using a terminal on our local machine. Please open 
    ```
 
 1. Let's create a resource group so we can store all services we will provide today - which will have the same lifecycle.
+
    ```shell
    az group create --name $prefix'iotpirg' --location westeurope
    ```
+
+   Feel free to go into the Azure portal and see for yourself that the resource group has been created. Go to portal.azure.com and check under Resource groups:
+   ![Screenshot of the homepage of the Azure portal, where resource groups is highlighted](../images/01resourcegroup.png)
+
 1. Download the extension for az ml
    ```shell
    az extension add -n azure-cli-ml -y
