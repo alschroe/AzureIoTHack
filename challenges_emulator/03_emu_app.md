@@ -14,7 +14,7 @@ We are going to run our code on a simulated Raspberry Pi connected to a breadboa
    ```shell
    echo $connection
    ```
-   If it is not get the connection string again:
+   If it is not, get the connection string again:
    ```shell
    az iot hub device-identity connection-string show --device-id myPi --hub-name $prefix'iotpihub' --output tsv
    ```
@@ -82,7 +82,7 @@ We are going to run our code on a simulated Raspberry Pi connected to a breadboa
    }
    ```
 
-   Lastly, delete the method _JSON.stringify()_ on **line 27**, since we added it in the previous code snippet.
+   Lastly, delete the method **JSON.stringify()** on **line 27**, since we added it in the previous code snippet.
 
    Now you can see how the LEDs blink depending on the temperature.
 
@@ -90,7 +90,7 @@ We are going to run our code on a simulated Raspberry Pi connected to a breadboa
 
 ## Check the IoT Hub
 
-1. To see what is happening in the Azure IoT Hub navigate to the Azure portal. There, find your Azure IoT Hub. On the `Overview` site you will see the messages received.
+1. To see what is happening in the Azure IoT Hub navigate to the Azure portal. There, find your Azure IoT Hub. On the `Overview` site you will see the messages received:
    ![See the Overview site of the Azure IoT Hub](/images/03iothubinfo.png)
 1. Let's open the Azure Cloud Shell:
    ![Image of the upper bar in the Azure portal with focus on the Cloud Shell icon](/images/00portalshell.png)
