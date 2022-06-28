@@ -32,7 +32,7 @@ Open a terminal on your local computer again and make sure your prefix is still 
    ```
 1. We need to create an Azure function at this point. We are going to keep using Python.
    ```shell
-   az functionapp create --resource-group $prefix'iotpirg' --consumption-plan-location westeurope --runtime python --runtime-version 3.9 --functions-version 3 --name $prefix'iotfunction' --os-type linux --storage-account $prefix'awjstorage'
+   az functionapp create --resource-group $prefix'iotpirg' --consumption-plan-location westeurope --runtime python --runtime-version 3.9 --functions-version 4 --name $prefix'iotfunction' --os-type linux --storage-account $prefix'awjstorage'
    ```
 
 ## Prepare the function locally
@@ -147,10 +147,15 @@ Go back to the simulator in your browser.
 
 ## Deploy the Azure function
 
-1. Now we are going to run our function in Azure.
+1. Now we are going to run our function in Azure. Since this command takes the Python version of the current environment make sure to run it from within the .venv environment.
    ```shell
    func azure functionapp publish $prefix'iotfunction'
    ```
+1. There is one thing missing. Our Connection String and the connection to the Azure Storage account currently reside in the `local.settings.json` file of the function project. This file will not be uploaded to Azure (see `.funcignore` for the files that will not be uploaded). We can set the needed keys in the Azure portal. So first navigate to the portal.
+1. There find your Azure Function and from there the function `iothubtrigger` you just uploaded under `Function`.
+![](/images/04iothubtrigger.png)
+1. Here you can also see an overview of how often the function was triggered. For now we need to enter the keys that we did have in the `local.settings.json`. Navigate to `Function Keys`, select `+ New function key` and kopy all the key-value-pairs from your `local.settings.json`. The result should look like this:
+![](/images/04functionkeys.png)
 
-This is how your final object should look like:
+Now you should be able to start and stop the Pi Emulator and always get the prediction about whether or not it is going to rain, all running in the cloud. This is how your final project should look like:
 ![Showing the menu in the Azure portal with the + create button being on the very left](/images/architecture.png)
