@@ -10,7 +10,9 @@ The automated Machine Learning model should have trained by now.
 
 1. Navigate back to the _Azure Machine Leanrning Studio_ (via the portal move to your AML service and from there to the studio).
 1. Navigate to _Jobs_ and select your experiment _predictRain_.
+
    ![Showing where AutoML can be found in the azure machine learning studio](/images/04experiments.png) <br>
+
 1. Under _Display name_ you should see the details of your run. Select the only run there is.
    ![Showing where AutoML can be found in the azure machine learning studio](/images/04model.png) <br>
 1. Select the _Models_ tab. <br>
@@ -55,9 +57,11 @@ Open a terminal on your local computer again and make sure your prefix is still 
     ```
 
     For Azure Functions we need to use Python Version 3.7, 3.8 or 3.9. Have a look whether you have the correct version installed. If not please do so.
+
     ```shell
     python --version
     ```
+
     If you have one or more versions installed you can set the version of the virtual environment you will create next by adding `-3.7`, `-3.8` or `-3.9` to the command.
 
     Using PowerShell (alternatively `py -3.8 -m venv .venv`):
@@ -124,7 +128,7 @@ func start
 
 Go back to the simulator in your browser.
 
-1. In line 76 you see the function that is being called upon a received message. This is where we listen for the Cloud-2-Device Message we create in the Azure Function. It contains the prediction from the Azure ML Model. On line 91 replace the function _receiveMessageCallback(msg)_ with the following code:
+1. On **line 93** you see the function _receiveMessageCallback(msg)_ that is being called upon a received message. This is where we listen for the Cloud-2-Device Message we create in the Azure Function. It contains the prediction from the Azure ML Model. Replace the function with the following code:
 
    ```javascript
    function receiveMessageCallback(msg) {
@@ -143,7 +147,7 @@ Go back to the simulator in your browser.
 
    However, now your emulator also listens to the Azure IoT Hub, which forwards the result of your ML model. There, we again write the prediction into the console. If the prediction from temperature and humidity data is rain, the LED will light up three times and if no rain is predicted, the LED will light up once.
 
-   In order to avoid too much blinking, comment out the function calls _blinkLEDthrice()_, _blinkLEDtwice()_, and _blinkLED()_ on lines 54, 58 and 62.
+   In order to avoid too much blinking, comment out the function calls _blinkLEDthrice()_, _blinkLEDtwice()_, and _blinkLED()_ on lines 56, 60 and 64.
 
 ## Deploy the Azure function
 
