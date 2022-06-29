@@ -57,7 +57,7 @@ This time we will use the Azure portal to use the Azure Machine Learning Studio 
 1. On the _Basic info_ tab, insert the _Web URL_ **https://raw.githubusercontent.com/alschroe/AzureIoTHack/main/data/weatherdata.csv** and _Name_ the dataset **weather**. It will contain three columns, _isRain_ - holding information whether it is raining or not (0 (yes), 1 (no)), _temperature_ - holding the temperature in Celsius and _humidity_ - holding the humidity.
    ![Showing where AutoML can be found in the azure machine learning studio](/images/01basicinfo.png) <br>
 1. Leave everything as is on the next tabs until you can hit _Create_. Now select the Dataset _weather_ - you might need to refresh the dataset overview using the _Refresh_ button. After selecting hit _Next_.
-1. You need to create an experiment and a compute resource on which your model will be trained. Under _Experiment name_ select _Create new_ and give your experiment the name **predictRain**. The _Target column_ should be **isRain (String)**.
+1. You need to create an experiment and a compute resource on which your model will be trained. Under _Experiment name_ select _Create new_ and give your experiment the name **predictRain**. The _Target column_ should be **isRain (Int)**.
    Under _Select Azure ML compute cluster_ hit the **+ New** link.
    Leave the virtual machine specifications as is, add some name and confirm.
    It will take some time to create the cluster. After that select it from the dropdown and hit _Next_.
