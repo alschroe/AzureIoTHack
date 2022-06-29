@@ -3,7 +3,7 @@
 To work properly with all the different moving bits and parts we want to connect in this Hackathon, we will have to do quite a bit of setting up. Make sure you have everything on hand that you need:
 
 - your local machine (any computer or set up a virtual machine if you do not feel like installing any additional stuff on your machine)
-- an Azure subscription (go to https://azure.microsoft.com/en-us/free/ and create a new free tier account)
+- an Azure subscription (go to https://azure.microsoft.com/en-us/free/ and create a new free tier account). *This will only work once per Creditcard, if you have already used your free subscription, let us know and we will try to find a solution*
   <br>
   <br>
 
@@ -75,6 +75,4 @@ We are going to set everything up, so you can work on Azure resources from your 
 
    This should do for now. <br>
    <br>
-   <br>
-
-**We are looking forward to our Hackathon!**
+Go to the [next steps](./01_emu_ml.md).
