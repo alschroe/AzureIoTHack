@@ -82,7 +82,7 @@ We are going to run our code on a simulated Raspberry Pi connected to a breadboa
    }
    ```
 
-   Lastly, delete the method **JSON.stringify()** on **line 27**, since we added it in the previous code snippet.
+   Lastly, delete the method **JSON.stringify** (without the brackets) on **line 27**, since we added it in the previous code snippet.
 
    Now you can see how the LEDs blink depending on the temperature.
 
