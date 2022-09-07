@@ -72,7 +72,7 @@ The Raspberry Pi is a single-board computer and needs to be properly setup so we
   <summary>If you have all the hardware at hand use this option!</summary>
 
 1. If you do not have a preinstalled Raspberry Pi OS on the micro SD card, then follow the next steps. If you have a preinstalled Raspberry Pi OS on the micro SD card, then you can skip the following steps.
-    1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.org/downloads.../). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (recommended)*
+    1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.com/software/). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (recommended)*
     1. Insert the micro SD card into your local machine. If you have used the SD card before, make sure to format it.
     1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
     1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
@@ -106,7 +106,7 @@ The Raspberry Pi is a single-board computer and needs to be properly setup so we
   <summary>If you don't need a UI go via the shell!</summary>
 
 SSH is the Secure Shell Protocol and used to securely connect to another device over an unsecure network.
-1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.org/downloads.../). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (other)* --> *Raspberry Pi OS Lite*.
+1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.com/software/). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (other)* --> *Raspberry Pi OS Lite*.
 1. Insert the micro SD card into your local machine. If you have used the SD card before, make sure to format it.
 1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
 1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
@@ -142,7 +142,7 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
   <summary>This will be the easiest and most convenient option!</summary>
 
 SSH is the Secure Shell Protocol and used to securely connect to another device over an unsecure network. VNC stands for Virtual Network Computing and will allow you to view the Desktop of your Pi on your local machine, so you do not need to connect the Pi to a desktop monitor etc.
-1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.org/downloads.../). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (recommended)*
+1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.com/software/). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (recommended)*
 1. Insert the micro SD card into your local machine. If you have used the SD card before, make sure to format it.
 1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
 1. After that hit *WRITE*. This will flash the OS to your micro SD card. This will take a moment. After that hit *CONTINUE*.
