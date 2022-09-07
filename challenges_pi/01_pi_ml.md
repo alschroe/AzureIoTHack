@@ -20,6 +20,9 @@ We will create the workspace using a terminal on our local machine. Please open 
     ```shell
     az group create --name $prefix'iotpirg' --location westeurope
     ```
+   Feel free to go into the Azure portal and see for yourself that the resource group has been created. Go to portal.azure.com and check under Resource groups:
+   ![Screenshot of the homepage of the Azure portal, where resource groups is highlighted](../images/01resourcegroup.png)
+
 1. Download the extension for az ml
     ```shell
     az extension add -n azure-cli-ml -y
@@ -43,7 +46,7 @@ This time we will use the Azure portal to use the Azure Machine Learning Studio 
 1. On the *Basic info* tab, insert the *Web URL* **https://azuresynapseml.blob.core.windows.net/weather/data.dataset.parquet** and *Name* the dataset **weather**. It will contain three columns, *isRain* - holding information whether it is raining or not (Yes, NO), *temperature* - holding the temperature in Celsius and *humidity* - holding well the humindity.
     ![Showing where AutoML can be found in the azure machine learning studio](/images/01basicinfo.png) <br>
 1. Leave everything as is on the next tabs until you can hit *Create*. Now select the Dataset *weather* - you might need to refresh the dataset overview using the *Refresh* button. After selecting hit *Next*.
-1. You need to create an experiment and a compute resource on which your model will be trained. Under *Experiment name* select *Create new* and give your experiment the name **predictRain**. The *Target column* should be **isRain (String)**. 
+1. You need to create an experiment and a compute resource on which your model will be trained. Under *Experiment name* select *Create new* and give your experiment the name **predictRain**. The *Target column* should be **isRain (Int)**. 
     Under *Select Azure ML compute cluster* hit the **+ New** link.
     Leave the virtual machine specifications as is, add some name and confirm.
     It will take some time to create the cluster. After that select it from the dropdown and hit *Next*.
@@ -51,6 +54,6 @@ This time we will use the Azure portal to use the Azure Machine Learning Studio 
 1. The *Classification* task type should be pre-selected. Go on *View additional configuration settings*. Behind the category *Exit criterion* you should make sure to set the *Training job time (hours)* to **0.5**. 
     ![](/images/01automltask.png)<br>
     ![Showing where AutoML can be found in the azure machine learning studio](/images/01taskconfig.png) <br>
-1. Leave the next tabs unchanged and hit *Finish* to start the training. This will take some time, so we will move on to the next step while the model is being trained.
+1. Leave the next tabs unchanged and hit *Finish* to start the training. This will take some time, so we will move on to the next step while the model is being trained:
 
 Go to the [next steps](./02_pi_iothub.md).

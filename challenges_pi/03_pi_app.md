@@ -39,4 +39,19 @@ In the folder 'raspberrypi_app' you will find the application we want to run on 
     Temperature and humidity data are send to the Azure IoT Hub and displayed on the Sense Hat's LEDs.
 1. The data from your Sense Hat is now sent to Azure. But we still need to connect it to our Machine Learning service.
 
+## Check the IoT Hub
+
+1. To see what is happening in the Azure IoT Hub navigate to the Azure portal. There, find your Azure IoT Hub. On the `Overview` site you will see the messages received:
+   ![See the Overview site of the Azure IoT Hub](/images/03iothubinfo.png)
+1. Let's open the Azure Cloud Shell:
+   ![Image of the upper bar in the Azure portal with focus on the Cloud Shell icon](/images/00portalshell.png)
+1. There enter the following to see the messages comming in:
+   ```shell
+   az extension add --name azure-iot
+   ```
+   ```shell
+   az iot hub monitor-events --hub-name $prefix'iotpihub'
+   ```
+1. In the terminal of your Pi press ctrl + C to stop the device from sending the data to Azure.
+
 Go to the [next steps](./04_pi_function.md)

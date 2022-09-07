@@ -15,7 +15,7 @@ To work properly with all the different moving bits and parts we want to connect
 1. Set up your Azure Cloud Shell. To do so go to the Azure portal. You can find it under [portal.azure.com](https://portal.azure.com). Log into Azure with your account. 
 1. You might be seeing the wrong subscription right now. Select *Directories + subscriptions* - the second icon right from the search bar in the upper menue. Switch to the correct directory if necessary and under *Default subscription filter* only tag the subscription you want to work on.
 ![Image of the upper bar in the Azure portal with focus on the Directories + subscriptions icon](/images/00portalsub.png)
-    > Have your portal in english - the translation is not helpful for technical tasks.
+    > Have your portal in English - the translation is not helpful for technical tasks.
 1. Now that you are in the right place. Select the *Azure Clound Shell* - the icon right next to the search bar in the upper menue. You will be prompted to set up a storage account. Make sure again to use the correct subscription in the dropdown menue and select *Create storage*. A PowerShell will opern in your browser. In the dropdown you can also switch to Bash.
 ![Image of the upper bar in the Azure portal with focus on the Cloud Shell icon](/images/00portalshell.png)
     This created a new resource group within your subscription. A resource group is a logical container for all your resources aka Azure services. Within it a storage account was created.
@@ -26,7 +26,7 @@ Take some time to get familiar with the portal. You can find more information ab
 ## Your local machine
 We are going to set everything up, so you can work on Azure resources from your local machine. There are multiple options to interact with Azure and you can chose yourself how to do it later on.
 1. (optional) Install Visual Studio Code from [here](https://code.visualstudio.com/Download) to handle any code you are going to need. You could of course use a different development environment, we just like this one.
-1. (optional) Install the Windows Terminal. You can get it [here](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab). It is a command-line front-end and can run Command Prompt, PowerShell, WSL, SSH and an Azure Clound Shell Connector. Again there are other options, but we like this one.
+1. (optional) Install the Windows Terminal. You can get it [here](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab). It is a command-line front-end and can run Command Prompt, PowerShell, WSL2, SSH and an Azure Clound Shell Connector. Again there are other options, but we like this one.
 1. Open the shell and download the Azure CLI from [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli). You can also install it without manual downloading using the PowerShell (Run as Administrator):
     ```shell
     Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi'; rm .\AzureCLI.msi
@@ -69,7 +69,7 @@ The Raspberry Pi is a single-board computer and needs to be properly setup so we
 
 ### Option 1: WITH desktop, keyboard and mouse connected to the Pi
 <details>
-  <summary>Click here!</summary>
+  <summary>If you have all the hardware at hand use this option!</summary>
 
 1. If you do not have a preinstalled Raspberry Pi OS on the micro SD card, then follow the next steps. If you have a preinstalled Raspberry Pi OS on the micro SD card, then you can skip the following steps.
     1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.org/downloads.../). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (recommended)*
@@ -103,7 +103,7 @@ The Raspberry Pi is a single-board computer and needs to be properly setup so we
 
 ### Option 2: WITHOUT desktop, keyboard and mouse connected to the Pi | via SSH
 <details>
-  <summary>Click here!</summary>
+  <summary>If you don't need a UI go via the shell!</summary>
 
 SSH is the Secure Shell Protocol and used to securely connect to another device over an unsecure network.
 1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.org/downloads.../). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (other)* --> *Raspberry Pi OS Lite*.
@@ -139,7 +139,7 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
 
 ### Option 3: WITHOUT desktop, keyboard and mouse connected to the Pi | via remote desktop
 <details>
-  <summary>Click here!</summary>
+  <summary>This will be the easiest and most convenient option!</summary>
 
 SSH is the Secure Shell Protocol and used to securely connect to another device over an unsecure network. VNC stands for Virtual Network Computing and will allow you to view the Desktop of your Pi on your local machine, so you do not need to connect the Pi to a desktop monitor etc.
 1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.org/downloads.../). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (recommended)*
