@@ -61,6 +61,18 @@ We are going to set everything up, so you can work on Azure resources from your 
 
    **Hint**: To learn more about version control with Git, follow this [free and simple learning path](https://docs.microsoft.com/en-us/learn/modules/intro-to-git/).
 
+1. If you haven't yet, create a [GitHub](https://github.com/join) account. This service for software development and version control is used by over 83 million developers and we will use it for automation later on.
+
+1. Connect to ypur GitHub account from your local machine by entering:
+
+    ```shell
+    git config --global user.name "<YOUR USER NAME>"
+    ```
+
+    ```shell
+    git config --global user.email "<YOUR USER EMAIL>"
+    ```
+
 1. You might need to restart your shell at this point. After that clone the current repository to your local machine.
 
    ```shell

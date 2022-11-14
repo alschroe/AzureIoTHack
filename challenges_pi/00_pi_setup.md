@@ -49,6 +49,14 @@ We are going to set everything up, so you can work on Azure resources from your 
     ```
     This should show you all the resource groups in your Azure subscription - so at least a resource group named "cloud-shell-storage-westeurope" you created in the previous section.
 1. Get Git [here](https://git-scm.com/downloads) - it helps you to track changes in files, specifically code. We are going to need it to clone this repo to our local machine.
+1. If you haven't yet, create a [GitHub](https://github.com/join) account. This service for software development and version control is used by over 83 million developers and we will use it for automation later on.
+1. Connect to ypur GitHub account from your local machine by entering:
+    ```shell
+    git config --global user.name "YourUserName"
+    ```
+    ```shell
+    git config --global user.email "YourUserEmail"
+    ```
 1. You might need to restart your shell at this point. After that clone the current repository to your local machine.
     ```shell
     git clone https://github.com/alschroe/AzureIoTHack.git
