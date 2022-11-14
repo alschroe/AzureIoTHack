@@ -123,4 +123,6 @@ Connect to your Pi again. Open a terminal and run the 'temphumidrain.py' script.
 This is how your final object should look like:
 ![Showing the menue in the Azure portal with the + create button being on the very left](/images/architecture.png)
 
+Go to the [next steps](./06_pi_cicd.md)
+
 

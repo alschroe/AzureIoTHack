@@ -1,6 +1,7 @@
 # Let's set up the Azure Machine Learning Service
 
-We want to build a predictive model. The goal for now is to predict from the collected temperature and humidity data whether or not it is going to rain.
+We want to build a predictive model. The goal for now is to predict from the collected temperature and humidity data whether or not it is going to rain. Before we used Auto ML to do this for us, but let us get a little bit deeper into the details.
+
 
 ## Create the Azure Machine Learning workspace
 
