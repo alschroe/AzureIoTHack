@@ -63,7 +63,7 @@ We are going to set everything up, so you can work on Azure resources from your 
 
 1. If you haven't yet, create a [GitHub](https://github.com/join) account. This service for software development and version control is used by over 83 million developers and we will use it for automation later on.
 
-1. Connect to ypur GitHub account from your local machine by entering:
+1. Connect to your GitHub account from your local machine by entering:
 
     ```shell
     git config --global user.name "<YOUR USER NAME>"
@@ -73,10 +73,37 @@ We are going to set everything up, so you can work on Azure resources from your 
     git config --global user.email "<YOUR USER EMAIL>"
     ```
 
-1. You might need to restart your shell at this point. After that clone the current repository to your local machine.
+1. You might need to restart your shell at this point. After that, create a new GitHub organization. A GitHub organization gives you and your team the opportunity to collaboarate on GitHub, which serves a a container for your shared work. To find out more about organizations, check out this [link](https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations)
+
+   To create the organization follow these steps:
+
+   - Click on your profile icon in the upper right corner and click on _Your organizations_:
+   ![Image of menu, where you can find your GitHub organizations, repositories, projects and profile information](/images/00createorga.png)
+   - Create a _New organization_ and give it a unique name (e.g. iot-hackathon-_yourname_). Make sure to select _Create a free organization_ to avoid costs.
+   - Skip the step of adding more organization members. This is where you would add your team members if your were to work on a project. However, you do not need to add any organization members for this hackathon.
+   - Skip the next steps as well and click _Submit_.
+
+   Your organization has now been created. Click around to check out the UI of a GitHub organization.
+
+1. As a next step, create a [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks) of the GitHub repository you will be working with. A fork is a copy of a repository that you manage. Forks let you make changes to a project without affecting the original repository.
+
+   Please follow these steps:
+
+   - Go to the [repository](https://github.com/alschroe/AzureIoTHack), click on _Fork_ and create one:
+   ![Image of AzureIoTHack repository, which shows where to click to create a fork](/images/00createfork.png)
+   - Select your newly created organization as the _Owner_ and do not change the Repository name.
+
+   You have now successfully forked the repository and should be on the page of the fork within your GitHub organization.
+
+1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the current repository to your local machine. This enables you to work locally on your computer.
+   
+   Follow these steps:
+
+   - Copy this link under _Code_ -> _HTTPS_.
+   - Copy the below command and add replace _LINK_ with the copied link.
 
    ```shell
-   git clone https://github.com/alschroe/AzureIoTHack.git
+   git clone LINK
    ```
 
    You can open it up in Visual Studio Code like this - or with the IDE of your choice.
@@ -88,7 +115,7 @@ We are going to set everything up, so you can work on Azure resources from your 
    This should do for now. <br>
    <br>
 
-**We are looking forward to our Hackathon!**
+**We are looking forward to the hackathon with all of you!**
 
 To start with the challenges, you now have 2 options:
 You can train a Machine Learning model using Automated Machine Learning or you can use the Azure Machine Learning Designer.
