@@ -27,3 +27,7 @@ During the day you are going to work with Git branches, commits and pull request
 ## Clone
 
 ## GitHub Actions
+
+GitHub actions helps you to automate task within your software development lifcycle. GitHub Actions makes it easy to automate all your software workflows like CI/CD.
+
+Today you will dive into GitHub Actions workflows and learn how to build and deploy each Azure service in an automated way.
