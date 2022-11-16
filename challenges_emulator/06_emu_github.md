@@ -18,15 +18,19 @@ During the setup prework, you already created your own GitHub organization. This
 
 ## GitHub repository
 
-A GitHub [repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories) contains all of your project's files and each file's revision history.
+A [GitHub repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories) contains all of your project's files and each file's revision history.
 
-During the day you are going to work with Git branches, commits and pull requests. To learn more about version control with Git, follow this [free and simple learning path](https://docs.microsoft.com/en-us/learn/modules/intro-to-git/).
+During the day you are going to work with Git branches, commits and pull requests.
+
+**Optional**: To learn more about version control with Git, follow this [free and simple learning path](https://docs.microsoft.com/en-us/learn/modules/intro-to-git/).
 
 ## Fork
 
+A [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks) is a copy of a repository that you manage. Forks let you make changes to a project without affecting the original repository. You can fetch updates from or submit changes to the original repository with pull requests.
 
+## Cloning a repository
 
-## Clone
+When you create a repository on GitHub.com, it exists as a remote repository. You can [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) your repository to create a local copy on your computer and sync between the two locations.
 
 ## GitHub Actions
 
