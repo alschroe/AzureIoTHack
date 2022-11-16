@@ -20,14 +20,20 @@ During the setup prework, you already created your own GitHub organization. This
 
 A GitHub [repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories) contains all of your project's files and each file's revision history.
 
-During the day you are going to work with Git branches, commits and pull requests.
+During the day you are going to work with Git branches, commits and pull requests. To learn more about version control with Git, follow this [free and simple learning path](https://docs.microsoft.com/en-us/learn/modules/intro-to-git/).
 
 ## Fork
+
+
 
 ## Clone
 
 ## GitHub Actions
 
-GitHub actions helps you to automate task within your software development lifcycle. GitHub Actions makes it easy to automate all your software workflows like CI/CD.
+[GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline. You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production.
 
-Today you will dive into GitHub Actions workflows and learn how to build and deploy each Azure service in an automated way.
+GitHub Actions are comprised of several components. Today you will dive into GitHub Actions **Workflows** and learn how to build and deploy each Azure service (the ones you created previously) in an automated way.
+
+### GitHub Actions Workflows
+
+A workflow is a configurable automated process that will run one or more jobs. Workflows are defined by a YAML file checked in to your repository and will run when triggered by an event in your repository, or they can be triggered manually, or at a defined schedule.
