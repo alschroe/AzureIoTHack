@@ -2,10 +2,8 @@
 
 To work properly with all the different moving bits and parts we want to connect in this Hackathon, we will have to do quite a bit of setting up. Make sure you have everything on hand that you need:
 
-- your local machine (any computer or set up a virtual machine if you do not feel like installing any additional stuff on your machine)
-- an Azure subscription (go to https://azure.microsoft.com/en-us/free/ and create a new free tier account). *This will only work once per Creditcard, if you have already used your free subscription, let us know and we will try to find a solution*
-  <br>
-  <br>
+- Your local machine: Any computer or set up a virtual machine if you do not feel like installing any additional stuff on your machine.
+- An Azure subscription: It has been created for you and you should have received your access credentials. Go to [https://portal.azure.com](https://portal.azure.com) and try login in with your credentials. If this is not possible, please reach out to your contact person.
 
 ## Your Azure subscription
 
