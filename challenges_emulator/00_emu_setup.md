@@ -76,7 +76,7 @@ We are going to set everything up, so you can work on Azure resources from your 
    To create the organization follow these steps:
 
    - Click on your profile icon in the upper right corner and click on _Your organizations_:
-   ![Image of menu, where you can find your GitHub organizations, repositories, projects and profile information](/images/00createorga.png)
+   ![Image of menu, where you can find your GitHub organizations, repositories, projects and profile information](/images/00creatorg.png)
    - Create a _New organization_ and give it a unique name (e.g. iot-hackathon-_yourname_). Make sure to select _Create a free organization_ to avoid costs.
    - Skip the step of adding more organization members. This is where you would add your team members if your were to work on a project. However, you do not need to add any organization members for this hackathon.
    - Skip the next steps as well and click _Submit_.
@@ -98,10 +98,10 @@ We are going to set everything up, so you can work on Azure resources from your 
    Follow these steps:
 
    - Copy this link under _Code_ -> _HTTPS_.
-   - Copy the below command and add replace _LINK_ with the copied link.
+   - Copy the below command and replace ```https://github.com/<YOUR_ORG>/AzureIoTHack.git``` with the copied link.
 
    ```shell
-   git clone LINK
+   git clone https://github.com/<YOUR_ORG>/AzureIoTHack.git
    ```
 
    You can open it up in Visual Studio Code like this - or with the IDE of your choice.
