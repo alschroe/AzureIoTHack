@@ -83,22 +83,25 @@ The Raspberry Pi is a single-board computer and needs to be properly setup so we
     1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.com/software/). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (recommended)*
     1. Insert the micro SD card into your local machine. If you have used the SD card before, make sure to format it.
     1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
-    1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
-    1. You will need to very shortly remove the micro SD card and insert it again into your local machine. 
-1. Now we want to set up our SSH connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder [raspberrypi_ssh](../raspberrypi_setup/raspberrypi_ssh) in this repo you will find two files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other file is called *ssh* - without file extension. This file will automatically enable SSH on your Pi.
-1. Then access the boot folder on your micro SD card and paste the two files in them.
+    1. Click on the settings icon and do the following:
+    ![Image of Imager Setup1](/images/00_setup_pi.png)
+
+
+        - Give your pi a name and note it down (it can be something like "YOURNAME-pi")
+        - Setup your username and password (note these vlaues down as you will need them later)
+        - Enable SSH and add your network's name and password
+
+    ![Image of Imager Setup2](/images/00_setup_pi_2.png)
+    ![Image of Imager Setup3](/images/00_setup_pi_3.png)
+    ![Image of Imager Setup4](/images/00_setup_pi_4.png)
+        
+    Save your settings
+
+1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
 1. Eject the SD card securely and insert the micro SD card into your Raspberry Pi.
 1. Now first connect your desktop monitor, your keyboard and your mouse to the Raspberry Pi.
 1. Connect your Pi to a power resource.
-1. You might be prompted with a login.
-    The default login is **pi** and the default password is **raspberry**.
-1. We want to change that. So once you are on your Raspberry Pi, open the terminal and enter the following.
-    ```bash
-    sudo raspi-config
-    ```
-    The Configuration Tool will open up and show you a bunch of options.
-    Select *1 Change User Password | Change password for the 'pi' user* by hitting enter while it is highlighted. Make sure to remember your password.
-    Select *OK* and after that - in the main overview of the Configuration Tool - select *Finish* to exit the tool by using the tab key on your keyboard.
+1. You might be prompted with a login. Use your previously created username and password.
 1. Open a terminal on your Pi. We want to install the Azure CLI here as well to make our lives easier in the long run. Enter this command:
     ```bash
     curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
@@ -117,24 +120,28 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
 1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.com/software/). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (other)* --> *Raspberry Pi OS Lite*.
 1. Insert the micro SD card into your local machine. If you have used the SD card before, make sure to format it.
 1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
+1. Click on the settings icon and do the following:
+    ![Image of Imager Setup1](/images/00_setup_pi.png)
+
+    - Give your pi a name and note it down (it can be something like "YOURNAME-pi")
+    - Setup your username and password (note these vlaues down as you will need them later)
+    - Enable SSH and add your network's name and password
+
+    ![Image of Imager Setup2](/images/00_setup_pi_2.png)
+    ![Image of Imager Setup3](/images/00_setup_pi_3.png)
+    ![Image of Imager Setup4](/images/00_setup_pi_4.png)
+        
+    Save your settings
+
 1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
-1. Now we want to set up our SSH connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder [raspberrypi_ssh](../raspberrypi_setup/raspberrypi_ssh) in this repo you will find two files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other file is called *ssh* - without file extension. This file will automatically enable SSH on your Pi.
-1. You will need to very shortly remove the micro SD card and insert it again into your local machine. Then access the boot folder on your micro SD card and paste the two files in them.
-1. Eject the SD card securely.
-1. Instert the micro SD card into your Raspberry Pi.
+1. Eject the SD card securely and insert the micro SD card into your Raspberry Pi.
+1. Insert the micro SD card into your Raspberry Pi.
 1. Connect your Pi to a power resource. Let it stew for a moment - maybe grab a coffee.
 1. Open PuTTY - you installed it in the beginning.
-    1. Under *Host Name (or IP addess)* enter ```raspberrypi.local```.
+    1. Under *Host Name (or IP addess)* enter the hostname you previously defined.
     1. Under *Port* ```22``` should already be entered, if not do so.
     1. Lastly select *Open*
-    1. You should be prompted for login. The default login is **pi** and the default password is **raspberry**.
-1. Now you are able to work on the Pi. The first thing we want to do is changing the default password. Type in:
-    ```bash
-    sudo raspi-config
-    ```
-    The Configuration Tool will open up and show you a bunch of options.
-    Select *1 Change User Password | Change password for the 'pi' user* by hitting enter while it is highlighted. Make sure to remember your password.
-    Select *OK* and after that - in the main overview of the Configuration Tool - select *Finish* to exit the tool by using the tab key on your keyboard.
+    1. You should be prompted for login. Type in your username and password.
 1. We want to install the Azure CLI here as well to make our lives easier in the long run. Enter this command:
     ```bash
     curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
@@ -153,25 +160,35 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
 1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.com/software/). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (recommended)*
 1. Insert the micro SD card into your local machine. If you have used the SD card before, make sure to format it.
 1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
-1. After that hit *WRITE*. This will flash the OS to your micro SD card. This will take a moment. After that hit *CONTINUE*.
-1. Now we want to set up our SSH connection, network connection and the remote desktop connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder [raspberrypi_ssh](../raspberrypi_setup/raspberrypi_ssh) in this repo you will find three files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other file is called *SSH* - without file extension. This files will automatically enable SSH on your Pi.
-1. You will need to very shortly remove the micro SD card and insert it again into your local machine. Then access the boot folder on your micro SD card and paste the two files in them.
-1. Eject the SD card securely.
-1. Instert the micro SD card into your Raspberry Pi.
+1. Click on the settings icon and do the following:
+    ![Image of Imager Setup1](/images/00_setup_pi.png)
+    
+    - Give your pi a name and note it down (it can be something like "YOURNAME-pi")
+    - Setup your username and password (note these vlaues down as you will need them later)
+    - Enable SSH and add your network's name and password
+
+    ![Image of Imager Setup2](/images/00_setup_pi_2.png)
+    ![Image of Imager Setup3](/images/00_setup_pi_3.png)
+    ![Image of Imager Setup4](/images/00_setup_pi_4.png)
+        
+    Save your settings
+
+1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
+1. Eject the SD card securely and insert the micro SD card into your Raspberry Pi.
+1. Insert the micro SD card into your Raspberry Pi.
 1. Connect your Pi to a power resource. Let it stew for a moment - maybe grab a coffee.
 1. Open PuTTY - you installed it in the beginning.
-    1. Under *Host Name (or IP addess)* enter ```raspberrypi.local```.
+    1. Under *Host Name (or IP addess)* enter the hostname you previously defined.
     1. Under *Port* ```22``` should already be entered, if not do so.
     1. Lastly select *Open*
-        > At this moment you will get a popup asking if you are sure this is your device. And this is a good question. So it is a Raspberry Pi on your network but if you are sharing the network with another colleague who is currently doing the same Hackathon it could be their Pi. There is just no way to know... Coordinate with your colleagues in this case.
-    1. You should be prompted for login. The default login is **pi** and the default password is **raspberry**.
-1. Now you are able to work on the Pi via shell. The first thing we want to do is changing the default password. Type in:
+    1. You should be prompted for login. Type in your username and password.
+1. Now you are able to work on the Pi via shell. The first thing we want to do is changing some settings in our Pi. Type in:
     ```bash
     sudo raspi-config
     ```
     The Configuration Tool will open up and show you a bunch of options.
-    Select *1 Change User Password* by hitting enter while it is highlighted. Make sure to remember your password.
-1. In the same Configuration Tool we now want to set the resolution of your Pi. Navigate to *7 Advanced Options* and hit enter. Than select *A5 Resolution* and there the screen resolution of your choosing. Select *OK*.
+
+1.  Set the resolution of your Pi. Navigate to *7 Advanced Options* and hit enter. Than select *A5 Resolution* and there the screen resolution of your choosing. Select *OK*.
 1. After this we want to change the Hostname. Navigate to *2 Network Options* and than *N1 Hostname*. Make again sure to remember your hostname. 
 1. Last navigate to *3 Interface Options* and from there to *P3 VNC*. Enabling this option will help us set up our remote monitor in the next steps. Back in the main overview of the Configuration Tool - select *Finish* to exit the tool by using the tab key on your keyboard. 
     > Be aware that having SSH and VNC activated opens two ports on your Pi. In a productive scenario this is not ideal. If you insist on remote desktop options in production make yourselfs familiar with SSH X11 Forwarding.
@@ -180,7 +197,7 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
     sudo reboot
     ```
 1. Now you need to install one more tool - a VNC Viewer. Download it from [here](https://www.realvnc.com/en/connect/download/viewer/) and install it. We did not do this in the beginning, since not everyone will have chosen the remote desktop option.
-1. Enter ```YOUR NEW HOSTNAME``` or the IP address of the Raspberry Pi in the text field. An authentication window should pop up. Enter the *Username* ```pi``` and your previously changed *Passowrd*. Select *OK* and you will have a remote desktop connection to your Pi. Important: You have to be outside of VPN to be able to connect to the Raspberry Pi!
+1. Enter ```YOUR HOSTNAME``` or the IP address of the Raspberry Pi in the text field. An authentication window should pop up. Enter your username and password. Select *OK* and you will have a remote desktop connection to your Pi. Important: You have to be outside of VPN to be able to connect to the Raspberry Pi!
 1. Open a terminal on your Pi. We want to install the Azure CLI here as well to make our lives easier in the long run. Enter this command:
     ```bash
     curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
@@ -192,6 +209,8 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
 </details> <br>
     <br>
     <br>
+
+**In case you are having issues or want to check the latest changes, please refer to the [Raspberry Pi documentation](https://www.raspberrypi.com/documentation/computers/getting-started.html).**  
 
 ## Your Sense HAT
 Now we have our Pi and our local machine set up, we need to get some sensor data. To do that, we have the **Sense HAT** and it is awsome. First things first - HAT means Hardware on Top and offers you an Expansion Board that is specifically created to be put right on top of your Pi to give you functionalities as lights, motors, sensors and fans. The Sense HAT offers us lights and sensors as well as a joystick. Here the sensors:
