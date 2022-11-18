@@ -2,9 +2,9 @@
 
 To work properly with all the different moving bits and parts we want to connect in this Hackathon, we will have to do quite a bit of setting up. Make sure you have everything on hand that you need:
 - your local machine (any computer or set up a virtual machine if you do not feel like installing any additional stuff on your machine)
-- an Azure subscription (go to https://azure.microsoft.com/en-us/free/ and create a new free tier account)
-- a Raspberry Pi 4 with charging cable and micro SD
-- a Sense HAT, which will collect all the data 
+- An Azure subscription: It has been created for you and you should have received your access credentials. Go to [https://portal.azure.com](https://portal.azure.com) and try login in with your credentials. If this is not possible, please reach out to your contact person.
+- A Raspberry Pi 4 with charging cable and micro SD
+- A Sense HAT, which will collect all the data 
 - Optional but preferred: 
     - An SD Adapter depending on whether or not your device has an SD or micro SD slot - with preinstalled Raspberry Pi OS on your micro SD card, this is not needed but still preferred
     - Desktop/Monitor (with micro hdmi adapter), keyboard, mouse <br>
@@ -48,24 +48,59 @@ We are going to set everything up, so you can work on Azure resources from your 
     az group list
     ```
     This should show you all the resource groups in your Azure subscription - so at least a resource group named "cloud-shell-storage-westeurope" you created in the previous section.
+
 1. Get Git [here](https://git-scm.com/downloads) - it helps you to track changes in files, specifically code. We are going to need it to clone this repo to our local machine.
+
+   **Hint**: To learn more about version control with Git, follow this [free and simple learning path](https://docs.microsoft.com/en-us/learn/modules/intro-to-git/).
+
 1. If you haven't yet, create a [GitHub](https://github.com/join) account. This service for software development and version control is used by over 83 million developers and we will use it for automation later on.
-1. Connect to ypur GitHub account from your local machine by entering:
+
+1. Connect to your GitHub account from your local machine by entering:
     ```shell
-    git config --global user.name "YourUserName"
+    git config --global user.name "<YOUR USER NAME>"
     ```
     ```shell
-    git config --global user.email "YourUserEmail"
+    git config --global user.email "<YOUR USER EMAIL>"
     ```
-1. You might need to restart your shell at this point. After that clone the current repository to your local machine.
-    ```shell
-    git clone https://github.com/alschroe/AzureIoTHack.git
-    ```
-    You can open it up in Visual Studio Code like this - or with the IDE of your choice.
-    ```shell
-    cd AzureIoTHack
-    code .
-    ```
+1. You might need to restart your shell at this point. After that, create a new GitHub organization. A GitHub organization gives you and your team the opportunity to collaboarate on GitHub, which serves as a container for your shared work. To find out more about organizations, check out this [link](https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations).
+
+   To create the organization follow these steps:
+   </br>
+   - Click on your profile icon in the upper right corner and click on _Your organizations_:
+   ![Image of menu, where you can find your GitHub organizations, repositories, projects and profile information](/images/00creatorg.png)
+   - Create a _New organization_ and give it a unique name (e.g. iot-hackathon-_yourname_). Make sure to select _Create a free organization_ to avoid costs.
+   - Skip the step of adding more organization members. This is where you would add your team members if your were to work on a project. However, you do not need to add any organization members for this hackathon.
+   - Skip the next steps as well and click _Submit_.
+
+   Your organization has now been created. Click around to check out the UI of a GitHub organization.
+
+1. As a next step, create a [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks) of the GitHub repository you will be working with. A fork is a copy of a repository that you manage. Forks let you make changes to a project without affecting the original repository.
+
+   Please follow these steps:
+
+   - Go to the [repository](https://github.com/alschroe/AzureIoTHack), click on _Fork_ and create one:
+   ![Image of AzureIoTHack repository, which shows where to click to create a fork](/images/00createfork.png)
+   - Select your newly created organization as the _Owner_ and do not change the Repository name.
+
+   You have now successfully forked the repository and should be on the page of the fork within your GitHub organization.
+
+1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the current repository to your local machine. This enables you to work locally on your computer.
+   
+   Follow these steps:
+
+   - Copy this link under _Code_ -> _HTTPS_.
+   - Copy the below command and replace ```https://github.com/<YOUR_ORG>/AzureIoTHack.git``` with the copied link.
+
+   ```shell
+   git clone https://github.com/<YOUR_ORG>/AzureIoTHack.git
+   ```
+
+   You can open it up in Visual Studio Code like this - or with the IDE of your choice.
+
+   ```shell
+   cd AzureIoTHack code .
+   ```
+
 1. Download the PuTTY installer from [here](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) and install it.
 This should do for now. <br>
     <br>
@@ -291,3 +326,8 @@ If you have chosen Option 2 or 3 while setting up your Pi and want to work via S
 <br>
 
 **We are looking forward to our Hackathon!**
+
+To start with the challenges, you now have 2 options:
+You can train a Machine Learning model using Automated Machine Learning or you can use the Azure Machine Learning Designer.
+
+Go to the [next steps](./01_pi_ml.md) (Automated Machine Learning).
