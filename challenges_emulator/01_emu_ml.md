@@ -32,25 +32,26 @@ We will create the workspace using a terminal on our local machine. Please open 
    Feel free to go into the Azure portal and see for yourself that the resource group has been created. Go to portal.azure.com and check under Resource groups:
    ![Screenshot of the homepage of the Azure portal, where resource groups is highlighted](../images/01resourcegroup.png)
 
-1. Download the extension for az ml
+1. Download the extension for az ml:
    ```shell
-   az extension add -n azure-cli-ml -y
+   az extension add -n ml
    ```
 1. Now we need to create the workspace:
    ```shell
-   az ml workspace create -w $prefix'iotml' -g $prefix'iotpirg'
+   az ml workspace create -n $prefix'iotml' -g $prefix'iotpirg'
    ```
 
 ## Create a machine learning pipeline
 
-This time we will use the Azure portal to use the Azure Machine Learning Studio for the next steps. Go to 'portal.azure.com'. You might need to switch to an incognito tab since it will make the handeling of you using different tenants easier. Make sure you are using the right subscription.
+This time we will use the Azure portal to use the Azure Machine Learning Studio for the next steps. Go to 'portal.azure.com'. Make sure you are using the right subscription.
 
-1. Navigate to your 'prefixiotpirg' resource group. You will see that a number of services were created. The AML workspace needs a keyvault to store its secrets, a storage for configuration, datasets and models, optionally Application Insights for monitoring and later on compute resources to run our training and model on.
+1. Navigate to your 'prefixiotpirg' resource group. You will see that a number of services were created. If you cannot see the services yet, wait a few minutes. The AML workspace needs a keyvault to store its secrets, a storage for configuration, datasets and models, optionally Application Insights for monitoring and later on compute resources to run our training and model on.
 1. Select the Azure Machine Learning workspace 'prefixiotml'. On the _Overview_ page you will see a blue _Launch studio_ button. Select it. It will forward you to a separate view for the Azure Machine Learning workspace. <br>
    ![Showing where AutoML can be found in the azure machine learning studio](/images/02studio.png) <br>
 1. On the left side you will find the menu point _Automated ML_. Select it. We will work with the UI today but there are many options to make use of the Azure Machine Learning workspace.
+</br>
    ![Showing where AutoML can be found in the azure machine learning studio](/images/01automl.png) <br>
-1. Select _New Automated ML run_.
+1. Select _New Automated ML job_.
    ![Showing where AutoML can be found in the azure machine learning studio](/images/01newautoml.png) <br>
 1. Start the process of creating a new dataset by selecting _Create dataset_ and from the dropdown _From web files_.
    ![Showing where AutoML can be found in the azure machine learning studio](/images/01webfiles.png) <br>
