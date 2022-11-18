@@ -118,5 +118,5 @@ We are going to set everything up, so you can work on Azure resources from your 
 To start with the challenges, you now have 2 options:
 You can train a Machine Learning model using Automated Machine Learning or you can use the Azure Machine Learning Designer.
 
-Go to the [next steps](./01_emu_ml.md).
+Go to the [next steps](./01_emu_ml.md) (Automated Machine Learning).
 

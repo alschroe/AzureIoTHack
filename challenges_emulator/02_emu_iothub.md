@@ -1,6 +1,6 @@
 # Setup the Azure IoT hub
 
-In this part, you will seamlessly connect your Pi to the cloud by using Azure IoT Hub.
+In this part, you will seamlessly connect your Pi emulator to the cloud by using Azure IoT Hub.
 
 There are different ways to do this. You could use the Azure portal, the Cloud Shell or the Azure CLI for example.
 The Azure portal is very helpful to get a feeling for the possibilities of Azure and offers you a great deal of visualization if it comes to topics like monitoring. But for cloud development you either want to deploy by using Infrastructure as Code (IaC) or go with the terminal. Since IaC is worth a whole workshop in and of itself, we will use the terminal. You can choose whether you prefer your local terminal or the Azure Cloud Shell. We set both up previously.
@@ -21,7 +21,7 @@ Open up the terminal of your local machine.
 
    If you want to see the IoT Hub resource created in the Azure portal, go to your resource group and check whether the new resource exists.
 
-1. Let's register a new device:
+1. In order for the IoT Hub to be able to receive messages from and send messages to a device, you need to register it. Therefore, let's register a new device:
 
    ```shell
    az iot hub device-identity create --device-id myPi --hub-name $prefix'iotpihub'

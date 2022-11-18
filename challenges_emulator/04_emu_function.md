@@ -1,14 +1,16 @@
 # Communicate from the Azure IoT Hub to the Azure Machine Learing service
 
-We created an Azure Function for you. It is triggered every time the Iot Hub receives a message from your Pi emulator and forwards the needed content to the Azure Machine Learning Service. In return, it also receives the rain prediction to the sensor temperature and humidity data.
+In this challenge, we are going to create an Azure Function, which is triggered every time the IoT Hub receives a message from your Pi emulator and forwards the needed content to the Azure Machine Learning Service. In return, it also receives the rain prediction to the sensor temperature and humidity data.
 
 We will stay on your local machine to implement this.
 
 ## Deploy Machine Learning model
 
-The automated Machine Learning model should have trained by now. (If you have trained and deployed the Machine Learning model using the ML Designer, you can skip this step.)
+The automated Machine Learning model should have trained by now. In order to be able to draw predictions from the trained model, we first need to deploy the Machine Learning mode. Therefore, please follow the next steps:
 
-1. Navigate back to the _Azure Machine Leanrning Studio_ (via the portal move to your AML service and from there to the studio).
+(Btw, If you have trained and deployed the Machine Learning model using the ML Designer, you can skip this step.)
+
+1. Navigate back to the _Azure Machine Learning Studio_ (via the portal move to your AML service and from there to the studio).
 1. Navigate to _Jobs_ and select your experiment _predictRain_.
 
    ![Showing where AutoML can be found in the azure machine learning studio](/images/04experiments.png) <br>
@@ -26,7 +28,7 @@ The automated Machine Learning model should have trained by now. (If you have tr
 
 ## Create an Azure Function and an Azure Storage Account locally
 
-Open a terminal on your local computer again and make sure your prefix is still stored in it.
+Now, we will create the Azure FunctionOpen a terminal on your local computer again and make sure your prefix is still stored in it.
 
 1. We will start by creating our general-purpose storage account.
    ```shell
