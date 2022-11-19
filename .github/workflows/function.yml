@@ -36,7 +36,9 @@ jobs:
       with:
         azcliversion: 2.30.0
         inlineScript: |
-          az iot hub device-identity create --device-id myPi --hub-name ${{ secrets.PREFIX }}'iot-prod-iothub'
+          az config set extension.use_dynamic_install=yes_without_prompt
+          az extension add --name azure-iot
+          az iot hub device-identity create --device-id myPi --hub-name ${{ secrets.PREFIX }}iot-prod-iothub
 # connection=$(az iot hub device-identity connection-string show --device-id myPi --hub-name $prefix'iotpihub' --output tsv)
 
     - name: Setup Python ${{ env.PYTHON_VERSION }} Environment
