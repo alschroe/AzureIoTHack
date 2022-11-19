@@ -1,0 +1,23 @@
+name: Deploy ML Model
+
+on:
+  # repository_dispatch:
+  #   types: [machinelearningservices-runcompleted]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    # Submit a training run to the Azure Machine Learning
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.30.0
+        inlineScript: |
+          az extension add -n azure-cli-ml
+          az ml model deploy -n myservice -m mymodel:1 --ic ../../code/json/inferenceconfig.json --dc ../../code/json/deploymentconfig.json

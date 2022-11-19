@@ -118,7 +118,11 @@ Open a terminal on your local computer again and make sure your prefix is still 
     Under _Authentication_ copy the **Primary key** and paste it to the _api_key_ in line 18 of `__init__.py`.
     ![Showing where AutoML can be found in the azure machine learning studio](/images/04basics.png) <br>
     As you are already here go to the _Test_ tab and test your endpoint.
-    Your function is now ready to run. If you are using VS Code hit **F5** to start the function. If not start the function from the _raspberrypi_function_ folder by entering:
+1. Finally make sure that all modules are available by running the following in the `raspberrypi_function` folder:
+```shell
+pip install -r requirements.txt
+```
+1. Your function is now ready to run. If you are using VS Code hit **F5** to start the function. If not start the function from the _raspberrypi_function_     folder by entering:
 
 ```shell
 func start
@@ -133,7 +137,7 @@ Go back to the simulator in your browser.
    ```javascript
    function receiveMessageCallback(msg) {
      var message = msg.getData().toString("utf-8");
-     if (message.includes("Yes")) {
+     if (message.includes("1")) {
        blinkLEDthrice();
        console.log("Receive message: " + "Rain predicted");
      } else {

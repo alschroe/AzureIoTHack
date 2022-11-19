@@ -30,8 +30,8 @@ We are going to run our code on a simulated Raspberry Pi connected to a breadboa
      }
 
      getMessage(function (content, temperatureAlert) {
-       var message = new Message(JSON.stringify(content));
-       var temperature = content.temperature;
+       var message = new Message(content);
+       var temperature = content.slice(66, 68); // this is just a quick fix
        message.properties.add("temperatureAlert", temperatureAlert.toString());
        client.sendEvent(message, function (err) {
          if (err) {

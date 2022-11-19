@@ -1,0 +1,36 @@
+name: Train ML Model
+
+on:
+  # workflow_run:
+  #   workflows: ["Create Resources"]
+  #   types:
+  #     - completed
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Check Out Repository
+      id: checkout_repository
+      uses: actions/checkout@v3
+      
+      # Connect the Azure Machine Learning Workspace
+    - name: Connect Azure Machine Learning Workspace
+      id: aml_workspace
+      uses: Azure/aml-workspace@v1
+      with:
+          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    # Submit a training run to the Azure Machine Learning
+    - name: Run Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+        azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+    - run: |
+        cd ../../code/python/main.py
+        pip install azure-ai-ml
+        python main.py

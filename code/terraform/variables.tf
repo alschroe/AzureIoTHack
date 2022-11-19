@@ -5,6 +5,6 @@ variable "location" {
 
 variable "prefix" {
   type        = string
-  default     = "<YOUR_PREFIX>"
+  default     = "xelas"
   description = "The prefix used for all resources"
 }

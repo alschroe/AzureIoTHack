@@ -1,9 +1,9 @@
 {
   "IsEncrypted": false,
   "Values": {
-    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https...",
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;EndpointSuffix=core.windows.net;AccountName=xelasawjstorage;AccountKey=DwhM0J5uYZa1G58XsF7G4+Y+LPKPsyQShEgnFoe0lvouN/Okuv2Nc4l2N0PeoEosJi/teM1/N2zr+AStzpzNdA==",
     "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
-    "ConnectionString": "Endpoint=...",
+    "ConnectionString": "Endpoint=sb://iothub-ns-xelasiotpi-22955529-cb1c61519f.servicebus.windows.net/;SharedAccessKeyName=service;SharedAccessKey=LVyfnWvVOPNm+VBeOvfV/1rUjGxNiCGq7+DsG8G7N48=;EntityPath=xelasiotpihub",
     "FUNCTIONS_WORKER_RUNTIME": "python"
   }
 }

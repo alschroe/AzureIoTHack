@@ -1,21 +1,21 @@
 from typing import List
-from azure.iot.hub import IoTHubRegistryManager
 import logging
 import urllib.request
 import json
 import os
 import ssl
 import azure.functions as func
+from azure.iot.hub import IoTHubRegistryManager
 
 def allowSelfSignedHttps(allowed):
     # bypass the server certificate verification on client side
     if allowed and not os.environ.get('PYTHONHTTPSVERIFY', '') and getattr(ssl, '_create_unverified_context', None):
         ssl._create_default_https_context = ssl._create_unverified_context
 
-connectionstr = 'HostName=...' # Replace this with the Primary Connection String for your IoT device myPi
+connectionstr = 'HostName=xelasiotpihub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=BWT/U5b92Dbvh4Mbo2OUno1MZS9foTIUcVNyDmWLA+Y=' # Replace this with the Primary Connection String for your IoT device myPi
 device = 'myPi'
-url = 'http://....westeurope.azurecontainer.io/score' # Replace this with the endpoint for the Azure ML web service
-api_key = '...' # Replace this with the API key for the Azure ML web service
+url = 'http://3738065f-cbbe-4e7c-a075-c715eb7b79c8.westeurope.azurecontainer.io/score' # Replace this with the endpoint for the Azure ML web service
+api_key = 'KPCchFMubf7H74TP8hGAsWFCNx2tbdyV' # Replace this with the API key for the Azure ML web service
 headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
 def sendData(temp, humid):
