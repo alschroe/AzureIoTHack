@@ -38,7 +38,7 @@ jobs:
         inlineScript: |
           az config set extension.use_dynamic_install=yes_without_prompt
           az extension add --name azure-iot
-          prefix="<YOUR PREFIX>"
+          prefix="xelas"
           az iot hub device-identity create --device-id myPi --hub-name $prefix'iot-prod-iothub'
           az functionapp keys set --key-name AzureWebJobsDashboard --key-type functionKeys --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --key-value UseDevelopmentStorage=true
           az functionapp keys set --key-name AzureWebJobsStorage --key-type functionKeys --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --key-value $(az storage account show-connection-string --name $prefix'iotprodsa' --resource-group $prefix'iot-prod-rg' --output tsv)
