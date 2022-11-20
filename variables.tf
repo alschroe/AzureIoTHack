@@ -1,5 +1,5 @@
 variable "location" {
-  default     = "northeurope"
+  default     = "westeurope"
   description = "Location of the resources"
 }
 
