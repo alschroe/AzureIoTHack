@@ -141,7 +141,8 @@ resource "azurerm_function_app" "prod" {
   os_type                    = "linux"
   version                    = "~3"
   app_settings = {
-    "AzureWebJobsDashboard" = "UseDevelopmentStorage=true",
+    "AzureWebJobsDashboard"          = "UseDevelopmentStorage=true",
+    "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.prod.instrumentation_key,
   }
 
   site_config {
