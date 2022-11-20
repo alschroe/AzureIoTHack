@@ -39,6 +39,8 @@ jobs:
           az config set extension.use_dynamic_install=yes_without_prompt
           az extension add --name azure-iot
           az iot hub device-identity create --device-id myPi --hub-name xelasiot-prod-iothub
+          az functionapp keys set --key-name AzureWebJobsStorage --key-type functionKeys --name xelasiot-prod-iothub --resource-group xelasiot-prod-rg --key-value $(az storage account show-connection-string --name xelasiotprodsa --resource-group xelasiot-prod-rg --output tsv)
+
 # connection=$(az iot hub device-identity connection-string show --device-id myPi --hub-name $prefix'iotpihub' --output tsv)
 
     - name: Setup Python ${{ env.PYTHON_VERSION }} Environment
