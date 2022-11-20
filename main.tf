@@ -140,6 +140,9 @@ resource "azurerm_function_app" "prod" {
   storage_account_access_key = azurerm_storage_account.prod.primary_access_key
   os_type                    = "linux"
   version                    = "~4"
+  app_settings = {
+    "AzureWebJobsDashboard" = "UseDevelopmentStorage=true",
+  }
 
   site_config {
     linux_fx_version = "python|3.9"

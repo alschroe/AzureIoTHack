@@ -14,8 +14,8 @@ def allowSelfSignedHttps(allowed):
 
 connectionstr = os.getenv("DeviceConnectionString") # Replace this with the Primary Connection String for your IoT device myPi
 device = 'myPi'
-url = os.getenv("AzureMLEndpoint") # Replace this with the endpoint for the Azure ML web service
-api_key = os.getenv("AzureMLAPIKey") # Replace this with the API key for the Azure ML web service
+url = 'http://3738065f-cbbe-4e7c-a075-c715eb7b79c8.westeurope.azurecontainer.io/score' # Replace this with the endpoint for the Azure ML web service
+api_key = 'KPCchFMubf7H74TP8hGAsWFCNx2tbdyV' # Replace this with the API key for the Azure ML web service
 headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
 def sendData(temp, humid):
