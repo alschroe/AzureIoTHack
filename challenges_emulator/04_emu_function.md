@@ -104,12 +104,12 @@ Open a terminal on your local computer again and make sure your prefix is still 
     az iot hub connection-string show -n $prefix'iotpihub' --default-eventhub --output tsv
     ```
     Paste the output 'Endpoint=sb://...' as value for _ConnectionString_ in the _local.settings.json_.
-1.  Now navigate to the folder 'iothubtrigger' and there to `**__init__.py**`. There, the IoT hub connection string ('HostName=...') needs to be entered in line 15 behind _connectionstr_.
-    Get the connection string like this:
     ```shell
+    # for DeviceConnectionString
     az iot hub connection-string show -n $prefix'iotpihub' --output tsv
     ```
-1.  Finally, we will enter our Machine Learning model endpoint.
+    Paste the output 'HostName=...' as value for _DeviceConnectionString_ in the _local.settings.json_.
+1.  Now navigate to the folder 'iothubtrigger' and there to `**__init__.py**`. We will enter our Machine Learning model endpoint.
     Specifically we need to set the _url_ in line 17 and the _api_key_ in line 18.
     The az CLI extension for this is currently still experimental so we need to navigate back to the _Azure Machine Learning studio_.
     Under _Endpoints_ select the endpoint you previously deployed.
@@ -158,7 +158,7 @@ Go back to the simulator in your browser.
 1. There is one thing missing. Our Connection String and the connection to the Azure Storage account currently reside in the `local.settings.json` file of the function project. This file will not be uploaded to Azure (see `.funcignore` for the files that will not be uploaded). We can set the needed keys in the Azure portal. So first navigate to the portal.
 1. There find your Azure Function and from there the function `iothubtrigger` you just uploaded under `Function`.
    ![](/images/04iothubtrigger.png)
-1. Here you can also see an overview of how often the function was triggered. For now we need to enter the keys that we did have in the `local.settings.json`. Navigate to `Function Keys`, select `+ New function key` and kopy all the key-value-pairs from your `local.settings.json`. The result should look like this:
+1. Here you can also see an overview of how often the function was triggered. For now we need to enter the keys that we did have in the `local.settings.json`. Navigate to `Function Keys`, select `+ New function key` and kopy all the key-value-pairs from your `local.settings.json`. TThe result should look like this with the addition of the DeviceConnectionString:
    ![](/images/04functionkeys.png)
 
 Now you should be able to start and stop the Pi Emulator and always get the prediction about whether or not it is going to rain, all running in the cloud. This is how your final project should look like:

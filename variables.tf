@@ -1,10 +1,10 @@
 variable "location" {
-  default     = "northeurope"
+  default     = "westeurope"
   description = "Location of the resources"
 }
 
 variable "prefix" {
   type        = string
-  default     = "<YOUR_PREFIX>"
+  default     = "<YOUR PREFIX>"
   description = "The prefix used for all resources"
 }
