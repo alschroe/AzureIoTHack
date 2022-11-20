@@ -2,6 +2,8 @@ name: Create Resources
 
 on:
   push:
+    branches:
+      - main
     paths:
       - '**.tf'
 
