@@ -1,4 +1,4 @@
-name: Train ML Model
+name: Deploy Services
 
 on:
   workflow_run:
@@ -40,10 +40,8 @@ jobs:
           az extension add --name azure-iot
           prefix="xelas"
           az iot hub device-identity create --device-id myPi --hub-name $prefix'iot-prod-iothub'
-          az functionapp keys set --key-name AzureWebJobsDashboard --key-type functionKeys --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --key-value UseDevelopmentStorage=true
-          az functionapp keys set --key-name AzureWebJobsStorage --key-type functionKeys --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --key-value $(az storage account show-connection-string --name $prefix'iotprodsa' --resource-group $prefix'iot-prod-rg' --output tsv)
-          az functionapp keys set --key-name ConnectionString --key-type functionKeys --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --key-value $(az iot hub connection-string show -n $prefix'iot-prod-iothub' --default-eventhub --output tsv)
-          az functionapp keys set --key-name DeviceConnectionString --key-type functionKeys --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --key-value $(az iot hub connection-string show -n $prefix'iotpihub' --output tsv)
+          az functionapp config appsettings set --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --settings ConnectionString=$(az iot hub connection-string show -n $prefix'iot-prod-iothub' --default-eventhub --output tsv)
+          az functionapp config appsettings set --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --settings DeviceConnectionString=$(az iot hub connection-string show -n $prefix'iotpihub' --output tsv)
 
 # connection=$(az iot hub device-identity connection-string show --device-id myPi --hub-name $prefix'iotpihub' --output tsv)
 

@@ -139,7 +139,12 @@ resource "azurerm_function_app" "prod" {
   storage_account_name       = azurerm_storage_account.prod.name
   storage_account_access_key = azurerm_storage_account.prod.primary_access_key
   os_type                    = "linux"
-  version                    = "~4"
+  version                    = "~3"
+  app_settings = {
+    "AzureWebJobsDashboard"          = "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME"       = "node",
+    "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.application_insights.instrumentation_key,
+  }
 
   site_config {
     linux_fx_version = "python|3.9"
