@@ -38,18 +38,23 @@ This time we will use the Azure portal to use the Azure Machine Learning Studio 
 1. Select the Azure Machine Learning workspace 'prefixiotml'. On the *Overview* page you will see a blue *Launch studio* button. Select it. It will forward you to a separate view for the Azure Machine Learning workspace. <br>
     ![Showing where AutoML can be found in the azure machine learning studio](/images/02studio.png) <br>
 1. On the left side you will find the menue point *Automated ML*. Select it. We will work with the UI today but there are many options to make use of the Azure Machine Learning workspace.
+    </br>
     ![Showing where AutoML can be found in the azure machine learning studio](/images/01automl.png) <br>
 1. Select *New Automated ML run*.
+    <br>
     ![Showing where AutoML can be found in the azure machine learning studio](/images/01newautoml.png) <br>
-1. Start the process of creating a new dataset by selecting *Create dataset* and from the dropdown *From web files*.
-    ![Showing where AutoML can be found in the azure machine learning studio](/images/01webfiles.png) <br>
-1. On the *Basic info* tab, insert the *Web URL* **https://azuresynapseml.blob.core.windows.net/weather/data.dataset.parquet** and *Name* the dataset **weather**. It will contain three columns, *isRain* - holding information whether it is raining or not (Yes, NO), *temperature* - holding the temperature in Celsius and *humidity* - holding well the humindity.
-    ![Showing where AutoML can be found in the azure machine learning studio](/images/01basicinfo.png) <br>
-1. Leave everything as is on the next tabs until you can hit *Create*. Now select the Dataset *weather* - you might need to refresh the dataset overview using the *Refresh* button. After selecting hit *Next*.
-1. You need to create an experiment and a compute resource on which your model will be trained. Under *Experiment name* select *Create new* and give your experiment the name **predictRain**. The *Target column* should be **isRain (Int)**. 
-    Under *Select Azure ML compute cluster* hit the **+ New** link.
-    Leave the virtual machine specifications as is, add some name and confirm.
-    It will take some time to create the cluster. After that select it from the dropdown and hit *Next*.
+1. Start the process of creating a new data asset by selecting _Create_ and giving it the _Name_ **weather**. Leave the description blank.
+   ![Showing where AutoML can be found in the azure machine learning studio](/images/01createdataasset.png)
+1. Choose _From web files_ as a source for your data asset.
+   ![Showing where AutoML can be found in the azure machine learning studio](/images/01datasource.png)
+1. Next, insert the data set _Web URL_ **https://raw.githubusercontent.com/alschroe/AzureIoTHack/main/data/weatherdata.csv**. It will contain three columns, _isRain_ - holding information whether it is raining or not (0 (yes), 1 (no)), _temperature_ - holding the temperature in Celsius and _humidity_ - holding the humidity.
+   ![Showing where AutoML can be found in the azure machine learning studio](/images/01basicinfo.png) <br>
+1. Leave everything as is on the next tabs until you can hit _Create_.
+1. Now, select the data asset _weather_ - you might need to refresh the data asset overview using the _Refresh_ button. After selecting it, hit _Next_.
+1. You need to create an experiment and a compute resource on which your model will be trained. Under _Experiment name_ select _Create new_ and give your experiment the name **predictRain**. The _Target column_ should be **isRain (Int)**.
+   Under _Select Azure ML compute cluster_ hit the **+ New** link.
+   Leave the virtual machine specifications as is, add some name and confirm.
+   It will take some time to create the cluster. After it has been created, select it from the dropdown and hit _Next_.
     ![Showing where AutoML can be found in the azure machine learning studio](/images/01configrun.png) <br>
 1. The *Classification* task type should be pre-selected. Go on *View additional configuration settings*. Behind the category *Exit criterion* you should make sure to set the *Training job time (hours)* to **0.5**. 
     ![](/images/01automltask.png)<br>

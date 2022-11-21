@@ -68,7 +68,7 @@ Open a terminal on your local computer again and make sure your prefix is still 
 
     If you have one or more versions installed you can set the version of the virtual environment you will create next by adding `-3.7`, `-3.8` or `-3.9` to the command.
 
-    Using PowerShell:
+    Using PowerShell: py -3.9 -m venv .venv (In case you have several versions of Python installed. Run as Administrator)
 
     ```shell
     py -m venv .venv
@@ -122,7 +122,14 @@ Open a terminal on your local computer again and make sure your prefix is still 
     Under _Authentication_ copy the **Primary key** and paste it to the _api_key_ in line 18 of `__init__.py`.
     ![Showing where AutoML can be found in the azure machine learning studio](/images/04basics.png) <br>
     As you are already here go to the _Test_ tab and test your endpoint.
-    Your function is now ready to run. If you are using VS Code hit **F5** to start the function. If not start the function from the _raspberrypi_function_ folder by entering:
+
+Now, ensure you have installed all required modules and packages shown in file _requirements.txt_
+
+```shell
+pip install -r requirements.txt
+``` 
+
+Your function is now ready to run. If you are using VS Code hit **F5** to start the function. If not start the function from the _raspberrypi_function_ folder by entering:
 
 ```shell
 func start

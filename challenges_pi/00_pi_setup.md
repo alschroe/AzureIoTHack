@@ -1,7 +1,7 @@
 # Set up your environment
 
 To work properly with all the different moving bits and parts we want to connect in this Hackathon, we will have to do quite a bit of setting up. Make sure you have everything on hand that you need:
-- your local machine (any computer or set up a virtual machine if you do not feel like installing any additional stuff on your machine)
+- Your local machine (any computer or set up a virtual machine if you do not feel like installing any additional stuff on your machine)
 - An Azure subscription: It has been created for you and you should have received your access credentials. Go to [https://portal.azure.com](https://portal.azure.com) and try login in with your credentials. If this is not possible, please reach out to your contact person.
 - A Raspberry Pi 4 with charging cable and micro SD
 - A Sense HAT, which will collect all the data 
@@ -24,7 +24,7 @@ Take some time to get familiar with the portal. You can find more information ab
     <br>
 
 ## Your local machine
-We are going to set everything up, so you can work on Azure resources from your local machine. There are multiple options to interact with Azure and you can chose yourself how to do it later on.
+We are going to set everything up, so you can work on Azure resources from your local machine. There are multiple options to interact with Azure and you can choose yourself how to do it later on.
 1. (optional) Install Visual Studio Code from [here](https://code.visualstudio.com/Download) to handle any code you are going to need. You could of course use a different development environment, we just like this one.
 1. (optional) Install the Windows Terminal. You can get it [here](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab). It is a command-line front-end and can run Command Prompt, PowerShell, WSL2, SSH and an Azure Clound Shell Connector. Again there are other options, but we like this one.
 1. Open the shell and download the Azure CLI from [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli). You can also install it without manual downloading using the PowerShell (Run as Administrator):

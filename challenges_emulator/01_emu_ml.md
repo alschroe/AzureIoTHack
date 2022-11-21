@@ -49,9 +49,10 @@ This time we will use the Azure portal to use the Azure Machine Learning Studio 
 1. Select the Azure Machine Learning workspace 'prefixiotml'. On the _Overview_ page you will see a blue _Launch studio_ button. Select it. It will forward you to a separate view for the Azure Machine Learning workspace. <br>
    ![Showing where AutoML can be found in the azure machine learning studio](/images/02studio.png) <br>
 1. On the left side you will find the menu point _Automated ML_. Select it. We will work with the UI today but there are many options to make use of the Azure Machine Learning workspace.
-</br>
+   </br>
    ![Showing where AutoML can be found in the azure machine learning studio](/images/01automl.png) <br>
 1. Select _New Automated ML job_.
+   <br>
    ![Showing where AutoML can be found in the azure machine learning studio](/images/01newautoml.png) <br>
 1. Start the process of creating a new data asset by selecting _Create_ and giving it the _Name_ **weather**. Leave the description blank.
    ![Showing where AutoML can be found in the azure machine learning studio](/images/01createdataasset.png)
