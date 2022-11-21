@@ -92,7 +92,7 @@ We are going to run our code on a simulated Raspberry Pi connected to a breadboa
 
 1. To see what is happening in the Azure IoT Hub navigate to the Azure portal. There, find your Azure IoT Hub. On the `Overview` site you will see the messages received:
    ![See the Overview site of the Azure IoT Hub](/images/03iothubinfo.png)
-1. Let's open the Azure Cloud Shell:
+1. Let's open our Terminal:
    ![Image of the upper bar in the Azure portal with focus on the Cloud Shell icon](/images/00portalshell.png)
 1. There enter the following to see the messages comming in:
    ```shell

@@ -71,10 +71,10 @@ We are going to set everything up, so you can work on Azure resources from your 
     git config --global user.email "<YOUR USER EMAIL>"
     ```
 
-1. You might need to restart your shell at this point. After that, create a new GitHub organization. A GitHub organization gives you and your team the opportunity to collaboarate on GitHub, which serves a a container for your shared work. To find out more about organizations, check out this [link](https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations)
+1. You might need to restart your shell at this point. After that, create a new GitHub organization. A GitHub organization gives you and your team the opportunity to collaboarate on GitHub, which serves as a container for your shared work. To find out more about organizations, check out this [link](https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations).
 
    To create the organization follow these steps:
-
+   </br>
    - Click on your profile icon in the upper right corner and click on _Your organizations_:
    ![Image of menu, where you can find your GitHub organizations, repositories, projects and profile information](/images/00creatorg.png)
    - Create a _New organization_ and give it a unique name (e.g. iot-hackathon-_yourname_). Make sure to select _Create a free organization_ to avoid costs.
@@ -118,5 +118,5 @@ We are going to set everything up, so you can work on Azure resources from your 
 To start with the challenges, you now have 2 options:
 You can train a Machine Learning model using Automated Machine Learning or you can use the Azure Machine Learning Designer.
 
-Go to the [next steps](./01_emu_ml.md).
+Go to the [next steps](./01_emu_ml.md) (Automated Machine Learning).
 
