@@ -15,10 +15,13 @@ Open up the terminal of your local machine.
     ```shell
     az iot hub create --name $prefix'iotpihub' --resource-group $prefix'iotpirg' --location westeurope --sku S1
     ```
-1. Let's register a new device:
+1. In order for the IoT Hub to be able to receive messages from and send messages to a device, you need to register it. Therefore, let's register a new device:
     ```shell
     az iot hub device-identity create --device-id myPi --hub-name $prefix'iotpihub'
     ```
+   You can also see the new device within your IoT Hub resource under _Devices_:
+   ![Screenshot of IoT Hub devices within Azure portal](/images/02iotdevices.png)
+
 1. Get the primary connection string:
     Using PowerShell:
     ```PowerShell
@@ -32,5 +35,8 @@ Open up the terminal of your local machine.
     ```shell
     echo $connection
     ```
+
+    To get the connection string from within the UI, you can click on your device within the portal and receive it manually:
+    ![Screenshot of Azure portal with device connection string displayed](/images/02iotdevicestring.png)
 
 Go to the [next steps](./03_pi_app.md)
