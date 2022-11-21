@@ -41,7 +41,9 @@ jobs:
           prefix="<YOUR PREFIX>"
           az iot hub device-identity create --device-id myPi --hub-name $prefix'iot-prod-iothub'
           az functionapp config appsettings set --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --settings ConnectionString=$(az iot hub connection-string show -n $prefix'iot-prod-iothub' --default-eventhub --output tsv)
-          az functionapp config appsettings set --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --settings DeviceConnectionString=$(az iot hub connection-string show -n $prefix'iotpihub' --output tsv)
+          az functionapp config appsettings set --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --settings DeviceConnectionString=$(az iot hub connection-string show -n $prefix'iot-prod-iothub' --output tsv)
+          az functionapp config appsettings set --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --settings "AzureMLurl=http:/..."
+          az functionapp config appsettings set --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --settings "AzureMLkey=..."
 
 # connection=$(az iot hub device-identity connection-string show --device-id myPi --hub-name $prefix'iotpihub' --output tsv)
 

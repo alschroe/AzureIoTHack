@@ -5,6 +5,8 @@
     "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
     "ConnectionString": "Endpoint=...",
     "DeviceConnectionString": "HostName=...",
+    "AzureMLurl": "http://...",
+    "AzureMLkey": "...",
     "FUNCTIONS_WORKER_RUNTIME": "python"
   }
 }

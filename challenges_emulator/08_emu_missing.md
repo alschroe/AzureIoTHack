@@ -4,6 +4,8 @@ At this point we have a working solution - but is it going to run like this in p
 
 ## Staging environments
 
+When implementing a productive solution you want to develop in stages. 
+
 ## Security
 
 ## Edge and hybrid

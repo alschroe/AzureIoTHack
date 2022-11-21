@@ -111,6 +111,8 @@ Infrastructure as Code s the managing and provisioning of infrastructure through
 
 1. In the `functions.yml` replace <YOUR PREFIX> with a prefix of your choice. It can be the same as the one you startet off with. You should have to replace it twice.
 
+1. As before the `local.settings.json` will not be uploaded. But we do not want to place the endpoint and the key of our Azure ML model as plain text into our function. Mainly because we will push the code into our repo where it will be visible for everyone. This time paste the value of the score URL and the key for the endpoint in line 45 and 46.
+
 1. Push the changes by entering the following in your terminal within the correct directory. If the issue/item you are working on is not **#4** adapt the commit message:
     ```shell
     git add *
