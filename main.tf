@@ -41,29 +41,29 @@ resource "azurerm_key_vault" "prod" {
   purge_protection_enabled = false
 }
 
-# Create Azure container registry
-resource "azurerm_container_registry" "prod" {
-  name                = "${var.prefix}iotprodcr"
-  location            = azurerm_resource_group.prod.location
-  resource_group_name = azurerm_resource_group.prod.name
-  sku                 = "Premium"
-  admin_enabled       = true
-}
+# # Create Azure container registry
+# resource "azurerm_container_registry" "prod" {
+#   name                = "${var.prefix}iotprodcr"
+#   location            = azurerm_resource_group.prod.location
+#   resource_group_name = azurerm_resource_group.prod.name
+#   sku                 = "Premium"
+#   admin_enabled       = true
+# }
 
-# Create Azure machine learning workspace
-resource "azurerm_machine_learning_workspace" "prod" {
-  name                    = "${var.prefix}-iot-prod-workspace"
-  location                = azurerm_resource_group.prod.location
-  resource_group_name     = azurerm_resource_group.prod.name
-  application_insights_id = azurerm_application_insights.prod.id
-  key_vault_id            = azurerm_key_vault.prod.id
-  storage_account_id      = azurerm_storage_account.prod.id
-  container_registry_id   = azurerm_container_registry.prod.id
+# # Create Azure machine learning workspace
+# resource "azurerm_machine_learning_workspace" "prod" {
+#   name                    = "${var.prefix}-iot-prod-workspace"
+#   location                = azurerm_resource_group.prod.location
+#   resource_group_name     = azurerm_resource_group.prod.name
+#   application_insights_id = azurerm_application_insights.prod.id
+#   key_vault_id            = azurerm_key_vault.prod.id
+#   storage_account_id      = azurerm_storage_account.prod.id
+#   container_registry_id   = azurerm_container_registry.prod.id
 
-  identity {
-    type = "SystemAssigned"
-  }
-}
+#   identity {
+#     type = "SystemAssigned"
+#   }
+# }
 
 # Create Azure iot hub (https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/iothub)
 resource "azurerm_iothub" "prod" {
@@ -139,7 +139,11 @@ resource "azurerm_function_app" "prod" {
   storage_account_name       = azurerm_storage_account.prod.name
   storage_account_access_key = azurerm_storage_account.prod.primary_access_key
   os_type                    = "linux"
-  version                    = "~4"
+  version                    = "~3"
+  app_settings = {
+    "AzureWebJobsDashboard"          = "UseDevelopmentStorage=true",
+    "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.prod.instrumentation_key,
+  }
 
   site_config {
     linux_fx_version = "python|3.9"
