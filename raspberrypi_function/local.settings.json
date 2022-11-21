@@ -4,6 +4,7 @@
     "AzureWebJobsStorage": "DefaultEndpointsProtocol=https...",
     "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
     "ConnectionString": "Endpoint=...",
+    "DeviceConnectionString": "HostName=...",
     "FUNCTIONS_WORKER_RUNTIME": "python"
   }
 }

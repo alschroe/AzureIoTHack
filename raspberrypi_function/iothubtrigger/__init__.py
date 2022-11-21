@@ -12,7 +12,7 @@ def allowSelfSignedHttps(allowed):
     if allowed and not os.environ.get('PYTHONHTTPSVERIFY', '') and getattr(ssl, '_create_unverified_context', None):
         ssl._create_default_https_context = ssl._create_unverified_context
 
-connectionstr = 'HostName=...' # Replace this with the Primary Connection String for your IoT device myPi
+connectionstr = os.environ["DeviceConnectionString"] # gets the Connection String for the IoTHub from either the local.settings.json or the Application Settings
 device = 'myPi'
 url = 'http://....westeurope.azurecontainer.io/score' # Replace this with the endpoint for the Azure ML web service
 api_key = '...' # Replace this with the API key for the Azure ML web service
