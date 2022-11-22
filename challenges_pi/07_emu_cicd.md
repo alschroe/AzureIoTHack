@@ -172,4 +172,3 @@ One last step needs to be done. Currently the Pi sends and listens to the old Io
     python3 temphumidrain.py 
     ```
 
-Go to the [next steps](./07_pi_missing.md)

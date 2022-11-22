@@ -166,4 +166,3 @@ One last step needs to be done. Currently the emulator sends and listens to the 
 
 1. Run the Emulator and make sure everything works. If you are unsure have a look at the resources in Azure - specifically at the metrics of your IoTHub and your Function App.
 
-Go to the [next steps](./07_pi_missing.md)
