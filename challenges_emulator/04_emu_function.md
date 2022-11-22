@@ -1,14 +1,16 @@
 # Communicate from the Azure IoT Hub to the Azure Machine Learing service
 
-We created an Azure Function for you. It is triggered every time the Iot Hub receives a message from your Pi emulator and forwards the needed content to the Azure Machine Learning Service. In return, it also receives the rain prediction to the sensor temperature and humidity data.
+In this challenge, we are going to create an Azure Function, which is triggered every time the IoT Hub receives a message from your Pi emulator and forwards the needed content to the Azure Machine Learning Service. In return, it also receives the rain prediction to the sensor temperature and humidity data.
 
 We will stay on your local machine to implement this.
 
 ## Deploy Machine Learning model
 
-The automated Machine Learning model should have trained by now. (If you have trained and deployed the Machine Learning model using the ML Designer, you can skip this step.)
+The automated Machine Learning model should have trained by now. In order to be able to use the trained Machine Learning model, we first need to deploy it. Therefore, please follow the next steps:
 
-1. Navigate back to the _Azure Machine Leanrning Studio_ (via the portal move to your AML service and from there to the studio).
+(Btw, If you have trained and deployed the Machine Learning model using the ML Designer, you can skip this step.)
+
+1. Navigate back to the _Azure Machine Learning Studio_ (via the portal move to your AML service and from there to the studio).
 1. Navigate to _Jobs_ and select your experiment _predictRain_.
 
    ![Showing where AutoML can be found in the azure machine learning studio](/images/04experiments.png) <br>
@@ -26,9 +28,11 @@ The automated Machine Learning model should have trained by now. (If you have tr
 
 ## Create an Azure Function and an Azure Storage Account locally
 
+Now, we will create the Azure Function, which is triggered every time the IoT Hub receives a message from your Pi emulator and forwards the needed content to the Azure Machine Learning Service.
+
 Open a terminal on your local computer again and make sure your prefix is still stored in it.
 
-1. We will start by creating our general-purpose storage account.
+1. We will start by creating our general-purpose storage account. This is needed to store the Azure function:
    ```shell
    az storage account create --name $prefix'awjstorage' --location westeurope --resource-group $prefix'iotpirg' --sku Standard_LRS
    ```
@@ -44,13 +48,13 @@ Open a terminal on your local computer again and make sure your prefix is still 
     ```shell
     func --version
     ```
-1.  Make sure you are uo to date on the _AzureIoTHack_ git repo. While in the repo check:
+1.  Make sure you are up to date on the _AzureIoTHack_ git repo. While in the repo check:
 
     ```shell
     git pull
     ```
 
-    We want to activate a virtual environment named .venv.
+    We want to activate a virtual environment named .venv. We have already created all necessary parts, for you to create the Azure function. Therfore, change into the directory, where the Azure function files are stored.
 
     ```shell
     cd raspberrypi_function
@@ -64,7 +68,7 @@ Open a terminal on your local computer again and make sure your prefix is still 
 
     If you have one or more versions installed you can set the version of the virtual environment you will create next by adding `-3.7`, `-3.8` or `-3.9` to the command.
 
-    Using PowerShell (alternatively `py -3.8 -m venv .venv`):
+    Using PowerShell: py -3.9 -m venv .venv (In case you have several versions of Python installed. Run as Administrator)
 
     ```shell
     py -m venv .venv
@@ -74,7 +78,7 @@ Open a terminal on your local computer again and make sure your prefix is still 
     .venv/scripts/activate
     ```
 
-    Using bash (alternatively `python -3.8 -m venv .venv`):
+    Using bash:
 
     ```bash
     python -m venv .venv
@@ -113,11 +117,20 @@ Open a terminal on your local computer again and make sure your prefix is still 
     The az CLI extension for this is currently still experimental so we need to navigate back to the _Azure Machine Learning studio_.
     Under _Endpoints_ select the endpoint you previously deployed.
     ![Where to find the Endpoint](/images/01automlendoint.png) <br>
+
     On the _Consume_ tab of your endpoint you will find a **REST endpoint**. Paste the value 'http://...' as value for _AzureMLurl_ in the _local.settings.json_.
     Under _Authentication_ copy the **Primary key** and paste the value 'yqpie4...' as value for _AzureMLkey_ in the _local.settings.json_.
+
     ![Showing where AutoML can be found in the azure machine learning studio](/images/04basics.png) <br>
     As you are already here go to the _Test_ tab and test your endpoint.
-    Your function is now ready to run. If you are using VS Code hit **F5** to start the function. If not start the function from the _raspberrypi_function_ folder by entering:
+
+Now, ensure you have installed all required modules and packages shown in file _requirements.txt_
+
+```shell
+pip install -r requirements.txt
+``` 
+
+Your function is now ready to run. If you are using VS Code hit **F5** to start the function. If not start the function from the _raspberrypi_function_ folder by entering:
 
 ```shell
 func start
@@ -162,3 +175,5 @@ Go back to the simulator in your browser.
 
 Now you should be able to start and stop the Pi Emulator and always get the prediction about whether or not it is going to rain, all running in the cloud. This is how your final project should look like:
 ![Showing the menu in the Azure portal with the + create button being on the very left](/images/architectureemu.png)
+
+Go to the [next steps](./06_emu_github.md)
