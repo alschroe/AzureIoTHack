@@ -38,10 +38,16 @@ Cloning this repository to your local machine was the same as forking it already
 
 ## GitHub Actions
 
+[GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline. You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production.
+
+GitHub Actions are comprised of several components. Today you will dive into GitHub Actions **Workflows** and learn how to build and deploy each Azure service (the ones you created previously) in an automated way.
+
+### GitHub Actions Workflows
+
 A GitHub Actions workflow is a configurable automated process that will run one or more jobs. Workflows are defined by a YAML file checked in to your repository and will run when triggered by an event in your repository, or they can be triggered manually, or at a defined schedule.
 
 You can find GitHub Actions in your repository. Click on _Actions_ There you can see all workflows which have been triggered. None should be in there so far.
 </br>
 ![Screenshot of where to find GitHub Actions in a GitHub repository](/images/06actions.png)
 
-During the next challenges, we will introduce you to Continuous Integration and Continuous Development (CI/CD). GitHub Actions is a great tool to work with to automate your processes. You will learn more about it in [next steps](./07_emu_cicd.md).
+During the next challenges, we will introduce you to Continuous Integration and Continuous Development (CI/CD). GitHub Actions is a great tool to work with to automate your processes. You will learn more about it in [next steps](./07_pi_cicd.md).

@@ -1,10 +1,10 @@
 # Set up your environment
 
 To work properly with all the different moving bits and parts we want to connect in this Hackathon, we will have to do quite a bit of setting up. Make sure you have everything on hand that you need:
-- your local machine (any computer or set up a virtual machine if you do not feel like installing any additional stuff on your machine)
-- an Azure subscription (go to https://azure.microsoft.com/en-us/free/ and create a new free tier account)
-- a Raspberry Pi 4 with charging cable and micro SD
-- a Sense HAT, which will collect all the data 
+- Your local machine (any computer or set up a virtual machine if you do not feel like installing any additional stuff on your machine)
+- An Azure subscription: It has been created for you and you should have received your access credentials. Go to [https://portal.azure.com](https://portal.azure.com) and try login in with your credentials. If this is not possible, please reach out to your contact person.
+- A Raspberry Pi 4 with charging cable and micro SD
+- A Sense HAT, which will collect all the data 
 - Optional but preferred: 
     - An SD Adapter depending on whether or not your device has an SD or micro SD slot - with preinstalled Raspberry Pi OS on your micro SD card, this is not needed but still preferred
     - Desktop/Monitor (with micro hdmi adapter), keyboard, mouse <br>
@@ -24,7 +24,7 @@ Take some time to get familiar with the portal. You can find more information ab
     <br>
 
 ## Your local machine
-We are going to set everything up, so you can work on Azure resources from your local machine. There are multiple options to interact with Azure and you can chose yourself how to do it later on.
+We are going to set everything up, so you can work on Azure resources from your local machine. There are multiple options to interact with Azure and you can choose yourself how to do it later on.
 1. (optional) Install Visual Studio Code from [here](https://code.visualstudio.com/Download) to handle any code you are going to need. You could of course use a different development environment, we just like this one.
 1. (optional) Install the Windows Terminal. You can get it [here](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab). It is a command-line front-end and can run Command Prompt, PowerShell, WSL2, SSH and an Azure Clound Shell Connector. Again there are other options, but we like this one.
 1. Open the shell and download the Azure CLI from [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli). You can also install it without manual downloading using the PowerShell (Run as Administrator):
@@ -48,24 +48,59 @@ We are going to set everything up, so you can work on Azure resources from your 
     az group list
     ```
     This should show you all the resource groups in your Azure subscription - so at least a resource group named "cloud-shell-storage-westeurope" you created in the previous section.
+
 1. Get Git [here](https://git-scm.com/downloads) - it helps you to track changes in files, specifically code. We are going to need it to clone this repo to our local machine.
+
+   **Hint**: To learn more about version control with Git, follow this [free and simple learning path](https://docs.microsoft.com/en-us/learn/modules/intro-to-git/).
+
 1. If you haven't yet, create a [GitHub](https://github.com/join) account. This service for software development and version control is used by over 83 million developers and we will use it for automation later on.
-1. Connect to ypur GitHub account from your local machine by entering:
+
+1. Connect to your GitHub account from your local machine by entering:
     ```shell
-    git config --global user.name "YourUserName"
+    git config --global user.name "<YOUR USER NAME>"
     ```
     ```shell
-    git config --global user.email "YourUserEmail"
+    git config --global user.email "<YOUR USER EMAIL>"
     ```
-1. You might need to restart your shell at this point. After that clone the current repository to your local machine.
-    ```shell
-    git clone https://github.com/alschroe/AzureIoTHack.git
-    ```
-    You can open it up in Visual Studio Code like this - or with the IDE of your choice.
-    ```shell
-    cd AzureIoTHack
-    code .
-    ```
+1. You might need to restart your shell at this point. After that, create a new GitHub organization. A GitHub organization gives you and your team the opportunity to collaboarate on GitHub, which serves as a container for your shared work. To find out more about organizations, check out this [link](https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations).
+
+   To create the organization follow these steps:
+   </br>
+   - Click on your profile icon in the upper right corner and click on _Your organizations_:
+   ![Image of menu, where you can find your GitHub organizations, repositories, projects and profile information](/images/00creatorg.png)
+   - Create a _New organization_ and give it a unique name (e.g. iot-hackathon-_yourname_). Make sure to select _Create a free organization_ to avoid costs.
+   - Skip the step of adding more organization members. This is where you would add your team members if your were to work on a project. However, you do not need to add any organization members for this hackathon.
+   - Skip the next steps as well and click _Submit_.
+
+   Your organization has now been created. Click around to check out the UI of a GitHub organization.
+
+1. As a next step, create a [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks) of the GitHub repository you will be working with. A fork is a copy of a repository that you manage. Forks let you make changes to a project without affecting the original repository.
+
+   Please follow these steps:
+
+   - Go to the [repository](https://github.com/alschroe/AzureIoTHack), click on _Fork_ and create one:
+   ![Image of AzureIoTHack repository, which shows where to click to create a fork](/images/00createfork.png)
+   - Select your newly created organization as the _Owner_ and do not change the Repository name.
+
+   You have now successfully forked the repository and should be on the page of the fork within your GitHub organization.
+
+1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the current repository to your local machine. This enables you to work locally on your computer.
+   
+   Follow these steps:
+
+   - Copy this link under _Code_ -> _HTTPS_.
+   - Copy the below command and replace ```https://github.com/<YOUR_ORG>/AzureIoTHack.git``` with the copied link.
+
+   ```shell
+   git clone https://github.com/<YOUR_ORG>/AzureIoTHack.git
+   ```
+
+   You can open it up in Visual Studio Code like this - or with the IDE of your choice.
+
+   ```shell
+   cd AzureIoTHack code .
+   ```
+
 1. Download the PuTTY installer from [here](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) and install it.
 This should do for now. <br>
     <br>
@@ -83,22 +118,25 @@ The Raspberry Pi is a single-board computer and needs to be properly setup so we
     1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.com/software/). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (recommended)*
     1. Insert the micro SD card into your local machine. If you have used the SD card before, make sure to format it.
     1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
-    1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
-    1. You will need to very shortly remove the micro SD card and insert it again into your local machine. 
-1. Now we want to set up our SSH connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder [raspberrypi_ssh](../raspberrypi_setup/raspberrypi_ssh) in this repo you will find two files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other file is called *ssh* - without file extension. This file will automatically enable SSH on your Pi.
-1. Then access the boot folder on your micro SD card and paste the two files in them.
+    1. Click on the settings icon and do the following:
+    ![Image of Imager Setup1](/images/00_setup_pi.png)
+
+
+        - Give your pi a name and note it down (it can be something like "YOURNAME-pi")
+        - Setup your username and password (note these vlaues down as you will need them later)
+        - Enable SSH and add your network's name and password
+
+    ![Image of Imager Setup2](/images/00_setup_pi_2.png)
+    ![Image of Imager Setup3](/images/00_setup_pi_3.png)
+    ![Image of Imager Setup4](/images/00_setup_pi_4.png)
+        
+    Save your settings
+
+1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
 1. Eject the SD card securely and insert the micro SD card into your Raspberry Pi.
 1. Now first connect your desktop monitor, your keyboard and your mouse to the Raspberry Pi.
 1. Connect your Pi to a power resource.
-1. You might be prompted with a login.
-    The default login is **pi** and the default password is **raspberry**.
-1. We want to change that. So once you are on your Raspberry Pi, open the terminal and enter the following.
-    ```bash
-    sudo raspi-config
-    ```
-    The Configuration Tool will open up and show you a bunch of options.
-    Select *1 Change User Password | Change password for the 'pi' user* by hitting enter while it is highlighted. Make sure to remember your password.
-    Select *OK* and after that - in the main overview of the Configuration Tool - select *Finish* to exit the tool by using the tab key on your keyboard.
+1. You might be prompted with a login. Use your previously created username and password.
 1. Open a terminal on your Pi. We want to install the Azure CLI here as well to make our lives easier in the long run. Enter this command:
     ```bash
     curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
@@ -117,24 +155,28 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
 1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.com/software/). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (other)* --> *Raspberry Pi OS Lite*.
 1. Insert the micro SD card into your local machine. If you have used the SD card before, make sure to format it.
 1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
+1. Click on the settings icon and do the following:
+    ![Image of Imager Setup1](/images/00_setup_pi.png)
+
+    - Give your pi a name and note it down (it can be something like "YOURNAME-pi")
+    - Setup your username and password (note these vlaues down as you will need them later)
+    - Enable SSH and add your network's name and password
+
+    ![Image of Imager Setup2](/images/00_setup_pi_2.png)
+    ![Image of Imager Setup3](/images/00_setup_pi_3.png)
+    ![Image of Imager Setup4](/images/00_setup_pi_4.png)
+        
+    Save your settings
+
 1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
-1. Now we want to set up our SSH connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder [raspberrypi_ssh](../raspberrypi_setup/raspberrypi_ssh) in this repo you will find two files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other file is called *ssh* - without file extension. This file will automatically enable SSH on your Pi.
-1. You will need to very shortly remove the micro SD card and insert it again into your local machine. Then access the boot folder on your micro SD card and paste the two files in them.
-1. Eject the SD card securely.
-1. Instert the micro SD card into your Raspberry Pi.
+1. Eject the SD card securely and insert the micro SD card into your Raspberry Pi.
+1. Insert the micro SD card into your Raspberry Pi.
 1. Connect your Pi to a power resource. Let it stew for a moment - maybe grab a coffee.
 1. Open PuTTY - you installed it in the beginning.
-    1. Under *Host Name (or IP addess)* enter ```raspberrypi.local```.
+    1. Under *Host Name (or IP addess)* enter the hostname you previously defined.
     1. Under *Port* ```22``` should already be entered, if not do so.
     1. Lastly select *Open*
-    1. You should be prompted for login. The default login is **pi** and the default password is **raspberry**.
-1. Now you are able to work on the Pi. The first thing we want to do is changing the default password. Type in:
-    ```bash
-    sudo raspi-config
-    ```
-    The Configuration Tool will open up and show you a bunch of options.
-    Select *1 Change User Password | Change password for the 'pi' user* by hitting enter while it is highlighted. Make sure to remember your password.
-    Select *OK* and after that - in the main overview of the Configuration Tool - select *Finish* to exit the tool by using the tab key on your keyboard.
+    1. You should be prompted for login. Type in your username and password.
 1. We want to install the Azure CLI here as well to make our lives easier in the long run. Enter this command:
     ```bash
     curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
@@ -153,25 +195,35 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
 1. Let's start by downloading the Raspberry Pi OS from [here](https://www.raspberrypi.com/software/). When installing it you will be asked to choose the correct Operating System. Click *CHOOSE OS* and select *Raspberry Pi OS (recommended)*
 1. Insert the micro SD card into your local machine. If you have used the SD card before, make sure to format it.
 1. Under *SD Card* click *CHOOSE SD CARD* and make sure you select the right storage space that represents your micro SD card.
-1. After that hit *WRITE*. This will flash the OS to your micro SD card. This will take a moment. After that hit *CONTINUE*.
-1. Now we want to set up our SSH connection, network connection and the remote desktop connection. There are other options to this. But ours will be fast, uncomplicated and replicable in real world cases. In the folder [raspberrypi_ssh](../raspberrypi_setup/raspberrypi_ssh) in this repo you will find three files. The *wpa_supplicant.conf* file contains all the information your Pi needs to connect to your home network. Open it and enter your network name and password. Don't forget to save the changes. The other file is called *SSH* - without file extension. This files will automatically enable SSH on your Pi.
-1. You will need to very shortly remove the micro SD card and insert it again into your local machine. Then access the boot folder on your micro SD card and paste the two files in them.
-1. Eject the SD card securely.
-1. Instert the micro SD card into your Raspberry Pi.
+1. Click on the settings icon and do the following:
+    ![Image of Imager Setup1](/images/00_setup_pi.png)
+    
+    - Give your pi a name and note it down (it can be something like "YOURNAME-pi")
+    - Setup your username and password (note these vlaues down as you will need them later)
+    - Enable SSH and add your network's name and password
+
+    ![Image of Imager Setup2](/images/00_setup_pi_2.png)
+    ![Image of Imager Setup3](/images/00_setup_pi_3.png)
+    ![Image of Imager Setup4](/images/00_setup_pi_4.png)
+        
+    Save your settings
+
+1. After that hit *WRITE*. This will flash the OS to your micro SD card. It might take a moment. After that hit *CONTINUE*
+1. Eject the SD card securely and insert the micro SD card into your Raspberry Pi.
+1. Insert the micro SD card into your Raspberry Pi.
 1. Connect your Pi to a power resource. Let it stew for a moment - maybe grab a coffee.
 1. Open PuTTY - you installed it in the beginning.
-    1. Under *Host Name (or IP addess)* enter ```raspberrypi.local```.
+    1. Under *Host Name (or IP addess)* enter the hostname you previously defined.
     1. Under *Port* ```22``` should already be entered, if not do so.
     1. Lastly select *Open*
-        > At this moment you will get a popup asking if you are sure this is your device. And this is a good question. So it is a Raspberry Pi on your network but if you are sharing the network with another colleague who is currently doing the same Hackathon it could be their Pi. There is just no way to know... Coordinate with your colleagues in this case.
-    1. You should be prompted for login. The default login is **pi** and the default password is **raspberry**.
-1. Now you are able to work on the Pi via shell. The first thing we want to do is changing the default password. Type in:
+    1. You should be prompted for login. Type in your username and password.
+1. Now you are able to work on the Pi via shell. The first thing we want to do is changing some settings in our Pi. Type in:
     ```bash
     sudo raspi-config
     ```
     The Configuration Tool will open up and show you a bunch of options.
-    Select *1 Change User Password* by hitting enter while it is highlighted. Make sure to remember your password.
-1. In the same Configuration Tool we now want to set the resolution of your Pi. Navigate to *7 Advanced Options* and hit enter. Than select *A5 Resolution* and there the screen resolution of your choosing. Select *OK*.
+
+1.  Set the resolution of your Pi. Navigate to *7 Advanced Options* and hit enter. Than select *A5 Resolution* and there the screen resolution of your choosing. Select *OK*.
 1. After this we want to change the Hostname. Navigate to *2 Network Options* and than *N1 Hostname*. Make again sure to remember your hostname. 
 1. Last navigate to *3 Interface Options* and from there to *P3 VNC*. Enabling this option will help us set up our remote monitor in the next steps. Back in the main overview of the Configuration Tool - select *Finish* to exit the tool by using the tab key on your keyboard. 
     > Be aware that having SSH and VNC activated opens two ports on your Pi. In a productive scenario this is not ideal. If you insist on remote desktop options in production make yourselfs familiar with SSH X11 Forwarding.
@@ -180,7 +232,7 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
     sudo reboot
     ```
 1. Now you need to install one more tool - a VNC Viewer. Download it from [here](https://www.realvnc.com/en/connect/download/viewer/) and install it. We did not do this in the beginning, since not everyone will have chosen the remote desktop option.
-1. Enter ```YOUR NEW HOSTNAME``` or the IP address of the Raspberry Pi in the text field. An authentication window should pop up. Enter the *Username* ```pi``` and your previously changed *Passowrd*. Select *OK* and you will have a remote desktop connection to your Pi. Important: You have to be outside of VPN to be able to connect to the Raspberry Pi!
+1. Enter ```YOUR HOSTNAME``` or the IP address of the Raspberry Pi in the text field. An authentication window should pop up. Enter your username and password. Select *OK* and you will have a remote desktop connection to your Pi. Important: You have to be outside of VPN to be able to connect to the Raspberry Pi!
 1. Open a terminal on your Pi. We want to install the Azure CLI here as well to make our lives easier in the long run. Enter this command:
     ```bash
     curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
@@ -192,6 +244,8 @@ SSH is the Secure Shell Protocol and used to securely connect to another device 
 </details> <br>
     <br>
     <br>
+
+**In case you are having issues or want to check the latest changes, please refer to the [Raspberry Pi documentation](https://www.raspberrypi.com/documentation/computers/getting-started.html).**  
 
 ## Your Sense HAT
 Now we have our Pi and our local machine set up, we need to get some sensor data. To do that, we have the **Sense HAT** and it is awsome. First things first - HAT means Hardware on Top and offers you an Expansion Board that is specifically created to be put right on top of your Pi to give you functionalities as lights, motors, sensors and fans. The Sense HAT offers us lights and sensors as well as a joystick. Here the sensors:
@@ -291,3 +345,8 @@ If you have chosen Option 2 or 3 while setting up your Pi and want to work via S
 <br>
 
 **We are looking forward to our Hackathon!**
+
+To start with the challenges, you now have 2 options:
+You can train a Machine Learning model using Automated Machine Learning or you can use the Azure Machine Learning Designer.
+
+Go to the [next steps](./01_pi_ml.md) (Automated Machine Learning).

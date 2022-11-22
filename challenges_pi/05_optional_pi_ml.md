@@ -15,6 +15,7 @@ There are again multiple options to do this, but we will go with the Azure CLI. 
 ## Create a machine learning pipeline
 
 1. On the left side you will find the menu point _Designer_. Select it. We will work with the UI today but there are many options to make use of the Azure Machine Learning workspace.
+   </br>
    ![Showing where the designer can be found in the azure machine learning studio](/images/02designer.png)
 1. Under _New pipeline_ select _Easy-to use prebuilt components_.
    Settings should show up in the new view. Here we need to create a compute resource on which our model can run. To create this resource click on **Create Azure ML compute instance**.
@@ -31,7 +32,8 @@ There are again multiple options to do this, but we will go with the Azure CLI. 
    ![Highlighting the Weather Dataset](/images/02dataset.png)
    When you select it on the canvas, a detailed window will pop up. In the _Outputs_ tab of this window you can get a preview of the data this dataset consists of.
 1. As you can see there is a lot of information. We are for now only interested in certain columns. So we need to add another asset. This time you will find it under **Component** and then **Select Columns in Dataset**. Drag and drop it under the Weather Dataset on your canvas. Now the pipeline part of our pipeline needs to be created. Under the _Weather Dataset_ is a little circle that represents an endpoint - the same above and under the _Select Colums in Dataset_. Connect the bottom circle of the dataset with the upper one of the select function.
-   ![How the connection looks like](/images/02pipeline.png)
+</br>
+![How the connection looks like](/images/02pipeline.png)
 1. Under the Details of **Select Columns in Dataset** press the **Edit column** link. In the showing popup select **By name**, as it is easier and then add **WeatherType** (we will use this to see wether it is rainy or not), **DryBulbCelsius** and **RelativeHumidity**. Press save and continue.
 1. For the next step add the asset **Edit Metadata** also under **Component**. Connect it to the **Select Columns in Dataset** output and repeat the step before by opening the details and selecting the columns **WeatherType**, **DryBulbCelsius** and **RelativeHumidity**. We want to rename them in this step and therefore under _New column names_ enter the following manually:
 
