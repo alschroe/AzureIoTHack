@@ -14,8 +14,8 @@ def allowSelfSignedHttps(allowed):
 
 connectionstr = os.environ["DeviceConnectionString"] # gets the Connection String for the IoTHub from either the local.settings.json or the Application Settings
 device = 'myPi'
-url = 'http://....westeurope.azurecontainer.io/score' # Replace this with the endpoint for the Azure ML web service
-api_key = '...' # Replace this with the API key for the Azure ML web service
+url = os.environ["AzureMLurl"] # Replace this with the endpoint for the Azure ML web service
+api_key = os.environ["AzureMLkey"] # Replace this with the API key for the Azure ML web service
 headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
 def sendData(temp, humid):

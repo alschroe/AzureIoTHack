@@ -104,21 +104,25 @@ Open a terminal on your local computer again and make sure your prefix is still 
     # for ConnectionString
     az iot hub connection-string show -n $prefix'iotpihub' --default-eventhub --output tsv
     ```
-    Paste the output 'Endpoint=sb://...' as value for _ConnectionString_ in the _local.settings.json_.
+
+    Paste the output 'Endpoint=sb://...' as value for *ConnectionString* in the *local.settings.json*.
+
     ```shell
     # for DeviceConnectionString
     az iot hub connection-string show -n $prefix'iotpihub' --output tsv
     ```
     Paste the output 'HostName=...' as value for _DeviceConnectionString_ in the _local.settings.json_.
-1.  Now navigate to the folder 'iothubtrigger' and there to `**__init__.py**`. We will enter our Machine Learning model endpoint.
-    Specifically we need to set the _url_ in line 17 and the _api_key_ in line 18.
+
+1.  We will also enter our Machine Learning model endpoint and its key.
     The az CLI extension for this is currently still experimental so we need to navigate back to the _Azure Machine Learning studio_.
     Under _Endpoints_ select the endpoint you previously deployed.
     ![Where to find the Endpoint](/images/01automlendoint.png) <br>
-    On the _Consume_ tab of your endpoint you will find a **REST endpoint**. Paste its content to the _url_ in line 17 of `__init__.py`.
-    Under _Authentication_ copy the **Primary key** and paste it to the _api_key_ in line 18 of `__init__.py`.
+    On the _Consume_ tab of your endpoint you will find a **REST endpoint**. Paste the value 'http://...' as value for _AzureMLurl_ in the _local.settings.json_.
+    Under _Authentication_ copy the **Primary key** and paste the value 'yqpie4...' as value for _AzureMLkey_ in the _local.settings.json_.
     ![Showing where AutoML can be found in the azure machine learning studio](/images/04basics.png) <br>
     As you are already here go to the _Test_ tab and test your endpoint.
+    Your function is now ready to run. If you are using VS Code hit **F5** to start the function. If not start the function from the _raspberrypi_function_ folder by entering:
+
 
 Now, ensure you have installed all required modules and packages shown in file _requirements.txt_
 

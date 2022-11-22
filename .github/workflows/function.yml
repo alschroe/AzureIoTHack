@@ -4,19 +4,12 @@ on:
   workflow_run:
     workflows: ["Create Resources"]
     types:
-      - completed
+      - completedS
 
-# CONFIGURATION
-# For help, go to https://github.com/Azure/Actions
-#
-# 1. Set up the following secrets in your repository:
-#   AZURE_FUNCTIONAPP_PUBLISH_PROFILE
-#
-# 2. Change these variables for your configuration:
 env:
-  AZURE_FUNCTIONAPP_NAME: '<YOUR PREFIX>iot-prod-fa'   # set this to your function app name on Azure
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'raspberrypi_function'       # set this to the path to your function app project, defaults to the repository root
-  PYTHON_VERSION: '3.9'                                        # set this to the python version to use (e.g. '3.6', '3.7', '3.8')
+  AZURE_FUNCTIONAPP_NAME: '<YOUR PREFIX>iot-prod-fa'   # enter your prefix here
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'raspberrypi_function'     
+  PYTHON_VERSION: '3.9'                                   
 
 jobs:
   build-and-deploy:
@@ -38,12 +31,14 @@ jobs:
         inlineScript: |
           az config set extension.use_dynamic_install=yes_without_prompt
           az extension add --name azure-iot
+# enter your prefix here
           prefix="<YOUR PREFIX>"
           az iot hub device-identity create --device-id myPi --hub-name $prefix'iot-prod-iothub'
           az functionapp config appsettings set --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --settings ConnectionString=$(az iot hub connection-string show -n $prefix'iot-prod-iothub' --default-eventhub --output tsv)
-          az functionapp config appsettings set --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --settings DeviceConnectionString=$(az iot hub connection-string show -n $prefix'iotpihub' --output tsv)
+          az functionapp config appsettings set --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --settings DeviceConnectionString=$(az iot hub connection-string show -n $prefix'iot-prod-iothub' --output tsv)
+          az functionapp config appsettings set --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --settings AzureMLurl=${{ secrets.AZURE_ML_MODEL_URL }}
+          az functionapp config appsettings set --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --settings AzureMLkey=${{ secrets.AZURE_ML_MODEL_KEY }}
 
-# connection=$(az iot hub device-identity connection-string show --device-id myPi --hub-name $prefix'iotpihub' --output tsv)
 
     - name: Setup Python ${{ env.PYTHON_VERSION }} Environment
       uses: actions/setup-python@v4

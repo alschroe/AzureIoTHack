@@ -113,13 +113,14 @@ Open a terminal on your local computer again and make sure your prefix is still 
     az iot hub connection-string show -n $prefix'iotpihub' --output tsv
     ```
     Paste the output 'HostName=...' as value for _DeviceConnectionString_ in the _local.settings.json_.
-1.  Now navigate to the folder 'iothubtrigger' and there to `**__init__.py**`. We will enter our Machine Learning model endpoint.
-    Specifically we need to set the _url_ in line 17 and the _api_key_ in line 18.
+1.  We will also enter our Machine Learning model endpoint and its key.
     The az CLI extension for this is currently still experimental so we need to navigate back to the _Azure Machine Learning studio_.
     Under _Endpoints_ select the endpoint you previously deployed.
     ![Where to find the Endpoint](/images/01automlendoint.png) <br>
-    On the _Consume_ tab of your endpoint you will find a **REST endpoint**. Paste its content to the _url_ in line 17 of `__init__.py`.
-    Under _Authentication_ copy the **Primary key** and paste it to the _api_key_ in line 18 of `__init__.py`.
+
+    On the _Consume_ tab of your endpoint you will find a **REST endpoint**. Paste the value 'http://...' as value for _AzureMLurl_ in the _local.settings.json_.
+    Under _Authentication_ copy the **Primary key** and paste the value 'yqpie4...' as value for _AzureMLkey_ in the _local.settings.json_.
+
     ![Showing where AutoML can be found in the azure machine learning studio](/images/04basics.png) <br>
     As you are already here go to the _Test_ tab and test your endpoint.
 
@@ -144,7 +145,7 @@ Go back to the simulator in your browser.
    ```javascript
    function receiveMessageCallback(msg) {
      var message = msg.getData().toString("utf-8");
-     if (message.includes("Yes")) {
+     if (message.includes("1")) {
        blinkLEDthrice();
        console.log("Receive message: " + "Rain predicted");
      } else {
@@ -169,7 +170,7 @@ Go back to the simulator in your browser.
 1. There is one thing missing. Our Connection String and the connection to the Azure Storage account currently reside in the `local.settings.json` file of the function project. This file will not be uploaded to Azure (see `.funcignore` for the files that will not be uploaded). We can set the needed keys in the Azure portal. So first navigate to the portal.
 1. There find your Azure Function and from there the function `iothubtrigger` you just uploaded under `Function`.
    ![](/images/04iothubtrigger.png)
-1. Here you can also see an overview of how often the function was triggered. For now we need to enter the keys that we did have in the `local.settings.json`. Navigate to `Function Keys`, select `+ New function key` and kopy all the key-value-pairs from your `local.settings.json`. TThe result should look like this with the addition of the DeviceConnectionString:
+1. Here you can also see an overview of how often the function was triggered. For now we need to enter the keys that we did have in the `local.settings.json`. Navigate to `Function Keys`, select `+ New function key` and kopy all the key-value-pairs from your `local.settings.json`. The result should look like this with the addition of the **DeviceConnectionString**,**AzureMLurl** and **AzureMLkey**:
    ![](/images/04functionkeys.png)
 
 Now you should be able to start and stop the Pi Emulator and always get the prediction about whether or not it is going to rain, all running in the cloud. This is how your final project should look like:
