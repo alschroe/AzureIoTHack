@@ -11,8 +11,10 @@ Let's dive into the DevOps world. You can also work as a Team on this part since
 We want to use GitHub as our DevOps tool. So let's treat it like a real software development project and create some **user stories**. A user story is an informal, natural language description of a feature that we want to implement.
 
 1. Navigate to the **Projects** within your GitHub organization. There select **New project**.
+    ![](/images/07createproject.png)
 
 1. In the **Select Template** window select **Boards** and hit **Create**.
+    ![](/images/07board.png)
 
 1. Rename the Project from 'untitled project' to something more specific and create your first **Todo** items. Name them as seen below.
     1. `Create Issues from Draft items`
@@ -22,19 +24,24 @@ We want to use GitHub as our DevOps tool. So let's treat it like a real software
     1. `Edit the unique naming within Terraform`
     1. `Push the changes to GitHub`
     1. `Adapt the application running on the device`
+    ![](/images/07additem.png)
 
 1. As you can see currently they are all drafts. Draft items exist only in your project and are a quick way to build an overview while not going into detail right away. We want to turn them into issues and add some more information. Make sure **Issues** are activated on your repo. If you cannot see a Tab labled issues, navigate to `Settings > General`. When you scroll down you will find *Features*. There set the check next to **Issues**.
     Issues are used to track todos but also bugs, feature requests and more.
+    ![](/images/07enableissues.png)
 
 1. Now navigate back to your first work item in your projects board. Select it and add some details. Assign the task to someone and convert the Draft into an Issue. Make sure to select the **AzureIotHack** repository.
+    ![](/images/07convertissue.png)
 
     **Hint**: If you want to work jointly you can assign tasks to your teammembers.
 
 1. Close the item and on the board move the *Create Issues from Draft items* to **In Progress**.
+    ![](/images/07doneitem.png)
 
-1. Take some time to familiarize yourself with the options GitHub Projects offer you and turn all work items into Issues. 
+1. Take some time to familiarize yourself with the options GitHub Projects offer you and turn all work items into Issues.
 
-1. After that you can drag the *Create Issues from Draft items* to **Done**. Select it and **Close the Issue**. This way you will also see less Issues within your Repo.
+1. After that you can drag the *Create Issues from Draft items* to **Done**. Select it and **Close Issue**. This way you will also see less Issues within your Repo.
+    ![](/images/07closeissue.png)
 
 1. Move the *Enable GitHub Actions to create resources in Azure* to **In Progress**.
 
@@ -49,7 +56,9 @@ There are two options you can either create the service principal yourself or it
 
 Your details should look something like this: `{"clientId":"xxx","clientSecret":"xxx","subscriptionId":"xxx", "tenantId":"xxx"}`
     
-1. Within your GitHub repo navigate to `Settings > Actions > Secrets`. There add a repository secret. Name it `AZURE_CREDENTIALS` and add the value mentioned above `{"clientId":"xxx","clientSecret":"xxx","subscriptionId":"xxx", "tenantId":"xxx"}`
+1. Within your GitHub repo navigate to `Settings > Actions > Secrets`. There add a repository secret. Name it `AZURE_CREDENTIALS` and add the value mentioned above `{"clientId":"xxx","clientSecret":"xxx","subscriptionId":"xxx", "tenantId":"xxx"}`.
+
+    ![](/images/07actionsecrets.png)
 
 </details>
 
@@ -84,6 +93,13 @@ Infrastructure as Code s the managing and provisioning of infrastructure through
     1. `AZURE_CLIENT_SECRET`
     1. `AZURE_SUBSCRIPTION_ID`
     1. `AZURE_TENANT_ID`
+
+1. While unrelated to enabling GitHub Actions we will create two more secrets to enable the ML model usage. As before the `local.settings.json` will not be uploaded. But we do not want to place the endpoint and the key of our Azure ML model as plain text into our function or our workflow. Mainly because we will push the code into our repo where it will be visible for everyone. So create two more secrets and fill them with the url of your deployed model and it's key:
+    1. `AZURE_ML_MODEL_URL` = `http://...`
+    1. `AZURE_ML_MODEL_KEY` = `...`
+
+1. The final list of secrets should look like this:
+    ![](/images/07reposecrets.png)
 
 1. Move the *Enable Terraform to create resources in Azure* to **Done** and **Close the Issue**.
 
@@ -150,6 +166,7 @@ Infrastructure as Code s the managing and provisioning of infrastructure through
     ```
 
 1. Repeat the steps from above to merge the new changes to the **main** branch. The changes in the `variables.tf` file will have triggered the GitHub Action. The first one will create all Azure resources and the second one will adapt them and deploy the Azure functions code. To see this more in detail navigate to the **Actions** tab and later on have a look at the Azure Portal.
+    ![](/images/07pullreq.png)
 
 1. Move the *Adapt the application running on the device* to **In Progress**.
 
@@ -172,4 +189,4 @@ One last step needs to be done. Currently the Pi sends and listens to the old Io
     python3 temphumidrain.py 
     ```
 
-Go to the [next steps](./07_pi_missing.md)
+Go to the [next steps](./08_pi_missing.md)

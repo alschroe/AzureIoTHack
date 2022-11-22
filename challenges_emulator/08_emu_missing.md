@@ -4,7 +4,10 @@ At this point we have a working solution - but is it going to run like this in p
 
 ## Staging environments
 
-When implementing a productive solution you want to develop in stages. 
+Part of agile development is early delivery, continual improvement and evolutionary development.
+If you are serving a product to the customer that is being worked on continously in the background you want to have stages. Deploying new features directly into production could lead to downtime of your application for the customer.
+To avoid any bugs to reach to the customer there should be multiple versions of your application and changes should go through these stages before being served in production.
+Currently we only have the **prod** stage. With CI/CD in place you can very easily add additional stages for eg. **dev** or **test**.
 
 ## Security
 
