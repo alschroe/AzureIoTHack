@@ -175,4 +175,4 @@ Go back to the simulator in your browser.
 Now you should be able to start and stop the Pi Emulator and always get the prediction about whether or not it is going to rain, all running in the cloud. This is how your final project should look like:
 ![Showing the menu in the Azure portal with the + create button being on the very left](/images/architectureemu.png)
 
-Go to the [next steps](./05_optional_emu_ml.md)
+Go to the [next steps](./06_emu_github.md)
