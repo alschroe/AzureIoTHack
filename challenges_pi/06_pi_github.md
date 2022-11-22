@@ -50,4 +50,4 @@ You can find GitHub Actions in your repository. Click on _Actions_ There you can
 </br>
 ![Screenshot of where to find GitHub Actions in a GitHub repository](/images/06actions.png)
 
-During the next challenges, we will introduce you to Continuous Integration and Continuous Development (CI/CD). GitHub Actions is a great tool to work with to automate your processes. You will learn more about it in [next steps](./07_pi_cicd.md).
+During the next challenges, we will introduce you to Continuous Integration and Continuous Development (CI/CD). GitHub Actions is a great tool to work with to automate your processes. You will learn more about it in [next steps](./07_emu_cicd.md).
