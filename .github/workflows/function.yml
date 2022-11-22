@@ -31,7 +31,6 @@ jobs:
         inlineScript: |
           az config set extension.use_dynamic_install=yes_without_prompt
           az extension add --name azure-iot
-# enter your prefix here
           prefix="<YOUR PREFIX>"
           az iot hub device-identity create --device-id myPi --hub-name $prefix'iot-prod-iothub'
           az functionapp config appsettings set --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --settings ConnectionString=$(az iot hub connection-string show -n $prefix'iot-prod-iothub' --default-eventhub --output tsv)
@@ -49,7 +48,6 @@ jobs:
       shell: bash
       run: |
         pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        python -m pip install --upgrade pip
         pip install -r requirements.txt --target=".python_packages/lib/site-packages"
         popd
     - name: 'Run Azure Functions Action'

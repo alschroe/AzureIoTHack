@@ -144,6 +144,10 @@ Infrastructure as Code s the managing and provisioning of infrastructure through
 
 1. Move the *Edit the unique naming within Terraform* and *Push the changes to GitHub* to **In Progress**. These should be **#5** and **#6**.
 
+## Adapt the Azure Function locally
+
+1. As before you still need to change the configuration of the binding. The binding represents how the function is being triggered. This configuration can be found in `/raspberrypy_function/iothubtrigger/function.json`. Adapt your prefix to the current one if you have chosen a different one than you used in the previous challenges.
+
 ## Adapt the Terraform locally
 
 1. Let's first create a new branch for this task:
