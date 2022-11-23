@@ -1,12 +1,12 @@
 {
   "IsEncrypted": false,
   "Values": {
-    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https...",
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;EndpointSuffix=core.windows.net;AccountName=prpsawjstorage;AccountKey=LMEIiRU++sflJ1EmTXzG8LrVMHzzjNlW0gNzztbzJYBy2Ci3oR4zSqtWVRXnuyoit+7vzRFxXm5x+ASt4wvrYg==;BlobEndpoint=https://prpsawjstorage.blob.core.windows.net/;FileEndpoint=https://prpsawjstorage.file.core.windows.net/;QueueEndpoint=https://prpsawjstorage.queue.core.windows.net/;TableEndpoint=https://prpsawjstorage.table.core.windows.net/",
     "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
-    "ConnectionString": "Endpoint=...",
-    "DeviceConnectionString": "HostName=...",
-    "AzureMLurl": "http://...",
-    "AzureMLkey": "...",
+    "ConnectionString": "Endpoint=sb://iothub-ns-prpsiotpih-23023909-5c0a652164.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=FtrBP2HXbo7sWVy7yeD6XBxNW00M0wMrWoAnDqh638I=;EntityPath=prpsiotpihub",
+    "DeviceConnectionString": "HostName=prpsiotpihub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=FtrBP2HXbo7sWVy7yeD6XBxNW00M0wMrWoAnDqh638I=",
+    "AzureMLurl": "http://f3b6bea9-774b-4b04-9ca1-f8d329b032d8.westeurope.azurecontainer.io/score",
+    "AzureMLkey": "PJ5KHUY3BLrADkFeZNZBEj7zM0hz3jAU",
     "FUNCTIONS_WORKER_RUNTIME": "python"
   }
 }

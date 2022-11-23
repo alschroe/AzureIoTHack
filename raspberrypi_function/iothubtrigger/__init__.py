@@ -46,10 +46,17 @@ def sendData(temp, humid):
     try:
         response = urllib.request.urlopen(req)
 
-        result = response.read()
+        result = json.loads(response.read())
+        resultmsg = ''
+        
+        if result['Results'][0] == 0:
+            resultmsg = 'NO'
+        else:
+           resultmsg = 'Yes'
+
         registry_manager = IoTHubRegistryManager(connectionstr)
-        registry_manager.send_c2d_message(device, result)
-        print(result)
+        registry_manager.send_c2d_message(device, resultmsg)
+        print(resultmsg)
         
 
     except urllib.error.HTTPError as error:
@@ -66,7 +73,7 @@ def main(events: List[func.EventHubEvent]):
                         event.get_body().decode('utf-8'))
         print("printer in 62", event.get_body().decode('utf-8'))
         weather = json.loads(event.get_body().decode('utf-8'))
-        temp=weather['temperature']
-        humid=weather['humidity']
+        temp=weather['Temperature']
+        humid=weather['Humidity']
         sendData(temp, humid)
 
