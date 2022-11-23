@@ -82,8 +82,6 @@ We are going to run our code on a simulated Raspberry Pi connected to a breadboa
    }
    ```
 
-   Lastly, delete the method **JSON.stringify** (without the brackets) on **line 27**, since we added it in the previous code snippet.
-
    Now you can see how the LEDs blink depending on the temperature.
 
 1. The data from your emulator is now sent to Azure. But you still need to connect it to your Machine Learning service in order to draw predictions of potential rain from it.
