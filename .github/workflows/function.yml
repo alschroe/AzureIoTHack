@@ -7,7 +7,7 @@ on:
       - completedS
 
 env:
-  AZURE_FUNCTIONAPP_NAME: '<YOUR PREFIX>iot-prod-fa'   # enter your prefix here
+  AZURE_FUNCTIONAPP_NAME: 'prpsiot-prod-fa'   # enter your prefix here
   AZURE_FUNCTIONAPP_PACKAGE_PATH: 'raspberrypi_function'     
   PYTHON_VERSION: '3.9'                                   
 
@@ -31,7 +31,7 @@ jobs:
         inlineScript: |
           az config set extension.use_dynamic_install=yes_without_prompt
           az extension add --name azure-iot
-          prefix="<YOUR PREFIX>"
+          prefix="prps"
           az iot hub device-identity create --device-id myPi --hub-name $prefix'iot-prod-iothub'
           az functionapp config appsettings set --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --settings ConnectionString=$(az iot hub connection-string show -n $prefix'iot-prod-iothub' --default-eventhub --output tsv)
           az functionapp config appsettings set --name $prefix'iot-prod-fa' --resource-group $prefix'iot-prod-rg' --settings DeviceConnectionString=$(az iot hub connection-string show -n $prefix'iot-prod-iothub' --output tsv)
