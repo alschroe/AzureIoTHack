@@ -1,12 +1,12 @@
 {
   "IsEncrypted": false,
   "Values": {
-    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https...",
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;EndpointSuffix=core.windows.net;AccountName=fafeawjstorage;AccountKey=Upp9Oea+f0wUoMVOCf1k9nf1xvlnf0RogKLKPyn0yyhpBjttgszOPiEtQxIdWzCe76PB6wIyzjfU+AStdBnWKQ==",
     "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
-    "ConnectionString": "Endpoint=...",
-    "DeviceConnectionString": "HostName=...",
-    "AzureMLurl": "http://...",
-    "AzureMLkey": "...",
+    "ConnectionString": "Endpoint=sb://iothub-ns-fafeiotpih-23023789-9cf72f6113.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=jN3dFaSa8M9T6u3xkEjupOgnAfqR2MyVRHlmviijmB8=;EntityPath=fafeiotpihub",
+    "DeviceConnectionString": "HostName=fafeiotpihub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=jN3dFaSa8M9T6u3xkEjupOgnAfqR2MyVRHlmviijmB8=",
+    "AzureMLurl": "http://ae2ff282-1b36-49d1-9a44-d4c5b641848a.westeurope.azurecontainer.io/score",
+    "AzureMLkey": "fc46Wrx57qL2cImBU2a4F2z5Ycztyixh",
     "FUNCTIONS_WORKER_RUNTIME": "python"
   }
 }
