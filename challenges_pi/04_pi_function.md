@@ -161,6 +161,6 @@ Now our Pi also listens to the Azure IoT hub, which forwards the result of your 
 This is how your final object should look like:
 ![Showing the menue in the Azure portal with the + create button being on the very left](/images/architecture.png)
 
-Go to the [next steps](./06_pi_cicd.md)
+Go to the [next steps](./06_pi_github.md)
 
 
