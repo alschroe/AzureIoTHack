@@ -135,7 +135,7 @@ Infrastructure as Code s the managing and provisioning of infrastructure through
     git commit -m "Closes #4"
     ```
     ```shell
-    git push --set-upstream origin action
+    git push --set-upstream origin actions
     ```
 
 1. Within GitHub navigate to **Pull requests**. Select **Compare & pull request**. Now you can review the changes and hit **Create pull request**.
